@@ -10,7 +10,7 @@ describe('User can view listed articles', () => {
   })
 
   it('View available articles on landing page', () => {
-    cy.get(h1)
+    cy.get('h1')
     .should('contain', 'Fake News')
     .get('div[class="list-top-articles"]')
     .should('contain', 'Which drugs can kill you?')
