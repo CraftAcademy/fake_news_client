@@ -5,11 +5,11 @@ class ListArticle extends Component {
     return (
       <>
         <h1>Fake News</h1>
-        
-        <div className="list-top-articles"><p>Which drugs can kill you?</p>
-</div>
+        <div className="list-top-articles">
+        </div>
       </>
-     ) }
+    )
+  }
 }
 
 export default ListArticle
