@@ -10,7 +10,7 @@ class ListArticle extends Component {
   async componentDidMount() {
     let response = await getArticles()
     
-    if (response.status == 400) {
+    if (response.status === 400) {
       this.setState({
         errorMessage: response.errorMessage
       })
@@ -36,8 +36,8 @@ class ListArticle extends Component {
           {articles.map(article => {
             return <div key={article.id}>
               <div id='most-recent-articles'>
-                <img src={article.image} />
                 <p>{article.title}</p>
+                <p>{article.content}</p>
               </div>
             </div>
           })}

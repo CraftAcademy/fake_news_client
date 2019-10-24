@@ -2,16 +2,16 @@
   {
     "id": 1,
     "title": "Which drugs can kill you?",
-    "image": "https://images.pexels.com/photos/271171/pexels-photo-271171.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    "content": "Researches have recently found out that..."
   },
   {
     "id": 2,
     "title": "Can soccer make you fat?",
-    "image": "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    "content": "Yesterday the famous soccer player 'Ronaldo' was..."
   },
   {
     "id": 3,
     "title": "5 ways to get lost in the forest",
-    "image": "https://images.pexels.com/photos/1051321/pexels-photo-1051321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    "content": "Autumn is here and everyone wants to get out..."
   }
 ]

@@ -16,8 +16,6 @@ describe('User can view listed articles', () => {
       .should('contain', 'Can soccer make you fat?')
       .should('contain', '5 ways to get lost in the forest')
     cy.get('#most-recent-articles')
-      .find('img')
-      .should('be.visible')
   })
 
   it('View available articles on landing page', () => {
