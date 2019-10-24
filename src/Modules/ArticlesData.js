@@ -12,8 +12,6 @@ const getArticles = async () => {
       status: 400
     }
   }
-
-
 };  
 
 export { getArticles }
