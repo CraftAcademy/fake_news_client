@@ -1,30 +1,33 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class ListArticle extends Component {
   state = {
     articlesData: []
   }
-  
-  getArticlesData() {
-    let apiUrl = 'http://localhost/3001/api/v1/articles'
-    debugger
-    this.setState({
-      articlesData: apiUrl.title
+
+  componentDidMount() {
+    axios.get('./cypress/fixtures/list_articles.json')
+      //   axios.get('http://localhost/3001/api/v1/articles/')
+      .then(response => {
+        debugger;
+        this.setState({
+          articlesData: response.data
+        })
     })
   }
 
   render() {
-    let dataIndex;
+    const articles = this.state.articlesData
+    let articleList
 
-    if (this.state.articlesData === []) {
-      debugger
-      this.getArticlesData()
-    }
-    if (this.state.articlesData != []) {
-      dataIndex = (
+    if (articles !== []) {
+      articleList = (
         <div>
-          {this.state.articlesData.map(item => {
-            return <div key={item.id}>{item.apiUrl.title}</div>
+          {articles.map(article => {
+            return <div key={article.id}>
+              <p>{article.title}</p>
+            </div>
           })}
         </div>
       )
@@ -33,7 +36,7 @@ class ListArticle extends Component {
       <>
         <h1>Fake News</h1>
         <div className="list-top-articles">
-          {dataIndex}
+          {articleList}
         </div>
       </>
     )

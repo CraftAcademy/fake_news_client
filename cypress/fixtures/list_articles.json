@@ -1,17 +1,17 @@
 [
   {
-      "title": "Which drugs can kill you?",
-      "content": "Researches have recently found out that...",
-      "id": 1
+    "id": 1,
+    "title": "Which drugs can kill you?",
+    "content": "Researches have recently found out that..."
   },
   {
-      "message": "Can soccer make you fat?",
-      "content": "Yesterday the famous soccer player 'Ronaldo' was...",
-      "id": 2
+    "id": 2,
+    "title": "Can soccer make you fat?",
+    "content": "Yesterday the famous soccer player 'Ronaldo' was..."
   },
   {
-      "message": "5 ways to get lost in the forest",
-      "content": "Autumn is here and everyone wants to get out...",
-      "id": 3
+    "id": 3,
+    "title": "5 ways to get lost in the forest",
+    "content": "Autumn is here and everyone wants to get out..."
   }
 ]
