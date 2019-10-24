@@ -6,12 +6,12 @@ describe('User can login', () => {
   it('successfully', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3001/v1/auth/sign_in',
+      url: 'http://localhost:3000/v1/auth/sign_in',
       response: 'fixture:successful_user_login.json',
       status: 200
     })
 
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3001')
     cy.get('#login-button').click()
     cy.get('#login-form').within(() => {
       cy.get('#email-input').type('user@mail.com')
