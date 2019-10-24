@@ -1,25 +1,34 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import { getArticles } from '../Modules/ArticlesData'
 
 class ListArticle extends Component {
   state = {
-    articlesData: []
+    articles: [],
+    errorMessage: null
   }
 
-  componentDidMount() {
-    axios.get('./cypress/fixtures/list_articles.json')
-      //   axios.get('http://localhost/3001/api/v1/articles/')
-      .then(response => {
-        debugger;
-        this.setState({
-          articlesData: response.data
-        })
-    })
+  async componentDidMount() {
+    let response = await getArticles()
+    
+    if (response.status == 400) {
+      this.setState({
+        errorMessage: response.errorMessage
+      })
+    } else {
+      this.setState({
+        articles: response
+      })
+    }  
   }
 
   render() {
-    const articles = this.state.articlesData
+    const articles = this.state.articles
     let articleList
+    let errorMessage
+    
+    if (this.state.errorMessage) {
+      errorMessage = <p id="error">{this.state.errorMessage}</p>
+    }
 
     if (articles !== []) {
       articleList = (
@@ -38,6 +47,7 @@ class ListArticle extends Component {
         <div className="list-top-articles">
           {articleList}
         </div>
+        {errorMessage}
       </>
     )
   }
