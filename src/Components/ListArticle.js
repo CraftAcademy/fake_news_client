@@ -34,11 +34,9 @@ class ListArticle extends Component {
       articleList = (
         <div>
           {articles.map(article => {
-            return <div key={article.id}>
-              <div id='most-recent-articles'>
+            return <div id="parent" key={article.id}>
                 <p>{article.title}</p>
                 <p>{article.content}</p>
-              </div>
             </div>
           })}
         </div>
