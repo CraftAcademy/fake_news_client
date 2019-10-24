@@ -6,6 +6,6 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          executor: cypress/browsers-chrome77
+          executor: cypress/browsers-chrome69
           browser: chrome
           start: 'yarn start' # start server before running tests 
