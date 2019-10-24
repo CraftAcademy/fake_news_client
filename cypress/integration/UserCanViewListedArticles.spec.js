@@ -11,12 +11,14 @@ describe('User can view listed articles', () => {
 
     cy.get('h1')
       .should('contain', 'Fake News')
-    cy.get('.list-top-articles').find('div')
+    cy.get('.list-top-articles')
       .should('contain', 'Which drugs can kill you?')
       .should('contain', 'Can soccer make you fat?')
       .should('contain', '5 ways to get lost in the forest')
-    cy.get('.latest-articles').find('div')
-      .should('have.length', 6)
+    cy.get('.latest-articles')
+      .should('contain', 'Researches have recently found out that...')
+      .should('contain', 'Yesterday the famous soccer player Ronaldo was...')
+      .should('contain', 'Autumn is here and everyone wants to get out...')
   })
 
   it('View available articles on landing page', () => {
@@ -25,7 +27,7 @@ describe('User can view listed articles', () => {
       method: 'GET',
       url: 'http://localhost:3000/v1/articles',
       status: 400,
-      response:  {
+      response: {
         message: 'Network Error'
       }
     })
