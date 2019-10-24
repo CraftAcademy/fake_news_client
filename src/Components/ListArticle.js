@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getArticles } from '../Modules/ArticlesData'
+import { Container, Grid } from 'semantic-ui-react'
 
 class ListArticle extends Component {
   state = {
@@ -32,22 +33,25 @@ class ListArticle extends Component {
 
     if (articles !== []) {
       articleList = (
-        <div>
-          {articles.map(article => {
-            return <div id="parent" key={article.id}>
-                <p>{article.title}</p>
+        <Grid centered container columns={3} className="latest-articles">
+        {articles.map(article => {
+          return <Grid.Row key={article.id}>
+                <Grid.Column>
+                <h2>{article.title}</h2>
                 <p>{article.content}</p>
-            </div>
-          })}
-        </div>
+                </Grid.Column>
+                </Grid.Row> 
+        })}
+            </Grid>
       )
     }
+
     return (
       <>
         <h1>Fake News</h1>
-        <div className="list-top-articles">
+        <Container className="list-top-articles">
           {articleList}
-        </div>
+        </Container>
         {errorMessage}
       </>
     )

@@ -13,13 +13,10 @@ describe('User can view listed articles', () => {
       .should('contain', 'Fake News')
     cy.get('.list-top-articles').find('div')
       .should('contain', 'Which drugs can kill you?')
-      .should('contain', 'Researches have recently found out that...')
-    cy.get('.list-top-articles').find('div')
       .should('contain', 'Can soccer make you fat?')
-      .should('contain', 'Yesterday the famous soccer player Ronaldo was...')
-    cy.get('.list-top-articles').find('div')
       .should('contain', '5 ways to get lost in the forest')
-      .should('contain', 'Autumn is here and everyone wants to get out...')
+    cy.get('.latest-articles').find('div')
+      .should('have.length', 6)
   })
 
   it('View available articles on landing page', () => {
