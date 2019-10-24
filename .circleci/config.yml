@@ -8,4 +8,4 @@ workflows:
       - cypress/run:
           executor: cypress/browsers-chrome69
           browser: chrome
-          start: 'yarn start' # start server before running tests 
+          start: 'npm start' # start server before running tests 
