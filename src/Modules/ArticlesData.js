@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const apiUrl = 'http://localhost:3000/v1/';
+const apiUrl = 'http://localhost:3000/v1/'
 
 const getArticles = async () => {
   try {

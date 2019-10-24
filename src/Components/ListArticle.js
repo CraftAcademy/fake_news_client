@@ -35,7 +35,10 @@ class ListArticle extends Component {
         <div>
           {articles.map(article => {
             return <div key={article.id}>
-              <p>{article.title}</p>
+              <div id='most-recent-articles'>
+                <img src={article.image} />
+                <p>{article.title}</p>
+              </div>
             </div>
           })}
         </div>
