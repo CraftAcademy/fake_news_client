@@ -21,7 +21,7 @@ describe('User can view listed articles', () => {
       .should('contain', 'Autumn is here and everyone wants to get out...')
   })
 
-  it('View available articles on landing page', () => {
+  it('Articles do not load on the landing page', () => {
     cy.server()
     cy.route({
       method: 'GET',

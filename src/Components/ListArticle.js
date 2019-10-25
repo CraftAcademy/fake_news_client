@@ -38,10 +38,8 @@ class ListArticle extends Component {
           <Grid.Row>
             {articles.map(article => {
               return <Grid.Column key={article.id}>
-                <Grid.Column>
-                  <h2>{article.title}</h2>
-                  <p>{article.content}</p>
-                </Grid.Column>
+                <h2>{article.title}</h2>
+                <p>{article.content}</p>
               </Grid.Column>
             })}
           </Grid.Row>
