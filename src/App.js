@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import ListArticles from './Components/ListArticles'
 
 class App extends Component {
+
   render() {
     return (
-      <div>
-        <h1>First scaffold</h1>
-      </div>
-    );
+      <>
+        <ListArticles />
+      </>
+    )
   }
 }
 
-export default App;
+export default App
