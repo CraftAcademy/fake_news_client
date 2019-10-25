@@ -34,14 +34,14 @@ class ListArticles extends Component {
 
     if (articles !== []) {
       articleList = (
-          <Grid.Row>
-            {articles.map(article => {
-              return <Grid.Column key={article.id}>
-                <h2>{article.title}</h2>
-                <p>{article.content}</p>
-              </Grid.Column>
-            })}
-          </Grid.Row>
+        <Grid.Row>
+          {articles.map(article => {
+            return <Grid.Column key={article.id}>
+              <h2>{article.title}</h2>
+              <p>{article.content}</p>
+            </Grid.Column>
+          })}
+        </Grid.Row>
       )
     }
 
@@ -52,9 +52,9 @@ class ListArticles extends Component {
         <Container className="list-top-articles">
           <h2>Top News</h2>
           <Grid centered container columns={3} className="latest-articles">
-          {articleList}
-          {errorMessage}
-        </Grid>
+            {articleList}
+            {errorMessage}
+          </Grid>
         </Container>
       </>
     )
