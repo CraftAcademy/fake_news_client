@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ListArticles from './Components/ListArticles'
+import LoginForm from './Components/LoginForm'
 
 class App extends Component {
   state = {
@@ -10,7 +11,8 @@ class App extends Component {
 
   renderForm = () => {
     this.setState ({
-      renderLoginForm: !this.state.renderLoginForm
+      renderLoginForm: true
+      // renderLoginForm: !this.state.renderLoginForm
     })
   }
 
@@ -23,8 +25,8 @@ class App extends Component {
   render() {
     let renderLogin
 
-    if (this.state.renderLoginForm) {
-      renderLoginForm = (
+    if (this.state.renderLoginForm === true) {
+      renderLogin = (
         <>
           <LoginForm 
           inputChangeHandlerProps={this.inputChangeHandler}
@@ -32,12 +34,13 @@ class App extends Component {
         </>
       )
     } else {
+      renderLogin = (
       <button id="login-button" onClick={this.renderForm}>Login</button>
-    }
+      )}
 
     return (
       <>
-        {renderLoginForm}
+        {renderLogin}
 
         <ListArticles />
       </>
