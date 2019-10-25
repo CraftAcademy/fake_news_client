@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import ListArticle from './Components/ListArticle'
+import ListArticles from './Components/ListArticles'
 
 class App extends Component {
   
   render() {
     return (
       <>
-        <ListArticle />
+        <ListArticles />
       </>
     );
   }

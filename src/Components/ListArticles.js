@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { getArticles } from '../Modules/ArticlesData'
 import { Container, Grid } from 'semantic-ui-react'
-import './ListArticle.css'
+import './ListArticles.css'
 
-class ListArticle extends Component {
+class ListArticles extends Component {
   state = {
     articles: [],
     errorMessage: null
@@ -61,4 +61,4 @@ class ListArticle extends Component {
   }
 }
 
-export default ListArticle
+export default ListArticles
