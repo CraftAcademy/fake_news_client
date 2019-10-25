@@ -34,7 +34,6 @@ class ListArticle extends Component {
 
     if (articles !== []) {
       articleList = (
-        <Grid centered container columns={3} className="latest-articles">
           <Grid.Row>
             {articles.map(article => {
               return <Grid.Column key={article.id}>
@@ -43,7 +42,6 @@ class ListArticle extends Component {
               </Grid.Column>
             })}
           </Grid.Row>
-        </Grid>
       )
     }
 
@@ -53,8 +51,10 @@ class ListArticle extends Component {
         <hr></hr>
         <Container className="list-top-articles">
           <h2>Top News</h2>
+          <Grid centered container columns={3} className="latest-articles">
           {articleList}
           {errorMessage}
+        </Grid>
         </Container>
       </>
     )
