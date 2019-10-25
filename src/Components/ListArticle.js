@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getArticles } from '../Modules/ArticlesData'
-import { Container, Grid, Header } from 'semantic-ui-react'
-import './ListArticle.css';
+import { Container, Grid } from 'semantic-ui-react'
+import './ListArticle.css'
 
 class ListArticle extends Component {
   state = {
@@ -11,7 +11,7 @@ class ListArticle extends Component {
 
   async componentDidMount() {
     let response = await getArticles()
-    
+
     if (response.status === 400) {
       this.setState({
         errorMessage: response.errorMessage
@@ -20,14 +20,14 @@ class ListArticle extends Component {
       this.setState({
         articles: response
       })
-    }  
+    }
   }
 
   render() {
     const articles = this.state.articles
     let articleList
     let errorMessage
-    
+
     if (this.state.errorMessage) {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
     }
@@ -36,27 +36,28 @@ class ListArticle extends Component {
       articleList = (
         <Grid centered container columns={3} className="latest-articles">
           <Grid.Row>
-        {articles.map(article => {
-          return <Grid.Column key={article.id}>
+            {articles.map(article => {
+              return <Grid.Column key={article.id}>
                 <Grid.Column>
-                <h2>{article.title}</h2>
-                <p>{article.content}</p>
+                  <h2>{article.title}</h2>
+                  <p>{article.content}</p>
                 </Grid.Column>
-                </Grid.Column>
-        })}
-        </Grid.Row>
-            </Grid>
+              </Grid.Column>
+            })}
+          </Grid.Row>
+        </Grid>
       )
     }
 
     return (
       <>
         <h1>Fake News</h1>
+        <hr></hr>
         <Container className="list-top-articles">
-        <Header size='large'>Top News</Header>
+          <h2>Top News</h2>
           {articleList}
+          {errorMessage}
         </Container>
-        {errorMessage}
       </>
     )
   }
