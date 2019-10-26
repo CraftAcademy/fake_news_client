@@ -9,16 +9,26 @@ class ListArticles extends Component {
     errorMessage: null
   }
 
-  async componentDidMount() {
-    let response = await getArticles()
+  // componentDidMount() {
+  //   this.getArticlesData()
+  // }
+
+  async getArticlesData() {
+    let response = await getArticles();
 
     if (response.status === 400) {
+      debugger
       this.setState({
         errorMessage: response.errorMessage
+      }, () => {
+        this.props.renderArticleGetStateProps();
       })
     } else {
+      debugger
       this.setState({
         articles: response
+      }, () => {
+        this.props.renderArticleGetState();
       })
     }
   }
@@ -28,10 +38,20 @@ class ListArticles extends Component {
     let articleList
     let errorMessage
 
+    if (this.props.getArticlesIndexProps === true) {
+      debugger
+      this.getArticlesData()
+    } 
+    if (this.props.getArticlesIndex === true) {
+      debugger
+      this.getArticlesData()
+    } 
+
+
     if (this.state.errorMessage) {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
     }
-
+    
     if (articles !== []) {
       articleList = (
         <Grid.Row>

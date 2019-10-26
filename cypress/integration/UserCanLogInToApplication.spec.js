@@ -1,13 +1,10 @@
 describe('User can log in to application', () => {
-  beforeEach(() => {
-    cy.server()
-  })
-
   it('successfully log in ', () => {
+    cy.server()
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/v1/auth/sign_in',
-      response: 'fixture:successful_user_login.json',
+      response: 'fixtures:successful_user_login.json',
       status: 200
     })
 

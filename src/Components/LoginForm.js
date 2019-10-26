@@ -7,7 +7,7 @@ class LoginForm extends Component {
         <form id="login-form">
           <input id="email-input" placeholder="Email" name="email" onChange={this.props.inputChangeHandlerProps}></input>
           <input id="password-input" placeholder="Password" name="password" onChange={this.props.inputChangeHandlerProps}></input>
-          <button id="submit-login-form">Submit</button>
+          <button onClick={this.props.handleLoginProps} id="submit-login-form">Submit</button>
         </form>
       </>
     )
