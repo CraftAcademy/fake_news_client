@@ -4,7 +4,7 @@ describe('User can log in to application', () => {
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/v1/auth/sign_in',
-      response: 'fixtures:successful_user_login.json',
+      response: 'fixture:successful_user_login.json',
       status: 200
     })
 
@@ -15,6 +15,7 @@ describe('User can log in to application', () => {
       cy.get('#password-input').type('password')
     })
     cy.get('#submit-login-form').click()
+    
     cy.get('#welcome-message').should('contain', 'Hello user@mail.com')
   })
 });

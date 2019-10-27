@@ -12,7 +12,6 @@ class App extends Component {
     getArticlesIndex: true
   }
 
-
   renderArticleGetState = () => {
     debugger
     this.setState ({
@@ -48,7 +47,7 @@ class App extends Component {
   render() {
     let renderLogin
     let welcomeMessage
-
+// Redux implementation -  doesn't save that current user is signed in, if isSignedIn is replaced by isLoading message shows, exept email which isn't found.
     if (this.props.currentUser.isSignedIn) {
       debugger
      welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.email}</p>

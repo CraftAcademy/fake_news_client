@@ -9,29 +9,25 @@ class ListArticles extends Component {
     errorMessage: null
   }
 
-  // componentDidMount() {
-  //   this.getArticlesData()
-  // }
+  componentDidMount() {
+    this.getArticlesData()
+  }
 
-  // async getArticlesData() {
-  //   let response = await getArticles();
+  async getArticlesData() {
+    let response = await getArticles();
 
-  //   if (response.status === 400) {
-  //     debugger
-  //     this.setState({
-  //       errorMessage: response.errorMessage
-  //     }, () => {
-  //       this.props.renderArticleGetStateProps();
-  //     })
-  //   } else {
-  //     debugger
-  //     this.setState({
-  //       articles: response
-  //     }, () => {
-  //       this.props.renderArticleGetState();
-  //     })
-  //   }
-  // }
+    if (response.status === 400) {
+      this.setState({
+        errorMessage: response.errorMessage
+      })
+    } else {
+      this.setState({
+        articles: response
+       })// () => {
+      //   this.props.renderArticleGetState();
+      // }
+    }
+  }
 
   render() {
     const articles = this.state.articles
@@ -39,14 +35,8 @@ class ListArticles extends Component {
     let errorMessage
 
     if (this.props.getArticlesIndexProps === true) {
-      debugger
       this.getArticlesData()
     } 
-    if (this.props.getArticlesIndex === true) {
-      debugger
-      this.getArticlesData()
-    } 
-
 
     if (this.state.errorMessage) {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
