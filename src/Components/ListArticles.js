@@ -13,25 +13,25 @@ class ListArticles extends Component {
   //   this.getArticlesData()
   // }
 
-  async getArticlesData() {
-    let response = await getArticles();
+  // async getArticlesData() {
+  //   let response = await getArticles();
 
-    if (response.status === 400) {
-      debugger
-      this.setState({
-        errorMessage: response.errorMessage
-      }, () => {
-        this.props.renderArticleGetStateProps();
-      })
-    } else {
-      debugger
-      this.setState({
-        articles: response
-      }, () => {
-        this.props.renderArticleGetState();
-      })
-    }
-  }
+  //   if (response.status === 400) {
+  //     debugger
+  //     this.setState({
+  //       errorMessage: response.errorMessage
+  //     }, () => {
+  //       this.props.renderArticleGetStateProps();
+  //     })
+  //   } else {
+  //     debugger
+  //     this.setState({
+  //       articles: response
+  //     }, () => {
+  //       this.props.renderArticleGetState();
+  //     })
+  //   }
+  // }
 
   render() {
     const articles = this.state.articles

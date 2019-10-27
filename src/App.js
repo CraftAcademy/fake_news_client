@@ -33,6 +33,7 @@ class App extends Component {
   }
 
   handleLogin = () => {
+    debugger
     const { signInUser } = this.props;
     const { email, password } = this.state;
       signInUser({ email, password })
@@ -63,7 +64,6 @@ class App extends Component {
         </>
       )
     } else {
-      debugger
       renderLogin = (
       <button id="login-button" onClick={this.renderFormState}>Login</button>
       )}
