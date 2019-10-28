@@ -1,17 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class LoginForm extends Component {
-  render() {
-    return (
-      <>
-        <div id="login-form">
-          <input id="email-input" placeholder="Email" name="email" onChange={this.props.inputChangeHandlerProps}></input>
-          <input id="password-input" placeholder="Password" name="password" onChange={this.props.inputChangeHandlerProps}></input>
-          <button onClick={this.props.handleLoginProps} id="submit-login-form">Submit</button>
-        </div>
-      </>
-    )
-  }
+const LoginForm = (props) => {
+  return (
+    <>
+      <div id="login-form">
+        <input id="email-input" placeholder="Email" name="email" onChange={props.inputChangeHandlerProps}></input>
+        <input id="password-input" placeholder="Password" name="password" onChange={props.inputChangeHandlerProps}></input>
+        <button onClick={props.handleLoginProps} id="submit-login-form">Submit</button>
+      </div>
+    </>
+  )
 }
 
 export default LoginForm
