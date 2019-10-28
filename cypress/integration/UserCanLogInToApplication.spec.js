@@ -27,11 +27,21 @@ describe('User can not log in to application', () => {
   cy.route({
     method: 'POST',
     url: 'http://localhost:3000/v1/auth/sign_in',
-    response: 'fixtures:unsuccessful_user_login.json',
+    response: 'fixture:unsuccessful_user_login.json',
     status: 401
   }),
   cy.visit('http://localhost:3001'),
   cy.get('#login-button').click()
+  })
+
+  it('status is 401 when trys to login with wrong password', () => {
+    cy.get('#login-form').within(() => {
+      cy.get('#email-input').type('user@mail.com')
+      cy.get('#password-input').type('wrong_password')
+    })
+    cy.get('#submit-login-form').click()
+    
+    cy.get(401)
   })
 
   it('with wrong password', () => {

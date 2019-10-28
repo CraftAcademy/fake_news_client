@@ -33,20 +33,19 @@ class App extends Component {
         .then(
           console.log('Yaaaaaaay')
         )
-        .catch(error => {
-          console.log(error)
-        })
+        .then(
+          this.loginDataHandler()
+        )
   }
 
   loginDataHandler = async () => {
     const { email, password } = this.state
     let response = await submitLoginData(email, password)
-
     if(response.status === 200) {
-      this.setState({
-        responseMessage: response.data.message
-      })
+      debugger
+      console.log("loginDATAHANDLER SUCCESS yaeeeaaa")
     } else {
+      debugger
       this.setState({
         responseMessage: response
       })
@@ -72,6 +71,7 @@ class App extends Component {
           <LoginForm 
             inputChangeHandlerProps={this.inputChangeHandler}
             handleLoginProps={this.handleLogin}
+            loginDataHandlerProps={this.loginDataHandler}
           />
         </>
       )
