@@ -14,4 +14,21 @@ const getArticles = async () => {
   }
 }
 
-export { getArticles }
+const submitArticle = async (title, content, image) => {
+  try {
+    let response = await axios.post(
+      apiUrl + 'articles',
+      {
+        title: title,
+        content: content,
+        image: image
+      }
+    )
+
+    return response
+  } catch(error) {
+    return error.message
+  }
+}
+
+export { getArticles, submitArticle }
