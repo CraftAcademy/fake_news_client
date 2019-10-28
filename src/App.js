@@ -8,14 +8,7 @@ class App extends Component {
   state = {
     renderLoginForm: false,
     email: '',
-    password: '',
-    getArticlesIndex: true
-  }
-
-  renderArticleGetState = () => {
-    this.setState ({
-      getArticlesIndex: false
-    })
+    password: ''
   }
 
   renderFormState = () => {
@@ -70,8 +63,6 @@ class App extends Component {
         {welcomeMessage}
 
         <ListArticles 
-          getArticlesIndexProps={this.getArticlesIndex}
-          renderArticleGetStateProps={this.renderArticleGetState.bind(this)}
         />
       </>
     )

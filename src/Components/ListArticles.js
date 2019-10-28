@@ -23,9 +23,7 @@ class ListArticles extends Component {
     } else {
       this.setState({
         articles: response
-       })// () => {
-      //   this.props.renderArticleGetState();
-      // }
+       })
     }
   }
 
@@ -33,10 +31,6 @@ class ListArticles extends Component {
     const articles = this.state.articles
     let articleList
     let errorMessage
-
-    if (this.props.getArticlesIndexProps === true) {
-      this.getArticlesData()
-    } 
 
     if (this.state.errorMessage) {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
