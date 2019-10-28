@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     renderLoginForm: false,
     email: '',
-    password: ''
+    password: '',
+    message: ''
   }
 
   renderFormState = () => {
@@ -32,8 +33,10 @@ class App extends Component {
           console.log('Yaaaaaaay')
         )
         .catch(error => {
+          debugger
           console.log(error)
         })
+    debugger
   }
 
   render() {
@@ -41,7 +44,9 @@ class App extends Component {
     let welcomeMessage
 
     if (this.props.currentUser.isSignedIn) {
-      welcomeMessage = <Message> <h3 id="welcome-message">Hello {this.props.currentUser.attributes.email}</h3></Message>
+      welcomeMessage = <Message> <h3 id="welcome-message">Hello {this.props.currentUser.attributes.email}</h3>
+      <p>{this.state.message}</p>
+      </Message>
     }
 
     if (this.state.renderLoginForm === true) {
