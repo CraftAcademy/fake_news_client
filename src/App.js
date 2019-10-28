@@ -4,13 +4,14 @@ import LoginForm from './Components/LoginForm'
 import { signInUser } from './state/actions/reduxTokenAuthConfig'
 import { connect } from 'react-redux'
 import { Button, Message } from 'semantic-ui-react'
+import { submitLoginData } from './Modules/LoginData'
 
 class App extends Component {
   state = {
     renderLoginForm: false,
     email: '',
     password: '',
-    message: ''
+    responseMessage: ''
   }
 
   renderFormState = () => {
@@ -33,20 +34,36 @@ class App extends Component {
           console.log('Yaaaaaaay')
         )
         .catch(error => {
-          debugger
           console.log(error)
         })
-    debugger
+  }
+
+  loginDataHandler = async () => {
+    const { email, password } = this.state
+    let response = await submitLoginData(email, password)
+
+    if(response.status === 200) {
+      this.setState({
+        responseMessage: response.data.message
+      })
+    } else {
+      this.setState({
+        responseMessage: response
+      })
+    }
   }
 
   render() {
     let renderLogin
     let welcomeMessage
+    let responseMessage
 
     if (this.props.currentUser.isSignedIn) {
-      welcomeMessage = <Message> <h3 id="welcome-message">Hello {this.props.currentUser.attributes.email}</h3>
-      <p>{this.state.message}</p>
-      </Message>
+      welcomeMessage = <Message> <h3 id="welcome-message">Hello {this.props.currentUser.attributes.email}</h3></Message>
+    } 
+
+    if(this.state.responseMessage){
+      responseMessage = <p id="response-message">{this.state.responseMessage}</p>
     }
 
     if (this.state.renderLoginForm === true) {
@@ -67,6 +84,7 @@ class App extends Component {
       <>
         {renderLogin}
         {welcomeMessage}
+        {responseMessage}
 
         <ListArticles 
         />

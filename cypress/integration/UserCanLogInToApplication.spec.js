@@ -27,6 +27,7 @@ describe('User can not log in to application', () => {
   cy.route({
     method: 'POST',
     url: 'http://localhost:3000/v1/auth/sign_in',
+    response: 'fixtures:unsuccessful_user_login.json',
     status: 401
   }),
   cy.visit('http://localhost:3001'),
@@ -40,7 +41,7 @@ describe('User can not log in to application', () => {
     })
     cy.get('#submit-login-form').click()
     
-    cy.contains('Invalid login credentials. Please try again')
+    cy.get('#error-message').should('contain', 'Invalid login credentials. Please try again')
   })
 
   it('with wrong email', () => {
@@ -50,6 +51,6 @@ describe('User can not log in to application', () => {
     })
     cy.get('#submit-login-form').click()
     
-    cy.contains('Invalid login credentials. Please try again')
+    cy.get('#error-message').should('contain', 'Invalid login credentials. Please try again')
   })
 });
