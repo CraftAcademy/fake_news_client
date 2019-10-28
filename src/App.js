@@ -13,7 +13,6 @@ class App extends Component {
   }
 
   renderArticleGetState = () => {
-    debugger
     this.setState ({
       getArticlesIndex: false
     })
@@ -32,7 +31,6 @@ class App extends Component {
   }
 
   handleLogin = () => {
-    debugger
     const { signInUser } = this.props;
     const { email, password } = this.state;
       signInUser({ email, password })
@@ -47,24 +45,23 @@ class App extends Component {
   render() {
     let renderLogin
     let welcomeMessage
-// Redux implementation -  doesn't save that current user is signed in, if isSignedIn is replaced by isLoading message shows, exept email which isn't found.
+
     if (this.props.currentUser.isSignedIn) {
-      debugger
-     welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.email}</p>
+      welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.email}</p>
     }
 
     if (this.state.renderLoginForm === true) {
       renderLogin = (
         <>
           <LoginForm 
-          inputChangeHandlerProps={this.inputChangeHandler}
-          handleLoginProps={this.handleLogin}
+            inputChangeHandlerProps={this.inputChangeHandler}
+            handleLoginProps={this.handleLogin}
           />
         </>
       )
     } else {
       renderLogin = (
-      <button id="login-button" onClick={this.renderFormState}>Login</button>
+        <button id="login-button" onClick={this.renderFormState}>Login</button>
       )}
 
     return (
@@ -73,8 +70,8 @@ class App extends Component {
         {welcomeMessage}
 
         <ListArticles 
-        getArticlesIndexProps={this.getArticlesIndex}
-        renderArticleGetStateProps={this.renderArticleGetState.bind(this)}
+          getArticlesIndexProps={this.getArticlesIndex}
+          renderArticleGetStateProps={this.renderArticleGetState.bind(this)}
         />
       </>
     )
