@@ -3,6 +3,7 @@ import ListArticles from './Components/ListArticles'
 import LoginForm from './Components/LoginForm'
 import { signInUser } from './state/actions/reduxTokenAuthConfig'
 import { connect } from 'react-redux'
+import { Button, Message } from 'semantic-ui-react'
 
 class App extends Component {
   state = {
@@ -40,7 +41,7 @@ class App extends Component {
     let welcomeMessage
 
     if (this.props.currentUser.isSignedIn) {
-      welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.email}</p>
+      welcomeMessage = <Message> <h3 id="welcome-message">Hello {this.props.currentUser.attributes.email}</h3></Message>
     }
 
     if (this.state.renderLoginForm === true) {
@@ -54,7 +55,7 @@ class App extends Component {
       )
     } else {
       renderLogin = (
-        <button id="login-button" onClick={this.renderFormState}>Login</button>
+        <Button color='blue' id="login-button" onClick={this.renderFormState}>Login</Button>
       )}
 
     return (
