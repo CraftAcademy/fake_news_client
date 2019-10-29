@@ -34,16 +34,6 @@ describe('User can not log in to application', () => {
   cy.get('#login-button').click()
   })
 
-  it('status is 401 when trys to login with wrong password', () => {
-    cy.get('#login-form').within(() => {
-      cy.get('#email-input').type('user@mail.com')
-      cy.get('#password-input').type('wrong_password')
-    })
-    cy.get('#submit-login-form').click()
-    
-    cy.get(401)
-  })
-
   it('with wrong password', () => {
     cy.get('#login-form').within(() => {
       cy.get('#email-input').type('user@mail.com')

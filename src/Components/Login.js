@@ -28,28 +28,16 @@ class Login extends Component {
   handleLogin = () => {
     const { signInUser } = this.props;
     const { email, password } = this.state;
+    debugger
       signInUser({ email, password })
         .then(
           console.log('Yaaaaaaay')
         )
-        .then(
-          this.loginDataHandler()
-        )
+        .catch(error => {
+          this.setState({responseMessage: error.response.data.errors})
+        })
   }
 
-  loginDataHandler = async () => {
-    const { email, password } = this.state
-    let response = await submitLoginData(email, password)
-    if(response.status === 200) {
-      debugger
-      console.log("loginDATAHANDLER SUCCESS yaeeeaaa")
-    } else {
-      debugger
-      this.setState({
-        responseMessage: response
-      })
-    }
-  }
   render(){
     let renderLogin
     let welcomeMessage
@@ -59,8 +47,8 @@ class Login extends Component {
       welcomeMessage = <Message> <h3 id="welcome-message">Hello {this.props.currentUser.attributes.email}</h3></Message>
     } 
 
-    if(this.state.responseMessage){
-      responseMessage = <p id="response-message">{this.state.responseMessage}</p>
+    if(this.state.responseMessage !== ''){
+      responseMessage = <p id="error-message">{this.state.responseMessage}</p>
     }
 
     if (this.state.renderLoginForm === true) {
