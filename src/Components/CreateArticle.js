@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ArticleFormInput from './ArticleFormInput'
+import { submitArticle } from '../Modules/ArticlesData'
 
 class CreateArticle extends Component {
 
@@ -22,25 +23,43 @@ class CreateArticle extends Component {
     })
   }
 
-  submitArticleHandler = () => {
-    
+  submitArticleHandler = async () => {
+    const { title, content, image } = this.state
+    let response = await submitArticle(title, content, image)
+
+    if (response.status === 200) {
+      this.setState({
+        responseMessage: response.data.message
+      })
+    } else {
+      this.setState({
+        responseMessage: response
+      })
+    }
   }
 
   render() {
     let articleForm
+    let responseMessage
+
+    if (this.state.responseMessage) {
+      responseMessage =
+        <p id="response-message">{this.state.responseMessage}</p>
+    }
 
     if (this.state.renderArticleForm) {
       articleForm = (
-        <ArticleFormInput 
-        inputHandler={this.inputHandler}
-        submitArticleHandler={this.submitArticleHandler} />
+        <ArticleFormInput
+          inputHandler={this.inputHandler}
+          submitArticleHandler={this.submitArticleHandler} />
       )
     }
 
     return (
       <div>
         <button onClick={this.renderForm} id="create-article">Create Article</button>
-      {articleForm}
+        {articleForm}
+        {responseMessage}
       </div>
     )
   }
