@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ListArticles from './Components/ListArticles'
+import CreateArticle from './Components/CreateArticle'
 
 class App extends Component {
 
@@ -7,6 +8,7 @@ class App extends Component {
     return (
       <>
         <ListArticles />
+        <CreateArticle />
       </>
     )
   }
