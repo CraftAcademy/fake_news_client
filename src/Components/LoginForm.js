@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Input, Icon, Button } from 'semantic-ui-react'
 
 const LoginForm = (props) => {
-  return (
+   return (
     <>
       <Container id="login-form">
         <Input iconPosition='left' placeholder="Email" id="email-input" name="email" onChange={props.inputChangeHandlerProps}>
