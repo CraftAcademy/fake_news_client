@@ -16,18 +16,31 @@ class CreateArticle extends Component {
     })
   }
 
+  inputHandler = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  submitArticleHandler = () => {
+    
+  }
+
   render() {
     let articleForm
 
     if (this.state.renderArticleForm) {
       articleForm = (
-        <ArticleFormInput />
+        <ArticleFormInput 
+        inputHandler={this.inputHandler}
+        submitArticleHandler={this.submitArticleHandler} />
       )
     }
 
     return (
       <div>
-        <button id="create-article" onClick={this.renderForm}>Create Article</button>
+        <button onClick={this.renderForm} id="create-article">Create Article</button>
+      {articleForm}
       </div>
     )
   }
