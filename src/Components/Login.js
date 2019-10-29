@@ -1,7 +1,6 @@
 import React, { Component }from 'react'
 import LoginForm from './LoginForm'
 import { Button, Message } from 'semantic-ui-react'
-import { submitLoginData } from '../Modules/LoginData'
 import { signInUser } from '../state/actions/reduxTokenAuthConfig'
 import { connect } from 'react-redux'
 
@@ -28,7 +27,6 @@ class Login extends Component {
   handleLogin = () => {
     const { signInUser } = this.props;
     const { email, password } = this.state;
-    debugger
       signInUser({ email, password })
         .then(
           console.log('Yaaaaaaay')
