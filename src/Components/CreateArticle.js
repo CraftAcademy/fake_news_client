@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ArticleFormInput from './ArticleFormInput'
 
 class CreateArticle extends Component {
 
