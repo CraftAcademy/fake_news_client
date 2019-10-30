@@ -27,6 +27,7 @@ class ListArticles extends Component {
   }
 
   showSingleArticleHandler = (articleId) => {
+    debugger;
     this.setState({
       showArticle: true,
       showArticleId: articleId
@@ -48,10 +49,10 @@ class ListArticles extends Component {
       articleList = (
         <Grid.Row>
           {articles.map(article => {
-            //id=`article_1${article.id}`
-            return <Grid.Column key={article.id} onClick={this.showSingleArticleHandler(article.id)}>
+            return <Grid.Column id={`article_${article.id}`} key={article.id}>
               <h2>{article.title}</h2>
               <p>{article.content}</p>
+              <button id="read-specific-article" onClick={this.showSingleArticleHandler(article.id)}>Read full article</button>
             </Grid.Column>
           })}
         </Grid.Row>
@@ -59,6 +60,7 @@ class ListArticles extends Component {
     } 
     
     if (showArticle === true) {
+      debugger;
       specificArticle = <SingleArticle key={this.state.showArticleId} />
     }
 
