@@ -39,7 +39,6 @@ class CreateArticle extends Component {
   }
 
   onAvatarDropHandler = (pictureFiles, pictureDataURLs) => {
-    debugger;
     this.setState({
       image: pictureDataURLs
     })
