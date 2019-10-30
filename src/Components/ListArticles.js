@@ -36,10 +36,10 @@ class ListArticles extends Component {
       articleList = (
         <Grid.Row>
           {articles.map(article => {
+            debugger;
             return <Grid.Column key={article.id}>
               <h2>{article.title}</h2>
               <p>{article.content}</p>
-              <img src={article.image} alt="Image should be here" /> 
             </Grid.Column>
           })}
         </Grid.Row>
