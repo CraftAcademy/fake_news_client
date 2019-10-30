@@ -38,7 +38,6 @@ class ListArticles extends Component {
         <Grid.Row>
           {articles.map(article => {
             return <Grid.Column key={article.id}>
-              {/* wrap with link for article title to redirect to new page for said article. */}
               <a href={apiURL + `${article.id}`}><h2>{article.title}</h2></a>
               <p>{article.content}</p>
             </Grid.Column>
