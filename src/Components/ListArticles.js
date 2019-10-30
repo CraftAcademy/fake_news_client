@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getArticles } from '../Modules/ArticlesData'
 import { Container, Grid } from 'semantic-ui-react'
-import './ListArticles.css'
+import './CSS/ListArticles.css'
 
 class ListArticles extends Component {
   state = {
