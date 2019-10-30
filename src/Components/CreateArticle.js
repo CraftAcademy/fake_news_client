@@ -8,7 +8,8 @@ class CreateArticle extends Component {
     title: '',
     content: '',
     image: '',
-    renderArticleForm: false
+    renderArticleForm: false,
+    responseMessage: ''
   }
 
   renderForm = () => {
@@ -58,8 +59,8 @@ class CreateArticle extends Component {
         <ArticleFormInput
           inputHandler={this.inputHandler}
           submitArticleHandler={this.submitArticleHandler}
-          onAvatarDropHandler={this.onAvatarDropHandler} 
-          />
+          onAvatarDropHandler={this.onAvatarDropHandler}
+        />
       )
     }
 

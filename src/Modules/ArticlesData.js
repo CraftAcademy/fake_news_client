@@ -25,7 +25,7 @@ const submitArticle = async (title, content, image) => {
     return response
     
   } catch(error) {
-    return error.message
+    return error.response.data.errors
   }
 }
 
