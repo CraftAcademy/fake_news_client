@@ -27,6 +27,7 @@ class ListArticles extends Component {
     const articles = this.state.articles
     let articleList
     let errorMessage
+    const apiURL = 'http://localhost:3000/v1/articles/'
 
     if (this.state.errorMessage) {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
@@ -37,7 +38,8 @@ class ListArticles extends Component {
         <Grid.Row>
           {articles.map(article => {
             return <Grid.Column key={article.id}>
-              <h2>{article.title}</h2>
+              {/* wrap with link for article title to redirect to new page for said article. */}
+              <a href={apiURL + `${article.id}`}><h2>{article.title}</h2></a>
               <p>{article.content}</p>
             </Grid.Column>
           })}
