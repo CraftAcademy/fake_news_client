@@ -9,10 +9,9 @@ describe('User can view full article', () => {
     })
     cy.visit('http://localhost:3001')
 
-    cy.get('.list-top-articles a h2')
-      .eq(1)
+    cy.get('.list-top-articles')
       .click()
-      .url().should('include', '/v1/articles/')
-      .url().should('eq', 'http://localhost:3000/v1/articles/1')
+    cy.get('h1')
+      .should('contain','Test!')
   })
 })

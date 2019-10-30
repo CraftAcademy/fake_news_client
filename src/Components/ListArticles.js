@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import { getArticles } from '../Modules/ArticlesData'
 import { Container, Grid } from 'semantic-ui-react'
 import './CSS/ListArticles.css'
+import SingleArticle from './SingleArticle'
 
 class ListArticles extends Component {
   state = {
     articles: [],
-    errorMessage: null
+    errorMessage: null,
+    showArticle: false,
+    showArticleId: null
   }
 
   async componentDidMount() {
@@ -23,27 +26,40 @@ class ListArticles extends Component {
     }
   }
 
+  showSingleArticleHandler = (articleId) => {
+    this.setState({
+      showArticle: true,
+      showArticleId: articleId
+    })
+  }
+
   render() {
     const articles = this.state.articles
+    let showArticle = this.state.showArticle
     let articleList
     let errorMessage
-    const apiURL = 'http://localhost:3000/v1/articles/'
+    let specificArticle
 
     if (this.state.errorMessage) {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
     }
 
-    if (articles !== []) {
+    if (articles !== [] && showArticle === false) {
       articleList = (
         <Grid.Row>
           {articles.map(article => {
-            return <Grid.Column key={article.id}>
-              <a href={apiURL + `${article.id}`}><h2>{article.title}</h2></a>
+            //id=`article_1${article.id}`
+            return <Grid.Column key={article.id} onClick={this.showSingleArticleHandler(article.id)}>
+              <h2>{article.title}</h2>
               <p>{article.content}</p>
             </Grid.Column>
           })}
         </Grid.Row>
       )
+    } 
+    
+    if (showArticle === true) {
+      specificArticle = <SingleArticle key={this.state.showArticleId} />
     }
 
     return (
@@ -55,6 +71,7 @@ class ListArticles extends Component {
           <Grid centered container columns={3} className="latest-articles">
             {articleList}
             {errorMessage}
+            {specificArticle}
           </Grid>
         </Container>
       </>
