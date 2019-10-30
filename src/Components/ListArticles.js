@@ -39,6 +39,7 @@ class ListArticles extends Component {
             return <Grid.Column key={article.id}>
               <h2>{article.title}</h2>
               <p>{article.content}</p>
+              <img src={article.image} alt="Image should be here" /> 
             </Grid.Column>
           })}
         </Grid.Row>

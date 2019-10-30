@@ -38,6 +38,13 @@ class CreateArticle extends Component {
     }
   }
 
+  onAvatarDropHandler = (pictureFiles, pictureDataURLs) => {
+    debugger;
+    this.setState({
+      image: pictureDataURLs
+    })
+  }
+
   render() {
     let articleForm
     let responseMessage
@@ -51,7 +58,9 @@ class CreateArticle extends Component {
       articleForm = (
         <ArticleFormInput
           inputHandler={this.inputHandler}
-          submitArticleHandler={this.submitArticleHandler} />
+          submitArticleHandler={this.submitArticleHandler}
+          onAvatarDropHandler={this.onAvatarDropHandler} 
+          />
       )
     }
 

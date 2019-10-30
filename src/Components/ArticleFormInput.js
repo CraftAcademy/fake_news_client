@@ -1,5 +1,5 @@
 import React from 'react'
-// import ImageUploader from 'react-images-upload'
+import ImageUploader from 'react-images-upload'
 
 const ArticleFormInput = (props) => {
   return (
@@ -7,7 +7,7 @@ const ArticleFormInput = (props) => {
       <input name="title" id="title-input" onChange={props.inputHandler} />
       <input name="content" id="content-input" onChange={props.inputHandler} />
 
-      {/* <ImageUploader
+      <ImageUploader
         buttonText={"Upload article image (jpg/png)"}
         withPreview
         withIcon
@@ -16,7 +16,7 @@ const ArticleFormInput = (props) => {
         imgExtension={[".jpg", ".png"]}
         maxFileSize={5242880}
         singleImage={true}
-      /> */}
+      />
 
       <button id="submit-article" onClick={props.submitArticleHandler}>Submit Article</button>
     </div>
