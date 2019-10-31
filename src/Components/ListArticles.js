@@ -9,8 +9,12 @@ class ListArticles extends Component {
     errorMessage: null
   }
 
-  async componentDidMount() {
-    let response = await getArticles()
+  componentDidMount() {
+    this.getArticlesData()
+  }
+
+  async getArticlesData() {
+    let response = await getArticles();
 
     if (response.status === 400) {
       this.setState({
@@ -19,7 +23,7 @@ class ListArticles extends Component {
     } else {
       this.setState({
         articles: response
-      })
+       })
     }
   }
 
@@ -31,7 +35,7 @@ class ListArticles extends Component {
     if (this.state.errorMessage) {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
     }
-
+    
     if (articles !== []) {
       articleList = (
         <Grid.Row>
