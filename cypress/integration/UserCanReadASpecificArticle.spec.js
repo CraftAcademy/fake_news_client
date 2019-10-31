@@ -15,7 +15,7 @@ describe('User can view full article', () => {
     cy.visit('http://localhost:3001')
 
     cy.get("#article_1")
-          .click()
+      .click()
     cy.get('#single-article')
       .within(() => {
         cy.get('#article-title')

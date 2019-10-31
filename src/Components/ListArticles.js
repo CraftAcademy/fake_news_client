@@ -9,8 +9,7 @@ class ListArticles extends Component {
     articles: [],
     errorMessage: null,
     showArticle: false,
-    showArticleId: null,
-    hoverState: false
+    showArticleId: null
   }
 
   setErrorMessage = (error) => {
