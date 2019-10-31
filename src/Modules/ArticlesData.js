@@ -34,7 +34,7 @@ const getSpecificArticle = async (articleId) => {
     let response = await axios.get(apiUrl + `articles/${articleId}`)
     return response
   } catch(error) {
-    return error.response.data.errors
+    return error.response.data.error_message
   }
 }
 

@@ -12,13 +12,17 @@ class ListArticles extends Component {
     showArticleId: null
   }
 
+  setErrorMessage= (error) => {
+    this.setState({
+      errorMessage: error
+    })
+  }
+
   async componentDidMount() {
     let response = await getArticles()
 
     if (response.status === 400) {
-      this.setState({
-        errorMessage: response.errorMessage
-      })
+      this.setErrorMessage(response.errorMessage)
     } else {
       this.setState({
         articles: response
@@ -27,7 +31,6 @@ class ListArticles extends Component {
   }
 
   showSingleArticleHandler = (articleId) => {
-    debugger;
     this.setState({
       showArticle: true,
       showArticleId: articleId
@@ -45,14 +48,14 @@ class ListArticles extends Component {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
     }
 
-    if (articles !== [] && showArticle === false) {
+    if (showArticle === false) {
       articleList = (
         <Grid.Row>
           {articles.map(article => {
             return <Grid.Column id={`article_${article.id}`} key={article.id}>
               <h2>{article.title}</h2>
               <p>{article.content}</p>
-              <button id="read-specific-article" onClick={this.showSingleArticleHandler(article.id)}>Read full article</button>
+              <button id="read-specific-article" onClick={() => {this.showSingleArticleHandler(article.id)}}>Read full article</button>
             </Grid.Column>
           })}
         </Grid.Row>
@@ -61,7 +64,10 @@ class ListArticles extends Component {
     
     if (showArticle === true) {
       debugger;
-      specificArticle = <SingleArticle key={this.state.showArticleId} />
+      specificArticle = <SingleArticle 
+                        articleId={this.state.showArticleId} 
+                        renderErrorMessage={this.setErrorMessage}
+                        />
     }
 
     return (
