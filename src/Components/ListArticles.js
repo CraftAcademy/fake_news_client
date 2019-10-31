@@ -13,7 +13,7 @@ class ListArticles extends Component {
     hoverState: false
   }
 
-  setErrorMessage= (error) => {
+  setErrorMessage = (error) => {
     this.setState({
       errorMessage: error
     })
@@ -31,7 +31,7 @@ class ListArticles extends Component {
     } else {
       this.setState({
         articles: response
-       })
+      })
     }
   }
 
@@ -65,20 +65,21 @@ class ListArticles extends Component {
       articleList = (
         <Grid.Row>
           {articles.map(article => {
-            return <Grid.Column onClick={() => {this.showSingleArticleHandler(article.id)}} id={`article_${article.id}`} key={article.id}>
-              <h2 >{article.title}</h2>
+            return <Grid.Column onClick={() => { this.showSingleArticleHandler(article.id) }} id={`article_${article.id}`} key={article.id}>
+              <h2>{article.title}</h2>
               <p>{article.content}</p>
             </Grid.Column>
           })}
         </Grid.Row>
       )
-    } 
-    
+    }
+
     if (showArticle === true) {
-      specificArticle = <SingleArticle 
-                        articleId={this.state.showArticleId} 
-                        renderErrorMessage={this.setErrorMessage}
-                        />
+      debugger;
+      specificArticle = <SingleArticle
+        articleId={this.state.showArticleId}
+        renderErrorMessage={this.setErrorMessage}
+      />
     }
 
     return (

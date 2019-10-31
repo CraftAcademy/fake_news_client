@@ -14,7 +14,6 @@ class SingleArticle extends Component {
         article: response.data
       })
     } else {
-      debugger
       this.props.renderErrorMessage(response)
     }
 

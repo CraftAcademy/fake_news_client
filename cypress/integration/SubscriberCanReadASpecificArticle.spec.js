@@ -14,7 +14,6 @@ describe('User can view full article', () => {
     });
     cy.visit('http://localhost:3001')
 
-
     cy.get("#article_1")
           .click()
     cy.get('#single-article')
@@ -38,8 +37,9 @@ describe('User cannot view full article', () => {
     });
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/v1/articles/2",
-      response: "fixture:cannot_view_article.json"
+      url: "http://localhost:3000/v1/articles/20",
+      response: "fixture:cannot_view_article.json",
+      status: 400
     });
     cy.visit('http://localhost:3001')
 
