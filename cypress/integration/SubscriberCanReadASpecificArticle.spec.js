@@ -25,27 +25,3 @@ describe('User can view full article', () => {
       })
   })
 })
-
-describe('User cannot view full article', () => {
-
-  it('View available articles on landing page', () => {
-    cy.server()
-    cy.route({
-      method: "GET",
-      url: "http://localhost:3000/v1/articles",
-      response: "fixture:list_articles.json"
-    });
-    cy.route({
-      method: "GET",
-      url: "http://localhost:3000/v1/articles/20",
-      response: "fixture:cannot_view_article.json",
-      status: 400
-    });
-    cy.visit('http://localhost:3001')
-
-    cy.get("#article_1")
-          .click()
-        cy.get('.list-top-articles')
-          .should('contain', "The article couldn't be found")
-      })
-  })

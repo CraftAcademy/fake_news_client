@@ -16,7 +16,6 @@ class SingleArticle extends Component {
     } else {
       this.props.renderErrorMessage(response)
     }
-
   }
 
   render() {

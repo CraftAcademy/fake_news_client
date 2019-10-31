@@ -42,14 +42,6 @@ class ListArticles extends Component {
     })
   }
 
-  // onMouseOver = () => {
-  //   this.setState({
-  //     hoverState: !this.state.hoverState
-  //   })
-  // }
-
-  // onMouseOver={() => {this.onMouseOver()}} style={{ textDecoration: this.state.hoverState ? 'underline' : 'none' }}
-
   render() {
     const articles = this.state.articles
     let showArticle = this.state.showArticle
@@ -75,7 +67,6 @@ class ListArticles extends Component {
     }
 
     if (showArticle === true) {
-      debugger;
       specificArticle = <SingleArticle
         articleId={this.state.showArticleId}
         renderErrorMessage={this.setErrorMessage}
