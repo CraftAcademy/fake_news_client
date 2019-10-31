@@ -43,26 +43,29 @@ class Login extends Component {
 
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = <Message> <h3 id="welcome-message">Hello {this.props.currentUser.attributes.email}</h3></Message>
-    } 
+    } else {
+      if (this.state.renderLoginForm === true) {
+        renderLogin = (
+          <>
+            <LoginForm 
+              inputChangeHandlerProps={this.inputChangeHandler}
+              handleLoginProps={this.handleLogin}
+              loginDataHandlerProps={this.loginDataHandler}
+            />
+          </>
+        )
+      } else {
+        renderLogin = (
+          <Button color='blue' id="login-button" onClick={this.renderFormState}>Login</Button>
+        )
+      }
+    }
 
     if(this.state.responseMessage !== ''){
       responseMessage = <p id="error-message">{this.state.responseMessage}</p>
     }
 
-    if (this.state.renderLoginForm === true) {
-      renderLogin = (
-        <>
-          <LoginForm 
-            inputChangeHandlerProps={this.inputChangeHandler}
-            handleLoginProps={this.handleLogin}
-            loginDataHandlerProps={this.loginDataHandler}
-          />
-        </>
-      )
-    } else {
-      renderLogin = (
-        <Button color='blue' id="login-button" onClick={this.renderFormState}>Login</Button>
-      )}
+    
 
     return (
       <>

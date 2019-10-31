@@ -15,11 +15,9 @@ describe('User can log in to application', () => {
       cy.get('#password-input').type('password')
     })
     cy.get('#submit-login-form').click()
-    
     cy.get('#welcome-message').should('contain', 'Hello user@mail.com')
   })
 });
-
 
 describe('User can not log in to application', () => {
   beforeEach(function() {
@@ -40,7 +38,6 @@ describe('User can not log in to application', () => {
       cy.get('#password-input').type('wrong_password')
     })
     cy.get('#submit-login-form').click()
-    
     cy.get('#error-message').should('contain', 'Invalid login credentials. Please try again')
   })
 
@@ -50,7 +47,6 @@ describe('User can not log in to application', () => {
       cy.get('#password-input').type('password')
     })
     cy.get('#submit-login-form').click()
-    
     cy.get('#error-message').should('contain', 'Invalid login credentials. Please try again')
   })
 });
