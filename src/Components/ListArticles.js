@@ -19,15 +19,19 @@ class ListArticles extends Component {
     })
   }
 
-  async componentDidMount() {
-    let response = await getArticles()
+  componentDidMount() {
+    this.getArticlesData()
+  }
+
+  async getArticlesData() {
+    let response = await getArticles();
 
     if (response.status === 400) {
       this.setErrorMessage(response.errorMessage)
     } else {
       this.setState({
         articles: response
-      })
+       })
     }
   }
 
