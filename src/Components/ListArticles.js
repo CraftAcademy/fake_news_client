@@ -9,7 +9,8 @@ class ListArticles extends Component {
     articles: [],
     errorMessage: null,
     showArticle: false,
-    showArticleId: null
+    showArticleId: null,
+    hoverState: false
   }
 
   setErrorMessage= (error) => {
@@ -37,6 +38,14 @@ class ListArticles extends Component {
     })
   }
 
+  // onMouseOver = () => {
+  //   this.setState({
+  //     hoverState: !this.state.hoverState
+  //   })
+  // }
+
+  // onMouseOver={() => {this.onMouseOver()}} style={{ textDecoration: this.state.hoverState ? 'underline' : 'none' }}
+
   render() {
     const articles = this.state.articles
     let showArticle = this.state.showArticle
@@ -52,10 +61,9 @@ class ListArticles extends Component {
       articleList = (
         <Grid.Row>
           {articles.map(article => {
-            return <Grid.Column id={`article_${article.id}`} key={article.id}>
-              <h2>{article.title}</h2>
+            return <Grid.Column onClick={() => {this.showSingleArticleHandler(article.id)}} id={`article_${article.id}`} key={article.id}>
+              <h2 >{article.title}</h2>
               <p>{article.content}</p>
-              <button id="read-specific-article" onClick={() => {this.showSingleArticleHandler(article.id)}}>Read full article</button>
             </Grid.Column>
           })}
         </Grid.Row>
@@ -63,7 +71,6 @@ class ListArticles extends Component {
     } 
     
     if (showArticle === true) {
-      debugger;
       specificArticle = <SingleArticle 
                         articleId={this.state.showArticleId} 
                         renderErrorMessage={this.setErrorMessage}

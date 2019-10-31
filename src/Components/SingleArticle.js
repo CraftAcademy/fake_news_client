@@ -11,9 +11,10 @@ class SingleArticle extends Component {
     let response = await getSpecificArticle(this.props.articleId)
     if (response.status === 200) {
       this.setState({
-        article: response
+        article: response.data
       })
     } else {
+      debugger
       this.props.renderErrorMessage(response)
     }
 
@@ -26,7 +27,6 @@ class SingleArticle extends Component {
     if (article !== null) {
       singleArticle = (
         <div id="single-article">
-          <h1>Test!</h1>
           <p id="article-title">{article.title}</p>
           <p id="article-content">{article.content}</p>
         </div>
