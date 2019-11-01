@@ -68,7 +68,7 @@ class SingleArticle extends Component {
         <p id="response-message">{this.state.responseMessage}</p>
     }
 
-    if (article !== null) {
+    if (article !== null && this.state.renderEditForm === false) {
       singleArticle = (
         <>
           <div id="single-article">
@@ -79,9 +79,9 @@ class SingleArticle extends Component {
         </>
       )
     }
-
+    
     if (this.state.renderEditForm) {
-      editForm = (
+      singleArticle = (
         <EditFormInput 
           editHandler={this.editHandler}
           submitChangeHandler={this.submitChangeHandler}
