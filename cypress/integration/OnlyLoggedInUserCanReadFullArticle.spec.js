@@ -23,6 +23,7 @@ describe('A logged in user can view full article', () => {
         url: "http://localhost:3000/v1/articles/1",
         response: "fixture:successfully_view_article.json"
       });
+    });
 
       cy.get('#login-button').click()
       cy.get('#login-form').within(() => {
@@ -31,7 +32,6 @@ describe('A logged in user can view full article', () => {
       })
       cy.get('#submit-login-form').click()
       cy.get('#welcome-message').should('contain', 'Hello user@mail.com')
-
       cy.get("#article_1")
         .click()
       cy.get('#single-article')
@@ -41,16 +41,20 @@ describe('A logged in user can view full article', () => {
           cy.get('#article-content')
             .should('contain', 'Researches have recently found out that...')
         })
-    });
   })
 
   it('is prompted to log in when accessing single article', () => {
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/v1/articles/1",
+      response: "fixture:flash_message_prompts_login.json"
+    });
     cy.get("#article_1")
       .click()
       .get("#flash-message")
-      .should('contain', "Please login to view this article")
-      .wait(2000)
+      .should('be.visible')
+      .click('topLeft')
       .get("#flash-message")
-      .should('not.contain', "Please login to view this article")
+      .should('not.be.visible')
   })
 })

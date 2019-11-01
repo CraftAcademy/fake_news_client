@@ -3,9 +3,8 @@ import { getArticles } from '../Modules/ArticlesData'
 import { Container, Grid } from 'semantic-ui-react'
 import './CSS/ListArticles.css'
 import SingleArticle from './SingleArticle'
-import { signInUser } from '../state/actions/reduxTokenAuthConfig'
 import { connect } from 'react-redux'
-
+import AlertModal from './AlertModal'
 
 class ListArticles extends Component {
   state = {
@@ -73,8 +72,8 @@ class ListArticles extends Component {
         articleId={this.state.showArticleId}
         renderErrorMessage={this.setErrorMessage}
       />
-    } else {
-      
+    } else if (showArticle === true && this.props.currentUser.isSignedIn === false) {
+      specificArticle = <AlertModal />
     }
 
     return (
@@ -100,15 +99,6 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = {
-  dispatchFlash: (message, status) => ({
-    type: "FLASH_MESSAGE",
-    payload: { flashMessage: message, status: status }
-  }),
-  signInUser
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(ListArticles)
