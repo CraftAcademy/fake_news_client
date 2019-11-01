@@ -1,12 +1,16 @@
 import React, { Component } from "react"
-import { getSpecificArticle } from '../Modules/ArticlesData'
+import { getSpecificArticle, editArticle } from '../Modules/ArticlesData'
 import EditFormInput from './EditFormInput'
 
 class SingleArticle extends Component {
 
   state = {
     article: null,
-    renderEditForm: false
+    renderEditForm: false,
+    title: '',
+    content: '',
+    image: '',
+    responseMessage: ''
   }
 
   async componentDidMount() {
@@ -26,10 +30,43 @@ class SingleArticle extends Component {
     })
   }
 
+  onAvatarDropHandler = (pictureFiles, pictureDataURLs) => {
+    this.setState({
+      image: pictureDataURLs
+    })
+  }
+
+  editHandler = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  submitChangeHandler = async () => {
+    const { title, content, image } = this.state
+    let response = await editArticle(title, content, image)
+
+    if (response.status === 200) {
+      this.setState({
+        responseMessage: response.data.message
+      })
+    } else {
+      this.setState({
+        responseMessage: response
+      })
+    }
+  }
+
   render() {
     const article = this.state.article
     let singleArticle
     let editForm
+    let responseMessage
+
+    if (this.state.responseMessage) {
+      responseMessage =
+        <p id="response-message">{this.state.responseMessage}</p>
+    }
 
     if (article !== null) {
       singleArticle = (
@@ -45,7 +82,11 @@ class SingleArticle extends Component {
 
     if (this.state.renderEditForm) {
       editForm = (
-        <EditFormInput />
+        <EditFormInput 
+          editHandler={this.editHandler}
+          submitChangeHandler={this.submitChangeHandler}
+          onAvatarDropHandler={this.onAvatarDropHandler}
+        />
       )
     }
 
@@ -53,6 +94,7 @@ class SingleArticle extends Component {
       <>
         {singleArticle}
         {editForm}
+        {responseMessage}
       </>
     )
   }

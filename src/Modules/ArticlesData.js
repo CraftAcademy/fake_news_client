@@ -38,4 +38,19 @@ const getSpecificArticle = async (articleId) => {
   }
 }
 
-export { getArticles, submitArticle, getSpecificArticle }
+const editArticle = async (title, content, image) => {
+  try {
+    let response = await axios.put(apiUrl + 'articles',
+    {
+      title: title,
+      content: content,
+      image: image
+    })
+    return response
+    
+  } catch(error) {
+    return error.response.data.errors
+  }
+}
+
+export { getArticles, submitArticle, getSpecificArticle, editArticle }

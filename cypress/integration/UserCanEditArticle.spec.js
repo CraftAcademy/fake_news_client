@@ -12,7 +12,7 @@ describe('User can edit an article', () => {
       response: "fixture:successfully_view_article.json"
     }),
     cy.route({
-      method: 'POST',
+      method: 'PUT',
       url: 'http://localhost:3000/v1/articles',
       response: 'fixture:successfully_edits_article.json',
       status: 200
@@ -25,10 +25,8 @@ describe('User can edit an article', () => {
     cy.get("#article_1")
       .click()
     cy.get('#single-article')
-      .within(() => {
-        cy.get('#edit-article')
-          .click()
-      })
+    cy.get('#edit-article')
+      .click()
     cy.get('#edit-form')
       .within(() => {
         cy.get('#edit-title')
@@ -38,7 +36,7 @@ describe('User can edit an article', () => {
         cy.get('#submit-change')
           .click()
       })
-    cy.get('#response')
+    cy.get('#response-message')
       .should('contain', 'Article was successfully edited')
   })
 })
