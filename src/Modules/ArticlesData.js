@@ -16,7 +16,6 @@ const getArticles = async () => {
 
 const submitArticle = async (title, content, image) => {
   try {
-    debugger
     let response = await axios.post(apiUrl + 'articles',
     {
       title: title,
@@ -24,9 +23,8 @@ const submitArticle = async (title, content, image) => {
       image: image
     })
     return response
-    
+
   } catch(error) {
-    debugger
     return error.response.data.error_message
   }
 }
@@ -51,7 +49,7 @@ const editArticle = async (title, content, image) => {
     return response
     
   } catch(error) {
-    return error.response.data.errors
+    return error.response.data.error_message
   }
 }
 

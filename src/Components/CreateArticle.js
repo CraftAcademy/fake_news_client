@@ -29,12 +29,10 @@ class CreateArticle extends Component {
     let response = await submitArticle(title, content, image)
 
     if (response.status === 200) {
-      debugger
       this.setState({
         responseMessage: response.data.message
       })
     } else {
-      debugger
       this.setState({
         responseMessage: response
       })
