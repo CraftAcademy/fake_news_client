@@ -51,6 +51,7 @@ class SingleArticle extends Component {
         responseMessage: response.data.message
       })
     } else {
+      debugger;
       this.setState({
         responseMessage: response
       })
@@ -60,7 +61,6 @@ class SingleArticle extends Component {
   render() {
     const article = this.state.article
     let singleArticle
-    let editForm
     let responseMessage
 
     if (this.state.responseMessage) {
@@ -93,7 +93,6 @@ class SingleArticle extends Component {
     return (
       <>
         {singleArticle}
-        {editForm}
         {responseMessage}
       </>
     )
