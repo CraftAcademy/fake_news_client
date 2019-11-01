@@ -11,7 +11,6 @@ describe('User can edit an article', () => {
       url: "http://localhost:3000/v1/articles/1",
       response: "fixture:successfully_view_article.json"
     })
-
     cy.visit('http://localhost:3001/')
   })
 
@@ -25,7 +24,6 @@ describe('User can edit an article', () => {
 
     cy.get("#article_1")
       .click()
-    cy.get('#single-article')
     cy.get('#edit-article')
       .click()
     cy.get('#edit-form')
@@ -51,7 +49,6 @@ describe('User can edit an article', () => {
     
     cy.get("#article_1")
       .click()
-    cy.get('#single-article')
     cy.get('#edit-article')
       .click()
     cy.get('#edit-form')

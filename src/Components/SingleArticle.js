@@ -51,7 +51,6 @@ class SingleArticle extends Component {
         responseMessage: response.data.message
       })
     } else {
-      debugger;
       this.setState({
         responseMessage: response
       })
