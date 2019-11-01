@@ -1,4 +1,4 @@
-describe('User can view full article', () => {
+describe('A logged in user can view full article', () => {
 
   beforeEach(() => {
     cy.server()
@@ -48,5 +48,9 @@ describe('User can view full article', () => {
     cy.get("#article_1")
       .click()
       .get("#flash-message")
+      .should('contain', "Please login to view this article")
+      .wait(2000)
+      .get("#flash-message")
+      .should('not.contain', "Please login to view this article")
   })
 })

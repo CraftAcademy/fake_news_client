@@ -3,6 +3,9 @@ import { getArticles } from '../Modules/ArticlesData'
 import { Container, Grid } from 'semantic-ui-react'
 import './CSS/ListArticles.css'
 import SingleArticle from './SingleArticle'
+import { signInUser } from '../state/actions/reduxTokenAuthConfig'
+import { connect } from 'react-redux'
+
 
 class ListArticles extends Component {
   state = {
@@ -65,11 +68,13 @@ class ListArticles extends Component {
       )
     }
 
-    if (showArticle === true) {
+    if (showArticle === true && this.props.currentUser.isSignedIn) {
       specificArticle = <SingleArticle
         articleId={this.state.showArticleId}
         renderErrorMessage={this.setErrorMessage}
       />
+    } else {
+      
     }
 
     return (
@@ -89,4 +94,21 @@ class ListArticles extends Component {
   }
 }
 
-export default ListArticles
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+const mapDispatchToProps = {
+  dispatchFlash: (message, status) => ({
+    type: "FLASH_MESSAGE",
+    payload: { flashMessage: message, status: status }
+  }),
+  signInUser
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListArticles)
