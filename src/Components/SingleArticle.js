@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 import { getSpecificArticle } from '../Modules/ArticlesData'
+import EditFormInput from './EditFormInput'
 
 class SingleArticle extends Component {
 
@@ -26,8 +27,9 @@ class SingleArticle extends Component {
   }
 
   render() {
-    let singleArticle
     const article = this.state.article
+    let singleArticle
+    let editForm
 
     if (article !== null) {
       singleArticle = (
@@ -36,18 +38,24 @@ class SingleArticle extends Component {
             <p id="article-title">{article.title}</p>
             <p id="article-content">{article.content}</p>
           </div>
-
           <button onClick={this.renderForm} id="edit-article">Edit</button>
         </>
+      )
+    }
+
+    if (this.state.renderEditForm) {
+      editForm = (
+        <EditFormInput />
       )
     }
 
     return (
       <>
         {singleArticle}
+        {editForm}
       </>
-    );
+    )
   }
-};
+}
 
 export default SingleArticle
