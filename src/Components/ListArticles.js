@@ -72,7 +72,9 @@ class ListArticles extends Component {
         articleId={this.state.showArticleId}
         renderErrorMessage={this.setErrorMessage}
       />
-    } else if (showArticle === true && this.props.currentUser.isSignedIn === false) {
+    } 
+    
+    if (showArticle === true && this.props.currentUser.isSignedIn === false) {
       specificArticle = <AlertModal />
     }
 
