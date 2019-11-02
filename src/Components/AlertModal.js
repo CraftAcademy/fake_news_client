@@ -1,13 +1,13 @@
 import React from 'react'
-import { Modal } from 'semantic-ui-react'
+import { Message } from 'semantic-ui-react'
+import FlashMessage from 'react-flash-message'
 
-const ModalModalExample = () => (
-  <Modal id="flash-message">
-    <Modal.Header>You need to be logged in to view this article.</Modal.Header>
-    <Modal.Content>
-        <Modal.Header>Please proceed to the login page.</Modal.Header>
-    </Modal.Content>
-  </Modal>
-)
-
-export default ModalModalExample
+const AlertModal = () => {
+  return (
+  <FlashMessage duration={5000}>
+    <Message>You need to be logged in to view this article.</Message>
+  </FlashMessage>
+  )
+}
+ 
+export default AlertModal
