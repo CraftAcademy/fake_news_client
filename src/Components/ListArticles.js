@@ -43,6 +43,11 @@ class ListArticles extends Component {
     })
   }
 
+  articleIngress = (content, wordCount) => {
+    let ingress = content.split(' ').slice(0, wordCount).join(' ')
+    return ingress + ' ...'
+  }
+
   render() {
     const articles = this.state.articles
     let showArticle = this.state.showArticle
@@ -60,7 +65,7 @@ class ListArticles extends Component {
           {articles.map(article => {
             return <Grid.Column onClick={() => { this.showSingleArticleHandler(article.id) }} id={`article_${article.id}`} key={article.id}>
               <h2>{article.title}</h2>
-              <p>{article.content}</p>
+              <p>{this.articleIngress(article.content, 20)}</p>
             </Grid.Column>
           })}
         </Grid.Row>
