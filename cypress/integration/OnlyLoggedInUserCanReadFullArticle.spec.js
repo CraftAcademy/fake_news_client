@@ -34,7 +34,7 @@ describe('User can view single article if logged in', () => {
         cy.get('#article-title')
           .should('contain', 'Which drugs can kill you?')
         cy.get('#article-content')
-          .should('contain', 'Researches have recently found out that...')
+        .should('contain', 'Researches have recently found out that drugs can actually kill you. It is amazing how well they can kill you like you would not believe it.')
       })
   })
 

@@ -45,7 +45,7 @@ class ListArticles extends Component {
 
   articleIngress = (content, wordCount) => {
     let ingress = content.split(' ').slice(0, wordCount).join(' ')
-    return ingress + ' ...'
+    return ingress + '...'
   }
 
   render() {
