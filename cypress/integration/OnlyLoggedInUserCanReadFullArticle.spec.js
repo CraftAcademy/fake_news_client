@@ -7,16 +7,16 @@ describe('User can view single article if logged in', () => {
       response: 'fixture:successful_user_login.json',
       status: 200
     }),
-      cy.route({
-        method: "GET",
-        url: "http://localhost:3000/v1/articles",
-        response: "fixture:list_articles.json"
-      }),
-      cy.route({
-        method: "GET",
-        url: "http://localhost:3000/v1/articles/1",
-        response: "fixture:successfully_view_article.json"
-      });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/v1/articles",
+      response: "fixture:list_articles.json"
+    }),
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/v1/articles/1",
+      response: "fixture:successfully_view_article.json"
+    });
 
     cy.visit('http://localhost:3001')
     cy.get('#login-button').click()
@@ -37,34 +37,27 @@ describe('User can view single article if logged in', () => {
           .should('contain', 'Researches have recently found out that...')
       })
   })
-});
 
-describe('User cannot view single article unless logged in', () => {
   it('receives message prompting login', () => {
     cy.server()
     cy.route({
       method: "GET",
       url: "http://localhost:3000/v1/articles",
-      response: "fixture:flash_message_prompts_login.json"
+      response: "fixture:list_articles.json"
     }),
-      cy.route({
-        method: "GET",
-        url: "http://localhost:3000/v1/articles",
-        response: "fixture:list_articles.json"
-      }),
-      cy.route({
-        method: "GET",
-        url: "http://localhost:3000/v1/articles/1",
-        response: "fixture:successfully_view_article.json"
-      });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/v1/articles/1",
+      response: "fixture:successfully_view_article.json"
+    });
+    cy.visit('http://localhost:3001')
 
     cy.get('#article_1')
       .click()
     cy.get("#flash-message")
       .should('be.visible')
-      .click('topLeft')
+      .wait(5000)
     cy.get("#flash-message")
       .should('not.be.visible')
-
   })
 });

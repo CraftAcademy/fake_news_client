@@ -4,8 +4,8 @@ import FlashMessage from 'react-flash-message'
 
 const AlertModal = () => {
   return (
-  <FlashMessage duration={5000}>
-    <Message>You need to be logged in to view this article.</Message>
+  <FlashMessage duration={5000} >
+    <Message id="flash-message">You need to be logged in to view this article.</Message>
   </FlashMessage>
   )
 }
