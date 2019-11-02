@@ -28,13 +28,13 @@ class SignUp extends Component {
   handleSignUp = () => {
     const { registerUser } = this.props;
     const { email, password, password_confirmation } = this.state;
-      registerUser({ email, password, password_confirmation })
-        .then(
-          console.log('You have successfully been signed up')
-        )
-        .catch(error => {
-          this.setState({responseMessage: error.response.data.errors})
-        })
+    registerUser({ email, password, password_confirmation })
+      .then(
+        console.log('You have successfully been signed up')
+      )
+      .catch(error => {
+        this.setState({ responseMessage: error.response.data.errors.full_messages })
+      })
   }
 
   render() {
@@ -42,9 +42,12 @@ class SignUp extends Component {
     let responseMessage
     let welcomeMessage
 
-    if (this.state.renderSignUpForm) {
+    if (this.props.currentUser.isSignedIn) {
+      console.log('Welcome!')
+    } else {
+      if (this.state.renderSignUpForm) {
       renderSignUp = (
-        <SignUpForm 
+        <SignUpForm
           handleSignUp={this.handleSignUp}
           inputChangeHandler={this.inputChangeHandler}
         />
@@ -54,8 +57,9 @@ class SignUp extends Component {
         <Button id="signup-button" onClick={this.renderForm}>Sign up</Button>
       )
     }
+  }
 
-    if(this.state.responseMessage !== ''){
+    if (this.state.responseMessage !== '') {
       responseMessage = <p id="error-message">{this.state.responseMessage}</p>
     }
 

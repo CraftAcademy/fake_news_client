@@ -8,7 +8,8 @@ const config = {
   },
   userRegistrationAttributes: {
     uid: "uid",
-    email: "user@mail.com"
+    email: "user@mail.com",
+    password_confirmation: "password_confirmation"
   }
 };
 
