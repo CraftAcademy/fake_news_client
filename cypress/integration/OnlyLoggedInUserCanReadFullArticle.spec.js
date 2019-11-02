@@ -1,12 +1,7 @@
 describe('User can view single article if logged in', () => {
-  it('successfully views article', () => {
+
+  beforeEach(() => {
     cy.server()
-    cy.route({
-      method: 'POST',
-      url: 'http://localhost:3000/v1/auth/sign_in',
-      response: 'fixture:successful_user_login.json',
-      status: 200
-    }),
     cy.route({
       method: "GET",
       url: "http://localhost:3000/v1/articles",
@@ -17,8 +12,17 @@ describe('User can view single article if logged in', () => {
       url: "http://localhost:3000/v1/articles/1",
       response: "fixture:successfully_view_article.json"
     });
-
     cy.visit('http://localhost:3001')
+  })
+
+  it('successfully views article', () => {
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3000/v1/auth/sign_in',
+      response: 'fixture:successful_user_login.json',
+      status: 200
+    })
+
     cy.get('#login-button').click()
     cy.get('#login-form').within(() => {
       cy.get('#email-input').type('user@mail.com')
@@ -39,19 +43,6 @@ describe('User can view single article if logged in', () => {
   })
 
   it('receives message prompting login', () => {
-    cy.server()
-    cy.route({
-      method: "GET",
-      url: "http://localhost:3000/v1/articles",
-      response: "fixture:list_articles.json"
-    }),
-    cy.route({
-      method: "GET",
-      url: "http://localhost:3000/v1/articles/1",
-      response: "fixture:successfully_view_article.json"
-    });
-    cy.visit('http://localhost:3001')
-
     cy.get('#article_1')
       .click()
     cy.get("#flash-message")
