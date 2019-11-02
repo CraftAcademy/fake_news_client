@@ -40,7 +40,6 @@ class SignUp extends Component {
   render() {
     let renderSignUp
     let responseMessage
-    let welcomeMessage
 
     if (this.props.currentUser.isSignedIn) {
       console.log('Welcome!')
@@ -67,7 +66,6 @@ class SignUp extends Component {
       <>
         {renderSignUp}
         {responseMessage}
-        {welcomeMessage}
       </>
     )
   }
