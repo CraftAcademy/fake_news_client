@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
 import { registerUser } from '../state/actions/reduxTokenAuthConfig'
 import { connect } from 'react-redux'
+import SignUpForm from './SignUpForm'
 
 class SignUp extends Component {
   state = {
@@ -14,7 +15,7 @@ class SignUp extends Component {
 
   renderForm = () => {
     this.setState({
-      renderSignUpForm: !this.state.renderSignupForm
+      renderSignUpForm: !this.state.renderSignUpForm
     })
   }
 
@@ -39,15 +40,18 @@ class SignUp extends Component {
   render() {
     let renderSignUp
     let responseMessage
+    let welcomeMessage
 
     if (this.state.renderSignUpForm) {
-      <SignupForm 
-      handleSignUp={this.handleSignUp}
-      inputChangeHandler={this.inputChangeHandler}
-      />
+      renderSignUp = (
+        <SignUpForm 
+          handleSignUp={this.handleSignUp}
+          inputChangeHandler={this.inputChangeHandler}
+        />
+      )
     } else {
-      renderSignup = (
-        <Button id="signup-button" onClick={this.renderForm}>Signup</Button>
+      renderSignUp = (
+        <Button id="signup-button" onClick={this.renderForm}>Sign up</Button>
       )
     }
 
@@ -59,6 +63,7 @@ class SignUp extends Component {
       <>
         {renderSignUp}
         {responseMessage}
+        {welcomeMessage}
       </>
     )
   }

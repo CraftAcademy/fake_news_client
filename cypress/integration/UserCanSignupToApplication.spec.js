@@ -12,7 +12,6 @@ describe('User can sign up to application', () => {
     })
 
     cy.visit('http://localhost:3001')
-
     cy.get('#signup-button').click()
     cy.get('#signup-form').within(() => {
       cy.get('#email-input').type('user@mail.com')

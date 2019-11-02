@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
 
-const SignupForm = (props) => {
+const SignUpForm = (props) => {
   return (
     <div id="signup-form">
       <input onBlur={props.inputChangeHandler} name="email" placeholder="Email" id="email-input"/>
@@ -12,4 +12,4 @@ const SignupForm = (props) => {
   )
 }
 
-export default SignupForm
+export default SignUpForm
