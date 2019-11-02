@@ -31,7 +31,7 @@ describe('User can sign up to application', () => {
       method: 'POST',
       url: 'http://localhost:3000/v1/auth',
       response: 'fixture:unsuccessful_signup.json',
-      status: 200,
+      status: 422,
       headers: {
         'uid': 'user@mail.com'
       }

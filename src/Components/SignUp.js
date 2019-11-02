@@ -10,7 +10,7 @@ class SignUp extends Component {
     password: '',
     password_confirmation: '',
     renderSignUpForm: false,
-    responseMessage: false
+    responseMessage: ''
   }
 
   renderForm = () => {
