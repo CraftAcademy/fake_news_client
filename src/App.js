@@ -9,6 +9,7 @@ class App extends Component {
     return (
       <>
         <Login />
+        <Signup />
         <ListArticles />
         <CreateArticle />
       </>
