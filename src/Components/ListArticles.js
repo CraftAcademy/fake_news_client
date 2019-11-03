@@ -3,6 +3,7 @@ import { getArticles } from '../Modules/ArticlesData'
 import { Container, Grid } from 'semantic-ui-react'
 import './CSS/ListArticles.css'
 import SingleArticle from './SingleArticle'
+import { withTranslation } from 'react-i18next'
 
 class ListArticles extends Component {
   state = {
@@ -42,6 +43,7 @@ class ListArticles extends Component {
   }
 
   render() {
+    const { t } = withTranslation()
     const articles = this.state.articles
     let showArticle = this.state.showArticle
     let articleList
@@ -74,7 +76,7 @@ class ListArticles extends Component {
 
     return (
       <>
-        <h1>Fake News</h1>
+        <h1>{t(fakeNews.header)}</h1>
         <hr></hr>
         <Container className="list-top-articles">
           <h2>Top News</h2>
@@ -89,4 +91,4 @@ class ListArticles extends Component {
   }
 }
 
-export default ListArticles
+export default withTranslation()(ListArticles)
