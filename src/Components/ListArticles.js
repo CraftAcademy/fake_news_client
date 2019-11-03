@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { getArticles } from '../Modules/ArticlesData'
-import { Container, Grid } from 'semantic-ui-react'
+import { Container, Grid, Message } from 'semantic-ui-react'
 import './CSS/ListArticles.css'
 import SingleArticle from './SingleArticle'
+import { connect } from 'react-redux'
 
 class ListArticles extends Component {
   state = {
@@ -47,6 +48,11 @@ class ListArticles extends Component {
     let articleList
     let errorMessage
     let specificArticle
+    let welcomeMessage
+
+    if (this.props.currentUser.isSignedIn) {
+      welcomeMessage = <Message> <h3 id="welcome-message">Hello {this.props.currentUser.attributes.email}</h3></Message>
+    }
 
     if (this.state.errorMessage) {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
@@ -76,6 +82,7 @@ class ListArticles extends Component {
       <>
         <h1>Fake News</h1>
         <hr></hr>
+        {welcomeMessage}
         <Container className="list-top-articles">
           <h2>Top News</h2>
           <Grid centered container columns={3} className="latest-articles">
@@ -89,4 +96,12 @@ class ListArticles extends Component {
   }
 }
 
-export default ListArticles
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(ListArticles) 
