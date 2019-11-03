@@ -10,3 +10,7 @@ h2 {
 .ui.grid {
   margin-bottom: 1rem !important;
 }
+
+.list-all-news {
+  padding-top: 1rem;
+}

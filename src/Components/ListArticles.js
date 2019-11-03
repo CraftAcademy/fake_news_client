@@ -86,17 +86,25 @@ class ListArticles extends Component {
 
     return (
       <>
-        <div className="top-news">
-        <Header as='h2'>Top News</Header>
-        <Grid centered container columns={3} className="latest-articles">
-        {topArticleList}
-        </Grid>
+        <div className="error-messages">
+          {errorMessage}
         </div>
+        <div className="top-news">
+          <Header as='h2'>Top News</Header>
+          <Grid centered container columns={3} className="latest-articles">
+            {topArticleList}
+          </Grid>
+        </div>
+        <div className="specific-news">
+          <Grid centered container columns={3} className="latest-articles">
+          {specificArticle}
+          </Grid>
+        </div>
+        <div className="list-all-news">
         <Grid centered container columns={2} className="latest-articles">
           {fullArticleList}
-          {errorMessage}
-          {specificArticle}
         </Grid>
+        </div>
       </>
     )
   }
