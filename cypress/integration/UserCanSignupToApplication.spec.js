@@ -2,6 +2,11 @@ describe('User can sign up to application', () => {
 
   beforeEach(() => {
     cy.server()
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/articles',
+      response: 'fixture:list_articles.json'
+    })
     cy.visit('http://localhost:3001')
   })
 
