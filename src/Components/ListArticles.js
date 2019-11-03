@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getArticles } from '../Modules/ArticlesData'
-import { Container, Grid } from 'semantic-ui-react'
+import { Header, Grid } from 'semantic-ui-react'
 import './CSS/ListArticles.css'
 import SingleArticle from './SingleArticle'
 
@@ -43,7 +43,8 @@ class ListArticles extends Component {
   render() {
     const articles = this.state.articles
     let showArticle = this.state.showArticle
-    let articleList
+    let fullArticleList
+    let topArticleList
     let errorMessage
     let specificArticle
 
@@ -52,9 +53,20 @@ class ListArticles extends Component {
     }
 
     if (showArticle === false) {
-      articleList = (
+      fullArticleList = (
         <Grid.Row>
           {articles.map(article => {
+            return <Grid.Column onClick={() => { this.showSingleArticleHandler(article.id) }} id={`article_${article.id}`} key={article.id}>
+              <img src={article.image} alt="" />
+              <h2>{article.title}</h2>
+              <p>{article.content}</p>
+            </Grid.Column>
+          })}
+        </Grid.Row>
+      )
+      topArticleList = (
+        <Grid.Row>
+          {articles.slice(1, 4).map(article => {
             return <Grid.Column onClick={() => { this.showSingleArticleHandler(article.id) }} id={`article_${article.id}`} key={article.id}>
               <img src={article.image} alt="" />
               <h2>{article.title}</h2>
@@ -74,16 +86,15 @@ class ListArticles extends Component {
 
     return (
       <>
-        <h1>Fake News</h1>
-        <hr></hr>
-        <Container className="list-top-articles">
-          <h2>Top News</h2>
-          <Grid centered container columns={3} className="latest-articles">
-            {articleList}
-            {errorMessage}
-            {specificArticle}
-          </Grid>
-        </Container>
+        <Header as='h2'>Latest News</Header>
+        <Grid centered container columns={3} className="latest-articles">
+        {topArticleList}
+        </Grid>
+        <Grid centered container columns={2} className="latest-articles">
+          {fullArticleList}
+          {errorMessage}
+          {specificArticle}
+        </Grid>
       </>
     )
   }
