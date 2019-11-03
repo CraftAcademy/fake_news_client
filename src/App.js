@@ -3,7 +3,8 @@ import ListArticles from './Components/ListArticles'
 import Login from './Components/Login'
 import CreateArticle from './Components/CreateArticle'
 import Navbar from './Components/Navbar'
-import { Switch, Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class App extends Component {
 
@@ -11,12 +12,22 @@ class App extends Component {
     return (
       <>
         <Navbar />
-        <Route path='/' component={ListArticles}></Route>
+        <Route exact path='/' component={ListArticles}></Route>
         <Route exact path='/create' component={CreateArticle}></Route>
-        <Route exact path='/login' component={Login}></Route>
+        <Route exact path='/login' component={Login}>
+          {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
+        </Route>
       </>
     )
   }
 }
 
-export default App
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(App)
