@@ -1,15 +1,12 @@
 h2 {
-  margin-bottom: 1rem;
+  margin: 1rem 1.5rem !important;
 }
 
-hr {
-  border: 0;
-  height: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+.top-news {
+  margin: 0.5rem 0.2rem;
+  border: 1px solid rgb(231, 230, 230);
 }
 
-.ui.container {
-  padding: 1rem 0;
-  border: 1px solid #A9A9A9;
+.ui.grid {
+  margin-bottom: 1rem !important;
 }

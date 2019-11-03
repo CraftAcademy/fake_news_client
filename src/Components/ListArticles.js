@@ -69,7 +69,7 @@ class ListArticles extends Component {
           {articles.slice(1, 4).map(article => {
             return <Grid.Column onClick={() => { this.showSingleArticleHandler(article.id) }} id={`article_${article.id}`} key={article.id}>
               <img src={article.image} alt="" />
-              <h2>{article.title}</h2>
+              <h3>{article.title}</h3>
               <p>{article.content}</p>
             </Grid.Column>
           })}
@@ -86,10 +86,12 @@ class ListArticles extends Component {
 
     return (
       <>
-        <Header as='h2'>Latest News</Header>
+        <div className="top-news">
+        <Header as='h2'>Top News</Header>
         <Grid centered container columns={3} className="latest-articles">
         {topArticleList}
         </Grid>
+        </div>
         <Grid centered container columns={2} className="latest-articles">
           {fullArticleList}
           {errorMessage}
