@@ -1,3 +1,5 @@
 {
-  "errors": "Title is too short (minimum is 3 characters)"
+  "errors": {
+    "full_messages": "Title is too short (minimum is 3 characters)"
+  }
 }

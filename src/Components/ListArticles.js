@@ -24,8 +24,7 @@ class ListArticles extends Component {
 
   async getArticlesData() {
     let response = await getArticles();
-
-    if (response.status === 400) {
+    if (response.status === 200) {
       this.setErrorMessage(response.errorMessage)
     } else {
       this.setState({
@@ -57,6 +56,7 @@ class ListArticles extends Component {
         <Grid.Row>
           {articles.map(article => {
             return <Grid.Column onClick={() => { this.showSingleArticleHandler(article.id) }} id={`article_${article.id}`} key={article.id}>
+              <img src={article.image} alt="" />
               <h2>{article.title}</h2>
               <p>{article.content}</p>
             </Grid.Column>

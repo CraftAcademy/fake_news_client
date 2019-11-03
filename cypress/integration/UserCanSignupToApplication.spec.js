@@ -9,7 +9,7 @@ describe('User can sign up to application', () => {
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/v1/auth',
-      response: 'fixture:successful_user_login.json',
+      response: 'fixture:successful_user_signup.json',
       status: 200,
       headers: {
         'uid': 'user@mail.com'
