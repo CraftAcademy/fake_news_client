@@ -23,12 +23,12 @@ class ListArticles extends Component {
   }
 
   async getArticlesData() {
-    let response = await getArticles();
-    if (response.status === 200) {
-      this.setErrorMessage(response.errorMessage)
+    let fetch = await getArticles();
+    if (fetch.error) {
+      this.setErrorMessage(fetch.error)
     } else {
       this.setState({
-        articles: response
+        articles: fetch
       })
     }
   }
@@ -40,13 +40,22 @@ class ListArticles extends Component {
     })
   }
 
+  renderArticles(article) {
+    return (
+      <Grid.Column 
+        onClick={() => { this.showSingleArticleHandler(article.id) }} 
+        id={`article_${article.id}`} 
+        key={article.id}>
+          <img src={article.image} alt="" />
+          <h3>{article.title}</h3>
+          <p>{article.content}</p>
+      </Grid.Column>
+    )
+  }
+
   render() {
-    const articles = this.state.articles
-    let showArticle = this.state.showArticle
-    let fullArticleList
-    let topArticleList
-    let errorMessage
-    let specificArticle
+    const {articles, showArticle} = this.state
+    let fullArticleList, topArticleList, errorMessage, specificArticle
 
     if (this.state.errorMessage) {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
@@ -56,22 +65,14 @@ class ListArticles extends Component {
       fullArticleList = (
         <Grid.Row>
           {articles.map(article => {
-            return <Grid.Column onClick={() => { this.showSingleArticleHandler(article.id) }} id={`article_${article.id}`} key={article.id}>
-              <img src={article.image} alt="" />
-              <h2>{article.title}</h2>
-              <p>{article.content}</p>
-            </Grid.Column>
+            return this.renderArticles(article)
           })}
         </Grid.Row>
       )
       topArticleList = (
         <Grid.Row>
-          {articles.slice(1, 4).map(article => {
-            return <Grid.Column onClick={() => { this.showSingleArticleHandler(article.id) }} id={`article_${article.id}`} key={article.id}>
-              <img src={article.image} alt="" />
-              <h3>{article.title}</h3>
-              <p>{article.content}</p>
-            </Grid.Column>
+          {articles.slice(0, 3).map(article => {
+            return this.renderArticles(article)
           })}
         </Grid.Row>
       )

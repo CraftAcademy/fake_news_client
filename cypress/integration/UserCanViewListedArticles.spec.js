@@ -11,7 +11,7 @@ describe('User can view listed articles', () => {
 
     cy.get('h1')
       .should('contain', 'Fake News')
-    cy.get('.list-top-articles')
+    cy.get('.top-news')
       .should('contain', 'Which drugs can kill you?')
       .should('contain', 'Can soccer make you fat?')
       .should('contain', '5 ways to get lost in the forest')
@@ -26,7 +26,7 @@ describe('User can view listed articles', () => {
     cy.route({
       method: 'GET',
       url: 'http://localhost:3000/v1/articles',
-      status: 200,
+      status: 401,
       response: 'fixture:cannot_list_articles.json'
     })
     cy.visit('http://localhost:3001')
