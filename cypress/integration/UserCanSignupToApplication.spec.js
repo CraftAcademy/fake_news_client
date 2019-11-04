@@ -15,10 +15,7 @@ describe('User can sign up to application', () => {
       method: 'POST',
       url: 'http://localhost:3000/v1/auth',
       response: 'fixture:successful_user_signup.json',
-      status: 200,
-      headers: {
-        'uid': 'user@mail.com'
-      }
+      status: 200
     })
 
     cy.get('#signup-button').click()
@@ -36,10 +33,7 @@ describe('User can sign up to application', () => {
       method: 'POST',
       url: 'http://localhost:3000/v1/auth',
       response: 'fixture:unsuccessful_signup.json',
-      status: 422,
-      // headers: {
-      //   'uid': 'user@mail.com'
-      // }
+      status: 401
     })
 
     cy.get('#signup-button').click()
