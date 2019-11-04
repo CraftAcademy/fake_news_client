@@ -3,21 +3,24 @@ import ListArticles from './Components/ListArticles'
 import Login from './Components/Login'
 import SignUp from './Components/SignUp'
 import CreateArticle from './Components/CreateArticle'
+import FakeFunction from './Components/FakeFunction'
 import { Header } from 'semantic-ui-react'
+import "./i18n";
 import './Components/CSS/App.css'
-import FakeFunction from './Components/fakeFunction'
 
 class App extends Component {
 
   render() {
     return (
       <>
-        <Header as='h1'>Fake News</Header>
-        <FakeFunction />
-        <Login />
-        <SignUp />
-        <ListArticles />
-        <CreateArticle />
+        <Suspense fallback={(<div>Loading</div>)}>
+          <Header as='h1'>Fake News</Header>
+          <FakeFunction />
+          <Login />
+          <SignUp />
+          <ListArticles />
+          <CreateArticle />
+        </Suspense>
       </>
     )
   }

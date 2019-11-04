@@ -122,9 +122,6 @@ class ListArticles extends Component {
   }
 }
 
-<<<<<<< HEAD
-export default (ListArticles)
-=======
 const mapStateToProps = state => {
   return {
     currentUser: state.reduxTokenAuth.currentUser
@@ -134,4 +131,3 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps
 )(ListArticles)
->>>>>>> db2d46fce3372886024885ba7ac08dcf0c124855
