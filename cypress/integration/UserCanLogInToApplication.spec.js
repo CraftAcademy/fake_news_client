@@ -7,6 +7,11 @@ describe('User can log in to application', () => {
       response: 'fixture:successful_user_login.json',
       status: 200
     })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/articles',
+      response: 'fixture:list_articles.json'
+    })
 
     cy.visit('http://localhost:3001')
     cy.get('#navbar')
@@ -23,19 +28,24 @@ describe('User can log in to application', () => {
 });
 
 describe('User can not log in to application', () => {
-  beforeEach(() => {
-    cy.server()
+  beforeEach(function() {
+    cy.server(),
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/v1/auth/sign_in',
       response: 'fixture:unsuccessful_user_login.json',
       status: 401
     }),
-    cy.visit('http://localhost:3001')
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/articles',
+      response: 'fixture:list_articles.json'
+    })
+    cy.visit('http://localhost:3001'),
     cy.get('#navbar')
-      .within(() => {
-        cy.get('#nav-login').click()
-      })
+    .within(() => {
+      cy.get('#nav-login').click()
+    })  
   })
 
   it('with wrong password', () => {

@@ -40,7 +40,6 @@ class Login extends Component {
           <LoginForm 
             inputChangeHandlerProps={this.inputChangeHandler}
             handleLoginProps={this.handleLogin}
-            loginDataHandlerProps={this.loginDataHandler}
           />
         </>
       )

@@ -1,6 +1,11 @@
 describe('User can create an article', () => {
   beforeEach(() => {
     cy.server()
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/articles',
+      response: 'fixture:list_articles.json'
+    })
     cy.visit('http://localhost:3001/')
     cy.get('#navbar')
       .within(() => {
@@ -22,7 +27,6 @@ describe('User can create an article', () => {
       cy.get('#content-input').type('OMG do you even know how much wood it could chuck?')
       cy.get('#submit-article').click()
     })
-
     cy.get('#response-message').should('contain', 'Article was successfully created')
   })
 
@@ -40,7 +44,6 @@ describe('User can create an article', () => {
       cy.get('#content-input').type('OMG do you even know how much wood it could chuck?')
       cy.get('#submit-article').click()
     })
-
     cy.get('#response-message').should('contain', 'Title is too short (minimum is 3 characters)')
   })
 })
