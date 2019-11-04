@@ -8,8 +8,7 @@ const getArticles = async () => {
     return response.data
   } catch(error) {
     return {
-      errorMessage: error.message,
-      status: 400
+      error: error.response.data.error_message,
     }
   }
 }

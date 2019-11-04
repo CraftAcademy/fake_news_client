@@ -81,11 +81,18 @@ class SingleArticle extends Component {
     
     if (this.state.renderEditForm) {
       singleArticle = (
-        <EditFormInput 
-          editHandler={this.editHandler}
-          submitChangeHandler={this.submitChangeHandler}
-          onAvatarDropHandler={this.onAvatarDropHandler}
-        />
+        <>
+          <EditFormInput 
+            editHandler={this.editHandler}
+            submitChangeHandler={this.submitChangeHandler}
+            onAvatarDropHandler={this.onAvatarDropHandler}
+          />
+          <div id="single-article">
+            <img src={article.image} alt="" />
+            <p id="article-title">{article.title}</p>
+            <p id="article-content">{article.content}</p>
+          </div>
+        </>
       )
     }
 
