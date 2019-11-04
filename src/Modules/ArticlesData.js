@@ -22,7 +22,7 @@ const submitArticle = async (title, content, image) => {
       image: image
     })
     return response
-    
+
   } catch(error) {
     return error.response.data.error_message
   }
@@ -37,4 +37,19 @@ const getSpecificArticle = async (articleId) => {
   }
 }
 
-export { getArticles, submitArticle, getSpecificArticle }
+const editArticle = async (title, content, image) => {
+  try {
+    let response = await axios.put(apiUrl + 'articles',
+    {
+      title: title,
+      content: content,
+      image: image
+    })
+    return response
+    
+  } catch(error) {
+    return error.response.data.error_message
+  }
+}
+
+export { getArticles, submitArticle, getSpecificArticle, editArticle }
