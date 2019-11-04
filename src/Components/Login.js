@@ -50,15 +50,14 @@ class Login extends Component {
       responseMessage = <p id="error-message">{this.state.responseMessage}</p>
     }
 
-    
-
     return (
       <>
         {renderLogin}
         {responseMessage}
       </>
-  )
-}}
+    )
+  }
+}
 
 const mapStateToProps = state => {
   return {

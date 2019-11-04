@@ -13,7 +13,6 @@ describe('User can log in to application', () => {
       .within(() => {
         cy.get('#nav-login').click()
       })
-    cy.get('#login-button').click()
     cy.get('#login-form').within(() => {
       cy.get('#email-input').type('user@mail.com')
       cy.get('#password-input').type('password')
@@ -37,7 +36,6 @@ describe('User can not log in to application', () => {
       .within(() => {
         cy.get('#nav-login').click()
       })
-    cy.get('#login-button').click()
   })
 
   it('with wrong password', () => {
