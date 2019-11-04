@@ -42,11 +42,13 @@ describe('User can view single article if logged in', () => {
       })
   })
 
-  it('receives message prompting login', () => {
+  it('receives a message prompting login unless user is logged in', () => {
     cy.get('#article_1')
       .click()
     cy.get("#flash-message")
       .should('be.visible')
+    cy.get("div#flash-message.ui.message")
+      .should('contain', 'You need to be logged in to view this article.')
       .wait(5000)
     cy.get("#flash-message")
       .should('not.be.visible')
