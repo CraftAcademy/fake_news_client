@@ -11,9 +11,9 @@ class App extends Component {
       <>
         <Suspense fallback={(<div>Loading</div>)}>
           <FakeFunction />
-          <Login />
+          {/* <Login />
           <ListArticles />
-          <CreateArticle />
+          <CreateArticle /> */}
         </Suspense>
       </>
     )

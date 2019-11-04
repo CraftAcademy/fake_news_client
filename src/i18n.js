@@ -11,8 +11,8 @@ i18n.use(Backend)
   .use(initReactI18next)
   .init({
     fallbackLng,
-    whitelist: availableLanguages,
     debug: true,
+    whitelist: availableLanguages,
     interpolation: {
       escapeValue: false
     }
