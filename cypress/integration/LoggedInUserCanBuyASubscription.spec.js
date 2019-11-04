@@ -9,7 +9,7 @@ describe('User can buy a subscription for the articles', () => {
     cy.route({
       method: "GET",
       url: "http://localhost:3000/v1/articles/1",
-      response: "fixture:successful_user_login.json"
+      response: "fixture:successful_user_signup.json"
     }),
       cy.visit('http://localhost:3001')
   })
@@ -20,6 +20,7 @@ describe('User can buy a subscription for the articles', () => {
       cy.get('#email-input').type('user@mail.com')
       cy.get('#password-input').type('password')
       cy.get('#password-confirmation').type('password')
+      cy.get('#submit-signup-form').click()
       cy.get('#subscribe-button').click()
       cy.get('#payment-form').should('contain', 'Please view our subscription plan:')
     })
