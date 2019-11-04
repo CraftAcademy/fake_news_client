@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ArticleFormInput from './ArticleFormInput'
 import { submitArticle } from '../Modules/ArticlesData'
+import { Button } from 'semantic-ui-react'
 
 class CreateArticle extends Component {
 
@@ -66,9 +67,9 @@ class CreateArticle extends Component {
 
     return (
       <div>
-        <button onClick={this.renderForm} id="create-article">Create Article</button>
-        {articleForm}
         {responseMessage}
+        <Button onClick={this.renderForm} id="create-article">Create Article</Button>
+        {articleForm}
       </div>
     )
   }

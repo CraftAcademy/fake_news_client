@@ -7,6 +7,11 @@ describe('User can log in to application', () => {
       response: 'fixture:successful_user_login.json',
       status: 200
     })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/articles',
+      response: 'fixture:list_articles.json'
+    })
 
     cy.visit('http://localhost:3001')
     cy.get('#login-button').click()
@@ -28,6 +33,11 @@ describe('User can not log in to application', () => {
     response: 'fixture:unsuccessful_user_login.json',
     status: 401
   }),
+  cy.route({
+    method: 'GET',
+    url: 'http://localhost:3000/v1/articles',
+    response: 'fixture:list_articles.json'
+  })
   cy.visit('http://localhost:3001'),
   cy.get('#login-button').click()
   })

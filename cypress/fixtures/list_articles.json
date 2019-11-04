@@ -2,16 +2,11 @@
   {
     "id": 1,
     "title": "Which drugs can kill you?",
-    "content": "Researches have recently found out that..."
+    "content": "Researches have recently found out that drugs can actually kill you. It is amazing how well they can kill you like you would not believe it."
   },
   {
     "id": 2,
-    "title": "Can soccer make you fat?",
-    "content": "Yesterday the famous soccer player Ronaldo was..."
-  },
-  {
-    "id": 3,
-    "title": "5 ways to get lost in the forest",
-    "content": "Autumn is here and everyone wants to get out..."
+    "title": "Jonas is an amazing programmer!",
+    "content": "Once upon a time there was this amazing programmer in our team. Everybody wanted to be like Jonas, but not even the big guy was. That made him sad."
   }
 ]
