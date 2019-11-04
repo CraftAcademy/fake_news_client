@@ -12,12 +12,10 @@ describe('User can view listed articles', () => {
       .should('contain', 'Fake News')
     cy.get('.top-news')
       .should('contain', 'Which drugs can kill you?')
-      .should('contain', 'Can soccer make you fat?')
-      .should('contain', '5 ways to get lost in the forest')
+      .should('contain', 'Jonas is an amazing programmer!')
     cy.get('.latest-articles')
-      .should('contain', 'Researches have recently found out that...')
-      .should('contain', 'Yesterday the famous soccer player Ronaldo was...')
-      .should('contain', 'Autumn is here and everyone wants to get out...')
+      .should('contain', 'Researches have recently found out that drugs can actually kill you. It is amazing how well they can kill you...')
+      .should('contain', 'Once upon a time there was this amazing programmer in our team. Everybody wanted to be like Jonas, but not...')
   })
 
   it('Articles do not load on the landing page', () => {
