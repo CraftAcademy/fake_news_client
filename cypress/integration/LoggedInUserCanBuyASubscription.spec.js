@@ -1,6 +1,11 @@
-describe('User can buy a subscription for the articles'), () => {
+describe('User can buy a subscription for the articles', () => {
   beforeEach(() => {
     cy.server()
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/articles',
+      response: 'fixture:list_articles.json'
+    }),
     cy.route({
       method: "GET",
       url: "http://localhost:3000/v1/articles/1",
@@ -19,4 +24,4 @@ describe('User can buy a subscription for the articles'), () => {
       cy.get('#payment-form').should('contain', 'Please view our subscription plan:')
     })
   })
-}
+})
