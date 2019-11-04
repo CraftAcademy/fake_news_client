@@ -3,6 +3,8 @@ import { getArticles } from '../Modules/ArticlesData'
 import { Header, Grid } from 'semantic-ui-react'
 import './CSS/ListArticles.css'
 import SingleArticle from './SingleArticle'
+import { connect } from 'react-redux'
+import AlertModal from './AlertModal'
 
 class ListArticles extends Component {
   state = {
@@ -40,6 +42,11 @@ class ListArticles extends Component {
     })
   }
 
+  articleIngress = (content, wordCount) => {
+    let ingress = content.split(' ').slice(0, wordCount).join(' ')
+    return ingress + '...'
+  }
+
   renderArticles(article) {
     return (
       <Grid.Column 
@@ -48,7 +55,7 @@ class ListArticles extends Component {
         key={article.id}>
           <img src={article.image} alt="" />
           <h3>{article.title}</h3>
-          <p>{article.content}</p>
+          <p>{this.articleIngress(article.content, 20)}</p>
       </Grid.Column>
     )
   }
@@ -78,11 +85,15 @@ class ListArticles extends Component {
       )
     }
 
-    if (showArticle === true) {
+    if (showArticle === true && this.props.currentUser.isSignedIn) {
       specificArticle = <SingleArticle
         articleId={this.state.showArticleId}
         renderErrorMessage={this.setErrorMessage}
       />
+    } 
+    
+    if (showArticle === true && this.props.currentUser.isSignedIn === false) {
+      specificArticle = <AlertModal />
     }
 
     return (
@@ -111,4 +122,12 @@ class ListArticles extends Component {
   }
 }
 
-export default ListArticles
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(ListArticles)

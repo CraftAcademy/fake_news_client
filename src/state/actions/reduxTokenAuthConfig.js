@@ -17,7 +17,7 @@ const {
   registerUser,
   signInUser,
   signOutUser,
-  verifyCredentials,
+  verifyCredentials
 } = generateAuthActions(config);
 
 export { registerUser, signInUser, signOutUser, verifyCredentials };  
