@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getArticles } from '../Modules/ArticlesData'
-import { Container, Grid } from 'semantic-ui-react'
+import { Header, Grid } from 'semantic-ui-react'
 import './CSS/ListArticles.css'
 import SingleArticle from './SingleArticle'
 
@@ -23,13 +23,12 @@ class ListArticles extends Component {
   }
 
   async getArticlesData() {
-    let response = await getArticles();
-
-    if (response.status === 400) {
-      this.setErrorMessage(response.errorMessage)
+    let fetch = await getArticles();
+    if (fetch.error) {
+      this.setErrorMessage(fetch.error)
     } else {
       this.setState({
-        articles: response
+        articles: fetch
       })
     }
   }
@@ -41,25 +40,39 @@ class ListArticles extends Component {
     })
   }
 
+  renderArticles(article) {
+    return (
+      <Grid.Column 
+        onClick={() => { this.showSingleArticleHandler(article.id) }} 
+        id={`article_${article.id}`} 
+        key={article.id}>
+          <img src={article.image} alt="" />
+          <h3>{article.title}</h3>
+          <p>{article.content}</p>
+      </Grid.Column>
+    )
+  }
+
   render() {
-    const articles = this.state.articles
-    let showArticle = this.state.showArticle
-    let articleList
-    let errorMessage
-    let specificArticle
+    const {articles, showArticle} = this.state
+    let fullArticleList, topArticleList, errorMessage, specificArticle
 
     if (this.state.errorMessage) {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
     }
 
     if (showArticle === false) {
-      articleList = (
+      fullArticleList = (
         <Grid.Row>
           {articles.map(article => {
-            return <Grid.Column onClick={() => { this.showSingleArticleHandler(article.id) }} id={`article_${article.id}`} key={article.id}>
-              <h2>{article.title}</h2>
-              <p>{article.content}</p>
-            </Grid.Column>
+            return this.renderArticles(article)
+          })}
+        </Grid.Row>
+      )
+      topArticleList = (
+        <Grid.Row>
+          {articles.slice(0, 3).map(article => {
+            return this.renderArticles(article)
           })}
         </Grid.Row>
       )
@@ -74,16 +87,25 @@ class ListArticles extends Component {
 
     return (
       <>
-        <h1>Fake News</h1>
-        <hr></hr>
-        <Container className="list-top-articles">
-          <h2>Top News</h2>
+        <div className="error-messages">
+          {errorMessage}
+        </div>
+        <div className="top-news">
+          <Header as='h2'>Top News</Header>
           <Grid centered container columns={3} className="latest-articles">
-            {articleList}
-            {errorMessage}
-            {specificArticle}
+            {topArticleList}
           </Grid>
-        </Container>
+        </div>
+        <div className="specific-news">
+          <Grid centered container columns={3} className="latest-articles">
+          {specificArticle}
+          </Grid>
+        </div>
+        <div className="list-all-news">
+        <Grid centered container columns={2} className="latest-articles">
+          {fullArticleList}
+        </Grid>
+        </div>
       </>
     )
   }

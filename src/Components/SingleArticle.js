@@ -25,6 +25,7 @@ class SingleArticle extends Component {
     if (article !== null) {
       singleArticle = (
         <div id="single-article">
+          <img src={article.image} alt="" />
           <p id="article-title">{article.title}</p>
           <p id="article-content">{article.content}</p>
         </div>
