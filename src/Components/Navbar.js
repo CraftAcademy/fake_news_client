@@ -10,9 +10,11 @@ const Navbar = (props) => {
         <Menu.Item>
           <NavLink id='nav-home' to='/'>Home</NavLink>
         </Menu.Item>
-        <Menu.Item>
-          <NavLink id='nav-create' to='/create'>Create Article</NavLink>
-        </Menu.Item>
+        {props.currentUser.isSignedIn === 'journalist' && (
+          <Menu.Item>
+            <NavLink id='nav-create' to='/create'>Create Article</NavLink>
+          </Menu.Item>
+        )}
         <Menu.Menu position='right'>
             {!props.currentUser.isSignedIn && (
               <Menu.Item>
