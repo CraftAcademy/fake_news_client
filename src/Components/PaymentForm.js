@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Button, Card, Select } from 'semantic-ui-react'
+import { Button, Select } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import getCredentials from '../Modules/GetCredentials'
 import {
@@ -11,7 +11,7 @@ import {
 import axios from "axios"
 import './CSS/CheckOutForm.css'
 
-class CheckOutForm extends Component {
+class PaymentForm extends Component {
   state = {
     error: false,
     loading: false,
@@ -94,5 +94,5 @@ const mapStateToProps = state => {
 export default injectStripe(
   connect(
     mapStateToProps
-  )(CheckOutForm)
+  )(PaymentForm)
 )

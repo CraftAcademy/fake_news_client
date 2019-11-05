@@ -7,6 +7,10 @@ describe('User can create an article', () => {
       response: 'fixture:list_articles.json'
     })
     cy.visit('http://localhost:3001/')
+    cy.get('#navbar')
+      .within(() => {
+        cy.get('#nav-create').click()
+      })
   })
   
   it('successfully creates an article', () => {
@@ -16,6 +20,7 @@ describe('User can create an article', () => {
       response: 'fixture:successfully_created_article.json',
       status: 200
     })
+    
     cy.get('#create-article').click()
     cy.get('#article-form').within(() => {
       cy.get('#title-input').type('How much wood would a wood chuck chuck?')
@@ -32,6 +37,7 @@ describe('User can create an article', () => {
       response: 'fixture:cannot_create_article.json',
       status: 400
     })
+
     cy.get('#create-article').click()
     cy.get('#article-form').within(() => {
       cy.get('#title-input').type('Ho')

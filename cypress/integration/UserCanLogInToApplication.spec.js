@@ -3,7 +3,7 @@ describe('User can log in to application', () => {
     cy.server()
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/v1/auth/sign_in',
+      url: 'http://localhost:3000/auth/sign_in',
       response: 'fixture:successful_user_login.json',
       status: 200
     })
@@ -14,7 +14,10 @@ describe('User can log in to application', () => {
     })
 
     cy.visit('http://localhost:3001')
-    cy.get('#login-button').click()
+    cy.get('#navbar')
+      .within(() => {
+        cy.get('#nav-login').click()
+      })
     cy.get('#login-form').within(() => {
       cy.get('#email-input').type('user@mail.com')
       cy.get('#password-input').type('password')
@@ -26,20 +29,23 @@ describe('User can log in to application', () => {
 
 describe('User can not log in to application', () => {
   beforeEach(function() {
-  cy.server(),
-  cy.route({
-    method: 'POST',
-    url: 'http://localhost:3000/v1/auth/sign_in',
-    response: 'fixture:unsuccessful_user_login.json',
-    status: 401
-  }),
-  cy.route({
-    method: 'GET',
-    url: 'http://localhost:3000/v1/articles',
-    response: 'fixture:list_articles.json'
-  })
-  cy.visit('http://localhost:3001'),
-  cy.get('#login-button').click()
+    cy.server(),
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3000/auth/sign_in',
+      response: 'fixture:unsuccessful_user_login.json',
+      status: 401
+    }),
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/articles',
+      response: 'fixture:list_articles.json'
+    })
+    cy.visit('http://localhost:3001'),
+    cy.get('#navbar')
+    .within(() => {
+      cy.get('#nav-login').click()
+    })  
   })
 
   it('with wrong password', () => {

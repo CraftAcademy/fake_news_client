@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getArticles } from '../Modules/ArticlesData'
-import { Header, Grid } from 'semantic-ui-react'
+import { Header, Grid, Message } from 'semantic-ui-react'
 import './CSS/ListArticles.css'
 import SingleArticle from './SingleArticle'
 import { connect } from 'react-redux'
@@ -62,7 +62,11 @@ class ListArticles extends Component {
 
   render() {
     const {articles, showArticle} = this.state
-    let fullArticleList, topArticleList, errorMessage, specificArticle
+    let fullArticleList, topArticleList, errorMessage, specificArticle, welcomeMessage
+
+    if (this.props.currentUser.isSignedIn) {
+      welcomeMessage = <Message> <h3 id="welcome-message">Hello {this.props.currentUser.attributes.email}</h3></Message>
+    }
 
     if (this.state.errorMessage) {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
@@ -98,6 +102,8 @@ class ListArticles extends Component {
 
     return (
       <>
+        {welcomeMessage}
+
         <div className="error-messages">
           {errorMessage}
         </div>
@@ -113,9 +119,9 @@ class ListArticles extends Component {
           </Grid>
         </div>
         <div className="list-all-news">
-        <Grid centered container columns={2} className="latest-articles">
-          {fullArticleList}
-        </Grid>
+          <Grid centered container columns={2} className="latest-articles">
+            {fullArticleList}
+          </Grid>
         </div>
       </>
     )
@@ -130,4 +136,4 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps
-)(ListArticles)
+)(ListArticles) 

@@ -7,16 +7,19 @@ import * as serviceWorker from './serviceWorker'
 import { Provider } from 'react-redux'
 import configureStore from './state/store/configureStore'
 import { Elements, StripeProvider } from "react-stripe-elements";
+import { BrowserRouter } from 'react-router-dom'
 
 const store = configureStore()
 
 ReactDOM.render(
   <Provider store={store}>
-    <StripeProvider apiKey="pk_test_BKEQsR0FbRiozFhpNap9zJ0X002ENjjshn">
-      <Elements>
-        <App />
-      </Elements>
-    </StripeProvider>
+    <BrowserRouter>
+      <StripeProvider apiKey="pk_test_BKEQsR0FbRiozFhpNap9zJ0X002ENjjshn">
+        <Elements>
+          <App />
+        </Elements>
+      </StripeProvider>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root'))
 
