@@ -33,7 +33,8 @@ describe('User can buy a subscription for the articles', () => {
     cy.get('#welcome-message').should('contain', 'Hello user@mail.com')
 
     cy.get('#payment-form').should('contain', 'Please select a subscription plan:')
-    cy.get('.__PrivateStripeElement > iframe').then($iframe => {
+    cy.wait(2000);
+    cy.get('iframe[name^="__privateStripeFrame5"]').then($iframe => {
       const $body = $iframe.contents().find("body");
       cy.wrap($body)
         .find('input[name="cardnumber"]')

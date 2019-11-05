@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Button, Form, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import getCredentials from '../Modules/GetCredentials'
 import {
   CardNumberElement,
   CardExpiryElement,
@@ -31,7 +32,8 @@ class CheckOutForm extends Component {
   payment = async stripeToken => {
     try {
       let response = await axios.post('http://localhost:3000/v1/payments', {
-        stripeToken
+        stripeToken,
+        headers: getCredentials()
       });
       if (response.status === 204) {
         this.setState({ responseMessage: response.data.message })
@@ -48,40 +50,22 @@ class CheckOutForm extends Component {
 
     if (this.props.currentUser.isSignedIn) {
       renderSubscribeForm = (
-        <Form id="payment-form">
-          <Form.Field>
+        <div id="payment-form">
             <label>Please select a subscription plan:</label>
-            <Form.Field>
               <Card>
                 <Card.Content header="Yearly" />
                 <Card.Content description="1000 SEK" />
               </Card>
-            </Form.Field>
-          </Form.Field>
-          <Form.Field>
             <label>Credit card number:</label>
-          <Form.Field>
-          <CardNumberElement />
-            </Form.Field>
-          </Form.Field >
-        <Form.Field>
+            <div id="card-number-element"><CardNumberElement /></div>
           <label>Expiration date:</label>
-          <Form.Field>
             <CardExpiryElement />
-          </Form.Field>
-        </Form.Field>
-        <Form.Field>
           <label>CVC:</label>
-          <Form.Field>
             <CardCVCElement />
-          </Form.Field>
-        </Form.Field>
-        <Form.Field>
           <Button onClick={this.payWithStripe} id="submit-payment">
             Submit Payment
           </Button>
-        </Form.Field>
-        </Form>
+        </div>
           )
     }
 
