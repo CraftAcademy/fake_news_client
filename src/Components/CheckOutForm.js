@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Button, Form, Card } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 import {
   CardNumberElement,
   CardExpiryElement,
@@ -97,4 +98,14 @@ class CheckOutForm extends Component {
   }
 }
 
-export default injectStripe(CheckOutForm)
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default injectStripe(
+  connect(
+    mapStateToProps
+  )(CheckOutForm)
+)
