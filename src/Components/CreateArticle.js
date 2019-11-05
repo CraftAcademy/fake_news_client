@@ -9,14 +9,7 @@ class CreateArticle extends Component {
     title: '',
     content: '',
     image: '',
-    renderArticleForm: false,
     responseMessage: ''
-  }
-
-  renderForm = () => {
-    this.setState({
-      renderArticleForm: !this.state.renderArticleForm
-    })
   }
 
   inputHandler = (e) => {
@@ -55,20 +48,17 @@ class CreateArticle extends Component {
         <p id="response-message">{this.state.responseMessage}</p>
     }
 
-    if (this.state.renderArticleForm) {
-      articleForm = (
-        <ArticleFormInput
-          inputHandler={this.inputHandler}
-          submitArticleHandler={this.submitArticleHandler}
-          onAvatarDropHandler={this.onAvatarDropHandler}
-        />
-      )
-    }
+    articleForm = (
+      <ArticleFormInput
+        inputHandler={this.inputHandler}
+        submitArticleHandler={this.submitArticleHandler}
+        onAvatarDropHandler={this.onAvatarDropHandler}
+      />
+    )
 
     return (
       <div>
         {responseMessage}
-        <Button onClick={this.renderForm} id="create-article">Create Article</Button>
         {articleForm}
       </div>
     )
