@@ -20,7 +20,7 @@ describe('User can buy a subscription for the articles', () => {
       method: 'POST',
       url: 'http://localhost:3000/v1/payments',
       response: 'fixture:successful_payment.json',
-      status: 204
+      status: 200
     })
 
     cy.get('#signup-button').click()
