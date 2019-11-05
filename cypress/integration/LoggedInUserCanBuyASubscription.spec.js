@@ -6,11 +6,11 @@ describe('User can buy a subscription for the articles', () => {
       url: 'http://localhost:3000/v1/articles',
       response: 'fixture:list_articles.json'
     }),
-    cy.route({
-      method: "GET",
-      url: "http://localhost:3000/v1/articles/1",
-      response: "fixture:successful_user_signup.json"
-    }),
+      cy.route({
+        method: "POST",
+        url: "http://localhost:3000/v1/articles/1",
+        response: "fixture:successful_user_signup.json"
+      }),
       cy.visit('http://localhost:3001')
   })
 
@@ -22,7 +22,30 @@ describe('User can buy a subscription for the articles', () => {
       cy.get('#password-confirmation').type('password')
       cy.get('#submit-signup-form').click()
       cy.get('#subscribe-button').click()
-      cy.get('#payment-form').should('contain', 'Please view our subscription plan:')
+      cy.get('#payment-form').should('contain', 'Please select a subscription plan:')
+
+      cy.get('iframe[name^="__privateStripeFrame5"]').then($iframe => {
+        const $body = $iframe.contents().find("body");
+        cy.wrap($body)
+          .find('input[name="cardnumber"]')
+          .type("4242424242424242", { delay: 10 });
+      });
+      cy.get('iframe[name^="__privateStripeFrame6"]').then($iframe => {
+        const $body = $iframe.contents().find("body");
+        cy.wrap($body)
+          .find('input[name="exp-date"]')
+          .type("1222");
+      });
+      cy.get('iframe[name^="__privateStripeFrame7"]').then($iframe => {
+        const $body = $iframe.contents().find("body");
+        cy.wrap($body)
+          .find('input[name="cvc"]')
+          .type("223");
+      });
+      cy.get("#submit-payment")
+        .click()
+      cy.get('#successful-payment')
+        .should('contain', 'Transaction successful')
     })
   })
 })

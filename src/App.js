@@ -5,6 +5,7 @@ import SignUp from './Components/SignUp'
 import CreateArticle from './Components/CreateArticle'
 import { Header } from 'semantic-ui-react'
 import './Components/CSS/App.css'
+import CheckOutForm from './Components/CheckOutForm'
 
 class App extends Component {
 
@@ -16,6 +17,7 @@ class App extends Component {
         <SignUp />
         <ListArticles />
         <CreateArticle />
+        <CheckOutForm />
       </>
     )
   }
