@@ -44,6 +44,7 @@ class CheckOutForm extends Component {
 
   render() {
     let renderSubscribeForm
+    let error
 
     if (this.props.currentUser.isSignedIn) {
       renderSubscribeForm = (
@@ -85,7 +86,7 @@ class CheckOutForm extends Component {
     }
 
     if(this.state.error) {
-      <p id="unsuccessful-payment">Something went wrong, please try again</p>
+      error = <p id="unsuccessful-payment">Something went wrong, please try again</p>
     }
 
     return (
