@@ -36,7 +36,9 @@ class CheckOutForm extends Component {
         headers: getCredentials()
       });
       if (response.status === 204) {
+        debugger;
         this.setState({ responseMessage: response.data.message })
+        debugger;
       }
     } catch (error) {
       this.setState({ loading: false })
