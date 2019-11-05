@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Button, Select } from 'semantic-ui-react'
+import { Button, Select, Label, Input } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import getCredentials from '../Modules/GetCredentials'
 import {
@@ -56,14 +56,16 @@ class PaymentForm extends Component {
     if (this.props.currentUser.isSignedIn) {
       renderSubscribeForm = (
         <div id="payment-form">
-          <label>Please select a subscription plan:</label>
+          <Label pointing='below'>Please select a subscription plan:</Label>
           <Select id="select-option" placeholder='Currently available options' options={subscriptionOptions} />
-          <label>Credit card number:</label>
+          <div>
+          <Label pointing='below'>Credit card number:</Label>
           <div id="card-number-element"><CardNumberElement /></div>
-          <label>Expiration date:</label>
+          <Label pointing='below'>Expiration date:</Label>
           <CardExpiryElement />
-          <label>CVC:</label>
+          <Label pointing='below'>CVC:</Label>
           <CardCVCElement />
+          </div>
           <Button onClick={this.payWithStripe} id="submit-payment">
             Submit Payment
           </Button>
