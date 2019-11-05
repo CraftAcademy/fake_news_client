@@ -21,9 +21,14 @@ describe('User can buy a subscription for the articles', () => {
       "password",
       "password"
     );
-    cy.get('#welcome-message').should('contain', 'Hello user@mail.com')
 
+    cy.get('#welcome-message').should('contain', 'Hello user@mail.com')
+    cy.get('#navbar')
+    .within(() => {
+      cy.get('#nav-payment').click()
+    })
     cy.get('#payment-form').should('contain', 'Please select a subscription plan:')
+    cy.get('#select-option').contains('option').click()
     cy.wait(2000);
     cy.get('iframe[name^="__privateStripeFrame5"]').then($iframe => {
       const $body = $iframe.contents().find("body");
@@ -62,8 +67,12 @@ describe('User can buy a subscription for the articles', () => {
       "password"
     );
     cy.get('#welcome-message').should('contain', 'Hello user@mail.com')
-
+    cy.get('#navbar')
+    .within(() => {
+      cy.get('#nav-payment').click()
+    })
     cy.get('#payment-form').should('contain', 'Please select a subscription plan:')
+    cy.get('#select-option').contains('option').click()
     cy.wait(2000);
     cy.get('iframe[name^="__privateStripeFrame5"]').then($iframe => {
       const $body = $iframe.contents().find("body");
@@ -102,8 +111,12 @@ describe('User can buy a subscription for the articles', () => {
       "password"
     );
     cy.get('#welcome-message').should('contain', 'Hello user@mail.com')
-
+    cy.get('#navbar')
+    .within(() => {
+      cy.get('#nav-payment').click()
+    })
     cy.get('#payment-form').should('contain', 'Please select a subscription plan:')
+    cy.get('#select-option').contains('option').click()
     cy.wait(2000);
     cy.get('iframe[name^="__privateStripeFrame5"]').then($iframe => {
       const $body = $iframe.contents().find("body");

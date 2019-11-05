@@ -57,7 +57,7 @@ class PaymentForm extends Component {
       renderSubscribeForm = (
         <div id="payment-form">
           <label>Please select a subscription plan:</label>
-          <Select placeholder='Currently available options' options={subscriptionOptions} />
+          <Select id="select-option" placeholder='Currently available options' options={subscriptionOptions} />
           <label>Credit card number:</label>
           <div id="card-number-element"><CardNumberElement /></div>
           <label>Expiration date:</label>

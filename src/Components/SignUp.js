@@ -25,6 +25,7 @@ class SignUp extends Component {
         console.log('You have successfully been signed up')
       )
       .catch(error => {
+        debugger;
         this.setState({ responseMessage: error.response.data.errors.full_messages })
       })
   }
