@@ -1,4 +1,4 @@
-Cypress.Commands.add("signup_user", (email, password, password_confirmation) => {
+Cypress.Commands.add("signupUser", (email, password, password_confirmation) => {
   cy.route({
     method: 'POST',
     url: 'http://localhost:3000/auth',

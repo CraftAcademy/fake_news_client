@@ -16,7 +16,7 @@ describe('User can buy a subscription for the articles', () => {
       response: 'fixture:successful_payment.json',
       status: 200
     })
-    cy.signup_user(
+    cy.signupUser(
       "user@mail.com",
       "password",
       "password"
