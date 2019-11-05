@@ -1,5 +1,4 @@
 describe('User can view listed articles', () => {
-
   it('View available articles on landing page', () => {
     cy.server()
     cy.route({
