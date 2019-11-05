@@ -3,7 +3,7 @@ import ListArticles from './Components/ListArticles'
 import Login from './Components/Login'
 import SignUp from './Components/SignUp'
 import CreateArticle from './Components/CreateArticle'
-import FakeFunction from './Components/FakeFunction'
+import FakeFunction from './Components/fakeFunction'
 import { Header } from 'semantic-ui-react'
 import "./i18n";
 import './Components/CSS/App.css'
