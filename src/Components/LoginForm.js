@@ -5,17 +5,17 @@ const LoginForm = (props) => {
    return (
     <>
       <Container id="login-form">
-        <div id="input">
+        <div className="input">
           <Input placeholder="Email" id="email-input" name="email" onChange={props.inputChangeHandlerProps}>
             <input />
           </Input>
         </div>
-        <div id="input">
+        <div className="input">
           <Input id="password-input" placeholder="Password" name="password" onChange={props.inputChangeHandlerProps}>
             <input />
           </Input>
         </div>
-        <div id="button">
+        <div className="button">
           <Button color='blue' onClick={props.handleLoginProps} id="submit-login-form">Submit</Button>
         </div>
       </Container>

@@ -49,8 +49,8 @@ p {
   margin-bottom: 2rem !important;
 }
 
-#input {
-  margin: 10px;
+.input {
+  margin: 5px;
 }
 
 #signup-form {
