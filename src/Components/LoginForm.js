@@ -11,12 +11,12 @@ const LoginForm = (props) => {
           </Input>
         </div>
         <div className="input">
-          <Input id="password-input" placeholder="Password" name="password" onChange={props.inputChangeHandlerProps}>
+          <Input id="password-input" type="password" placeholder="Password" name="password" onChange={props.inputChangeHandlerProps}>
             <input />
           </Input>
         </div>
         <div className="button">
-          <Button color='blue' onClick={props.handleLoginProps} id="submit-login-form">Submit</Button>
+          <Button color='blue' type="password" onClick={props.handleLoginProps} id="submit-login-form">Submit</Button>
         </div>
       </Container>
     </>
