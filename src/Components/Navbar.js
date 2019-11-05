@@ -10,7 +10,7 @@ const Navbar = (props) => {
         <Menu.Item>
           <NavLink id='nav-home' to='/'>Home</NavLink>
         </Menu.Item>
-        {props.currentUser.isSignedIn === 'journalist' && (
+        {props.currentUser.attributes.role === 'journalist' && (
           <Menu.Item>
             <NavLink id='nav-create' to='/create'>Create Article</NavLink>
           </Menu.Item>
