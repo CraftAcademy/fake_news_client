@@ -32,9 +32,7 @@ class Login extends Component {
     let renderLogin
     let responseMessage
 
-    if (this.props.currentUser.isSignedIn) {
-      console.log('Welcome!')
-    } else {
+    if (!this.props.currentUser.isSignedIn) {
       renderLogin = (
         <>
           <LoginForm 

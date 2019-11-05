@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Menu } from 'semantic-ui-react'
 
-const Navbar = ({currentUser}) => {
+const Navbar = (props) => {
   return (
     <>
       <Menu stackable id="navbar">
@@ -14,14 +14,14 @@ const Navbar = ({currentUser}) => {
           <NavLink id='nav-create' to='/create'>Create Article</NavLink>
         </Menu.Item>
         <Menu.Menu position='right'>
-            {currentUser.isSignedIn === false && (
+            {!props.currentUser.isSignedIn && (
               <Menu.Item>
                 <NavLink id='nav-login' to='/login'>
                   Login
                 </NavLink>
               </Menu.Item>
             )}
-            {currentUser.isSignedIn === false && (
+            {!props.currentUser.isSignedIn && (
               <Menu.Item>
                 <NavLink id='nav-signup' to='/signup'>
                   Signup
