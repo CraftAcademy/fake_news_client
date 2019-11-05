@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react'
 import { registerUser } from '../state/actions/reduxTokenAuthConfig'
 import { connect } from 'react-redux'
 import SignUpForm from './SignUpForm'
