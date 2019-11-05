@@ -9,14 +9,7 @@ class SignUp extends Component {
     email: '',
     password: '',
     password_confirmation: '',
-    renderSignUpForm: false,
     responseMessage: ''
-  }
-
-  renderForm = () => {
-    this.setState({
-      renderSignUpForm: !this.state.renderSignUpForm
-    })
   }
 
   inputChangeHandler = (e) => {
@@ -44,19 +37,13 @@ class SignUp extends Component {
     if (this.props.currentUser.isSignedIn) {
       console.log('Welcome!')
     } else {
-      if (this.state.renderSignUpForm) {
       renderSignUp = (
         <SignUpForm
           handleSignUp={this.handleSignUp}
           inputChangeHandler={this.inputChangeHandler}
         />
       )
-    } else {
-      renderSignUp = (
-        <Button id="signup-button" onClick={this.renderForm}>Sign up</Button>
-      )
     }
-  }
 
     if (this.state.responseMessage !== '') {
       responseMessage = <p id="error-message">{this.state.responseMessage}</p>

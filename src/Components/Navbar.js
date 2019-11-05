@@ -7,6 +7,7 @@ const Navbar = () => {
       <nav id="navbar">
         <NavLink id='nav-home' to='/'>Home</NavLink>
         <NavLink id='nav-login' to='/login'>Login</NavLink>
+        <NavLink id='nav-signup' to='/signup'>Signup</NavLink>
         <NavLink id='nav-create' to='/create'>Create Article</NavLink>
       </nav>
     </>

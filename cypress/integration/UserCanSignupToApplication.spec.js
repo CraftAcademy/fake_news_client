@@ -12,12 +12,15 @@ describe('User can sign up to application', () => {
   it('successfully signs up with valid credentials', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/v1/auth',
+      url: 'http://localhost:3000/auth',
       response: 'fixture:successful_user_signup.json',
       status: 200
     })
 
-    cy.get('#signup-button').click()
+    cy.get('#navbar')
+      .within(() => {
+        cy.get('#nav-signup').click()
+      })
     cy.get('#signup-form').within(() => {
       cy.get('#email-input').type('user@mail.com')
       cy.get('#password-input').type('password')
@@ -30,12 +33,15 @@ describe('User can sign up to application', () => {
   it('cannot sign up with invalid password credentials', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/v1/auth',
+      url: 'http://localhost:3000/auth',
       response: 'fixture:unsuccessful_signup.json',
       status: 401
     })
 
-    cy.get('#signup-button').click()
+    cy.get('#navbar')
+    .within(() => {
+      cy.get('#nav-signup').click()
+    })
     cy.get('#signup-form').within(() => {
       cy.get('#email-input').type('user@mail.com')
       cy.get('#password-input').type('password')

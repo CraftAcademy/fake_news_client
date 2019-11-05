@@ -21,7 +21,10 @@ class App extends Component {
         <Route exact path='/login' component={Login}>
           {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
         </Route>
-        <SignUp />
+        <Route exact path='/signup' component={SignUp}>
+          {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <SignUp />}
+        </Route>
+
       </>
     )
   }
