@@ -15,6 +15,12 @@ describe('User can buy a subscription for the articles', () => {
       url: 'http://localhost:3000/v1/auth',
       response: 'fixture:successful_user_signup.json',
       status: 200
+    }),
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3000/v1/payments',
+      response: 'fixture:successful_payment.json',
+      status: 200
     })
 
     cy.get('#signup-button').click()
@@ -26,7 +32,6 @@ describe('User can buy a subscription for the articles', () => {
     cy.get('#submit-signup-form').click()
     cy.get('#welcome-message').should('contain', 'Hello user@mail.com')
 
-    cy.get('#subscribe-button').click()
     cy.get('#payment-form').should('contain', 'Please select a subscription plan:')
     cy.get('iframe[name^="__privateStripeFrame5"]').then($iframe => {
       const $body = $iframe.contents().find("body");

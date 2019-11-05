@@ -13,11 +13,11 @@ class App extends Component {
     return (
       <>
         <Header as='h1'>Fake News</Header>
+        <CheckOutForm />
         <Login />
         <SignUp />
         <ListArticles />
         <CreateArticle />
-        <CheckOutForm />
       </>
     )
   }
