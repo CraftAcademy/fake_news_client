@@ -1,0 +1,10 @@
+#payment-form {
+  position: absolute; 
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+label {
+  display: block;
+  margin: 0.5rem 0.5rem 1rem 0.5rem;
+}
