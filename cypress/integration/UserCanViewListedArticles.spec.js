@@ -23,7 +23,7 @@ describe('User can view listed articles', () => {
     cy.route({
       method: 'GET',
       url: 'http://localhost:3000/v1/articles',
-      status: 417,
+      status: 401,
       response: 'fixture:cannot_list_articles.json'
     })
     cy.visit('http://localhost:3001')
