@@ -59,14 +59,14 @@ class PaymentForm extends Component {
           <Label pointing='below'>Please select a subscription plan:</Label>
           <Select id="select-option" placeholder='Currently available options' options={subscriptionOptions} />
           <div>
-          <Label pointing='below'>Credit card number:</Label>
+          <Label className="payment__label" pointing='below'>Credit card number:</Label>
           <div id="card-number-element"><CardNumberElement /></div>
-          <Label pointing='below'>Expiration date:</Label>
+          <Label className="payment__label" pointing='below'>Expiration date:</Label>
           <CardExpiryElement />
-          <Label pointing='below'>CVC:</Label>
+          <Label className="payment__label" pointing='below'>CVC:</Label>
           <CardCVCElement />
           </div>
-          <Button onClick={this.payWithStripe} id="submit-payment">
+          <Button onClick={this.payWithStripe} id="submit-payment" className="submit-payment">
             Submit Payment
           </Button>
         </div>

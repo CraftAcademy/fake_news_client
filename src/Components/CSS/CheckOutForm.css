@@ -4,13 +4,21 @@
   transform: translateX(-50%);
 }
 
-label {
+.label {
   display: block;
   margin: 0.5rem 0.5rem 1rem 0.5rem;
 }
 
+.payment__label {
+  margin-top: 1rem !important;
+}
+
 .ui.selection.dropdown {
   display: block;
+}
+
+.submit-payment {
+ margin-top: 1rem !important;
 }
 
 .StripeElement {
