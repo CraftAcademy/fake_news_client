@@ -17,7 +17,11 @@ class App extends Component {
         <Header as='h1'>Fake News</Header>
         <Navbar />
         <Route exact path='/' component={ListArticles}></Route>
-        <Route exact path='/create' component={CreateArticle}></Route>
+        {this.props.currentUser.attributes.role === 'journalist' ? (
+          <Route exact path='/create' component={CreateArticle} />
+        ) : (
+          <Redirect to='/' />
+        )}
         <Route exact path='/login' component={Login}>
           {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
         </Route>
