@@ -34,7 +34,7 @@ const Navbar = (props) => {
             <Menu.Item>
               <NavLink id='nav-signup' to='/signup'>
                 Signup
-                </NavLink>
+              </NavLink>
             </Menu.Item>
           )}
         </Menu.Menu>

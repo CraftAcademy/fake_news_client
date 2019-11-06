@@ -23,10 +23,10 @@ class App extends Component {
       <>
         <Header as='h1'>Fake News</Header>
         <Navbar />
-        <Route exact path='/article/:id' component={SingleArticle} />
         <Route exact path='/' component={ListArticles} />
+        <Route exact path='/article/:id' component={SingleArticle} />
         {this.props.currentUser.attributes.role === 'journalist' ? (
-          <Route exact path='/create' component={CreateArticle} />
+          <Route exact path='/create' component={requireSignIn(CreateArticle)} />
         ) : (
           <Redirect to='/' />
         )}

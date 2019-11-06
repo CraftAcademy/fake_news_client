@@ -23,7 +23,6 @@ class SingleArticle extends Component {
 
   async componentDidMount() {
     let response = await getSpecificArticle(this.props.match.params.id)
-    debugger
     if (response.status === 200) {
       this.setState({
         article: response.data
@@ -54,7 +53,6 @@ class SingleArticle extends Component {
   submitChangeHandler = async () => {
     const { title, content, image } = this.state
     let response = await editArticle(title, content, image)
-    debugger
     if (response.status === 200) {
       this.setState({
         responseMessage: response.data.message
