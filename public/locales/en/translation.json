@@ -10,13 +10,15 @@
   "login": {
     "email": "Email",
     "password": "Password",
-    "submit": "Submit"
+    "submit": "Submit",
+    "message": "Please login to gain full access of all of our articles"
   },
   "signup": {
     "email": "Email",
     "password": "Password",
     "password_c": "Password confirmation",
-    "submit": "Submit"
+    "submit": "Submit",
+    "message": "Please sign up to gain full access of all of our articles"
   },
   "payment": {
     "option": "Please select a subscription plan",
