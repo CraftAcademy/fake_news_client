@@ -20,14 +20,14 @@ const Navbar = (props) => {
             <Menu.Item>
               <NavLink id='nav-payment' to='/payment'>
                 Subscribe
-                </NavLink>
+              </NavLink>
             </Menu.Item>
           )}
           {!props.currentUser.isSignedIn && (
             <Menu.Item>
               <NavLink id='nav-login' to='/login'>
                 Login
-                </NavLink>
+              </NavLink>
             </Menu.Item>
           )}
           {!props.currentUser.isSignedIn && (

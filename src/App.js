@@ -4,6 +4,7 @@ import Login from './Components/Login'
 import SignUp from './Components/SignUp'
 import CreateArticle from './Components/CreateArticle'
 import Navbar from './Components/Navbar'
+import SingleArticle from './Components/SingleArticle'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Header } from 'semantic-ui-react'
@@ -22,9 +23,10 @@ class App extends Component {
       <>
         <Header as='h1'>Fake News</Header>
         <Navbar />
-        <Route exact path='/' component={ListArticles}></Route>
+        <Route exact path='/article/:id' component={SingleArticle} />
+        <Route exact path='/' component={ListArticles} />
         {this.props.currentUser.attributes.role === 'journalist' ? (
-          <Route exact path='/create' component={requireSignIn(CreateArticle)} />
+          <Route exact path='/create' component={CreateArticle} />
         ) : (
           <Redirect to='/' />
         )}

@@ -5,6 +5,7 @@ import './CSS/ListArticles.css'
 import SingleArticle from './SingleArticle'
 import { connect } from 'react-redux'
 import AlertModal from './AlertModal'
+import { NavLink } from 'react-router-dom'
 
 class ListArticles extends Component {
   state = {
@@ -35,12 +36,12 @@ class ListArticles extends Component {
     }
   }
 
-  showSingleArticleHandler = (articleId) => {
-    this.setState({
-      showArticle: true,
-      showArticleId: articleId
-    })
-  }
+  // showSingleArticleHandler = (articleId) => {
+  //   this.setState({
+  //     showArticle: true,
+  //     showArticleId: articleId
+  //   })
+  // }
 
   articleIngress = (content, wordCount) => {
     let ingress = content.split(' ').slice(0, wordCount).join(' ')
@@ -49,14 +50,13 @@ class ListArticles extends Component {
 
   renderArticles(article) {
     return (
-      <Grid.Column 
-        onClick={() => { this.showSingleArticleHandler(article.id) }} 
-        id={`article_${article.id}`} 
-        key={article.id}>
-          <img src={article.image} alt="" />
-          <h3>{article.title}</h3>
-          <p>{this.articleIngress(article.content, 20)}</p>
-      </Grid.Column>
+      <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`} >
+        <Grid.Column>
+            <img src={article.image} alt="" />
+            <h3>{article.title}</h3>
+            <p>{this.articleIngress(article.content, 20)}</p>
+        </Grid.Column>
+      </NavLink> 
     )
   }
 
@@ -72,29 +72,26 @@ class ListArticles extends Component {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
     }
 
-    if (showArticle === false) {
-      fullArticleList = (
-        <Grid.Row>
-          {articles.map(article => {
-            return this.renderArticles(article)
-          })}
-        </Grid.Row>
-      )
-      topArticleList = (
-        <Grid.Row>
-          {articles.slice(0, 3).map(article => {
-            return this.renderArticles(article)
-          })}
-        </Grid.Row>
-      )
-    }
+    fullArticleList = (
+      <Grid.Row>
+        {articles.map(article => {
+          return this.renderArticles(article)
+        })}
+      </Grid.Row>
+    )
+    topArticleList = (
+      <Grid.Row>
+        {articles.slice(0, 3).map(article => {
+          return this.renderArticles(article)
+        })}
+      </Grid.Row>
+    )
 
-    if (showArticle === true && this.props.currentUser.isSignedIn) {
-      specificArticle = <SingleArticle
-        articleId={this.state.showArticleId}
-        renderErrorMessage={this.setErrorMessage}
-      />
-    } 
+    // if (showArticle === true && this.props.currentUser.isSignedIn) {
+    //   specificArticle = <SingleArticle
+    //     articleId={this.state.showArticleId}
+    //   />
+    // } 
     
     if (showArticle === true && this.props.currentUser.isSignedIn === false) {
       specificArticle = <AlertModal />

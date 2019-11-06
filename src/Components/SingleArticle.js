@@ -14,7 +14,8 @@ class SingleArticle extends Component {
   }
 
   async componentDidMount() {
-    let response = await getSpecificArticle(this.props.articleId)
+    let response = await getSpecificArticle(this.props.match.params.id)
+    debugger
     if (response.status === 200) {
       this.setState({
         article: response.data
