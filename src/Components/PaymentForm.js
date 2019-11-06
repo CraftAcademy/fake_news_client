@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Button, Select, Label, Input } from 'semantic-ui-react'
+import { Button, Select, Label } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import getCredentials from '../Modules/GetCredentials'
 import {
@@ -74,7 +74,7 @@ class PaymentForm extends Component {
     }
 
     if (this.state.error) {
-      error = <p id="invalid-credentials">Something went wrong, please try again</p>
+      error = <p className="p__error" id="invalid-credentials">Something went wrong, please try again</p>
     }
 
     return (

@@ -44,3 +44,7 @@
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important; 
 }
+
+.p__error {
+  text-align: center;
+}
