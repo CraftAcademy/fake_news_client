@@ -6,5 +6,16 @@
     "signup": "Registrera dig",
     "create": "Skapa artiklar",
     "subscribe": "Prenumerera"
+  },
+  "login": {
+    "email": "E-post",
+    "password": "Lösenord",
+    "submit": "Skicka"
+  },
+  "signup": {
+    "email": "E-post",
+    "password": "Lösenord",
+    "password_c": "Bekräfta lösenord",
+    "submit": "Skicka"
   }
 }

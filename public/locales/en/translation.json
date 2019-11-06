@@ -6,5 +6,16 @@
     "signup": "Signup",
     "create": "Create Article",
     "subscribe": "Subscribe"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "submit": "Submit"
+  },
+  "signup": {
+    "email": "Email",
+    "password": "Password",
+    "password_c": "Password confirmation",
+    "submit": "Submit"
   }
 }
