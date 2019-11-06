@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import { getArticles } from '../Modules/ArticlesData'
 import { Header, Grid, Message } from 'semantic-ui-react'
 import './CSS/ListArticles.css'
-import SingleArticle from './SingleArticle'
 import { connect } from 'react-redux'
-import AlertModal from './AlertModal'
 import { NavLink } from 'react-router-dom'
 
 class ListArticles extends Component {
@@ -35,13 +33,6 @@ class ListArticles extends Component {
       })
     }
   }
-
-  // showSingleArticleHandler = (articleId) => {
-  //   this.setState({
-  //     showArticle: true,
-  //     showArticleId: articleId
-  //   })
-  // }
 
   articleIngress = (content, wordCount) => {
     let ingress = content.split(' ').slice(0, wordCount).join(' ')
@@ -87,16 +78,6 @@ class ListArticles extends Component {
       </Grid.Row>
     )
 
-    // if (showArticle === true && this.props.currentUser.isSignedIn) {
-    //   specificArticle = <SingleArticle
-    //     articleId={this.state.showArticleId}
-    //   />
-    // } 
-    
-    if (showArticle === true && this.props.currentUser.isSignedIn === false) {
-      specificArticle = <AlertModal />
-    }
-
     return (
       <>
         {welcomeMessage}
@@ -108,11 +89,6 @@ class ListArticles extends Component {
           <Header as='h2'>Top News</Header>
           <Grid centered container columns={3} className="latest-articles">
             {topArticleList}
-          </Grid>
-        </div>
-        <div className="specific-news">
-          <Grid centered container columns={3} className="latest-articles">
-          {specificArticle}
           </Grid>
         </div>
         <div className="list-all-news">
