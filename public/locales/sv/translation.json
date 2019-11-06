@@ -26,5 +26,8 @@
     "cvc" : "CVC",
     "submit": "Bekräfta köp",
     "text": "Årsprenumeration, 1000 SEK"
+  },
+  "top": {
+    "header": "Nyheter"
   }
 }

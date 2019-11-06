@@ -26,5 +26,8 @@
       "cvc" : "CVC",
       "submit": "Submit Payment",
       "text": "One Year, 1000 SEK"
+  },
+  "top": {
+    "header": "News"
   }
 }

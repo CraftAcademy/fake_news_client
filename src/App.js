@@ -15,11 +15,13 @@ class App extends Component {
 
   render() {
     const TranslatedPaymentForm = withTranslation()(PaymentForm)
+    const TranslatedListArticles = withTranslation()(ListArticles)
+
     return (
       <>
         <Suspense fallback={(<div>Loading</div>)}>
           <Navbar />
-          <Route exact path='/' component={ListArticles}></Route>
+          <Route exact path='/' component={ListArticles}><TranslatedListArticles /></Route>
           {this.props.currentUser.attributes.role === 'journalist' ? (
             <Route exact path='/create' component={CreateArticle} />
           ) : ( <Redirect to='/' /> )}
