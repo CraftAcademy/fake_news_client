@@ -7,6 +7,7 @@ const SignUpForm = (props) => {
 
   return (
     <div id="signup-form">
+      <h2>{t("signup.message")}</h2>
       <div className="input">
         <Input onBlur={props.inputChangeHandler} name="email" placeholder={t("signup.email")} id="email-input"/>
       </div>
