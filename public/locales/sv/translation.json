@@ -10,13 +10,15 @@
   "login": {
     "email": "E-post",
     "password": "Lösenord",
-    "submit": "Skicka"
+    "submit": "Skicka",
+    "message": "Du behöver vara inloggad för att få åtkomst till alla våra artiklar"
   },
   "signup": {
     "email": "E-post",
     "password": "Lösenord",
     "password_c": "Bekräfta lösenord",
-    "submit": "Skicka"
+    "submit": "Skicka",
+    "message": "Vänligen fyll i följande uppgifter för att registrera dig på vår hemsida"
   },
   "payment": {
     "option": "Var god och välj prenumeration",
