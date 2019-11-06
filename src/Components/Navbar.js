@@ -16,20 +16,27 @@ const Navbar = (props) => {
           </Menu.Item>
         )}
         <Menu.Menu position='right'>
-            {!props.currentUser.isSignedIn && (
-              <Menu.Item>
-                <NavLink id='nav-login' to='/login'>
-                  Login
+        {props.currentUser.isSignedIn && (
+            <Menu.Item>
+              <NavLink id='nav-payment' to='/payment'>
+                Subscribe
                 </NavLink>
-              </Menu.Item>
-            )}
-            {!props.currentUser.isSignedIn && (
-              <Menu.Item>
-                <NavLink id='nav-signup' to='/signup'>
-                  Signup
+            </Menu.Item>
+          )}
+          {!props.currentUser.isSignedIn && (
+            <Menu.Item>
+              <NavLink id='nav-login' to='/login'>
+                Login
                 </NavLink>
-              </Menu.Item>
-            )}
+            </Menu.Item>
+          )}
+          {!props.currentUser.isSignedIn && (
+            <Menu.Item>
+              <NavLink id='nav-signup' to='/signup'>
+                Signup
+                </NavLink>
+            </Menu.Item>
+          )}
         </Menu.Menu>
       </Menu>
     </>

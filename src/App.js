@@ -8,6 +8,7 @@ import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Header } from 'semantic-ui-react'
 import './Components/CSS/App.css'
+import PaymentForm from './Components/PaymentForm'
 
 class App extends Component {
 
@@ -28,7 +29,9 @@ class App extends Component {
         <Route exact path='/signup' component={SignUp}>
           {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <SignUp />}
         </Route>
-
+        <Route exact path='/payment' component={PaymentForm}>
+          {this.props.currentUser.isSignedIn ? <PaymentForm /> : <Redirect to="/" />}
+        </Route>
       </>
     )
   }
