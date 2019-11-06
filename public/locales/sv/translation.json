@@ -17,5 +17,14 @@
     "password": "Lösenord",
     "password_c": "Bekräfta lösenord",
     "submit": "Skicka"
+  },
+  "payment": {
+    "option": "Var god och välj prenumeration",
+    "option_c": "Tillgängliga alternativ",
+    "credit": "Kreditkortsnummer",
+    "expiry" : "Utgångsdatum",
+    "cvc" : "CVC",
+    "submit": "Bekräfta köp",
+    "text": "Årsprenumeration, 1000 SEK"
   }
 }

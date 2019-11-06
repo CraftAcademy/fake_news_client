@@ -9,10 +9,12 @@ import { connect } from 'react-redux'
 import "./i18n";
 import './Components/CSS/App.css'
 import PaymentForm from './Components/PaymentForm'
+import { withTranslation } from 'react-i18next'
 
 class App extends Component {
 
   render() {
+    const TranslatedPaymentForm = withTranslation()(PaymentForm)
     return (
       <>
         <Suspense fallback={(<div>Loading</div>)}>
@@ -28,7 +30,7 @@ class App extends Component {
             {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <SignUp />}
           </Route>
           <Route exact path='/payment' component={PaymentForm}>
-            {this.props.currentUser.isSignedIn ? <PaymentForm /> : <Redirect to="/" />}
+            {this.props.currentUser.isSignedIn ? <TranslatedPaymentForm /> : <Redirect to="/" />}
           </Route>
         </Suspense>
       </>

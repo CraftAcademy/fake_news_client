@@ -17,5 +17,14 @@
     "password": "Password",
     "password_c": "Password confirmation",
     "submit": "Submit"
+  },
+  "payment": {
+    "option": "Please select a subscription plan",
+      "option_c": "Currently available options",
+      "credit": "Credit card number",
+      "expiry" : "Expiration date",
+      "cvc" : "CVC",
+      "submit": "Submit Payment",
+      "text": "One Year, 1000 SEK"
   }
 }
