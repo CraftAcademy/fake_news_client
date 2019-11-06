@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ArticleFormInput from './ArticleFormInput'
 import { submitArticle } from '../Modules/ArticlesData'
-import { Button } from 'semantic-ui-react'
 
 class CreateArticle extends Component {
 

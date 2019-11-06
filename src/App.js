@@ -3,11 +3,9 @@ import ListArticles from './Components/ListArticles'
 import Login from './Components/Login'
 import SignUp from './Components/SignUp'
 import CreateArticle from './Components/CreateArticle'
-import FakeFunction from './Components/fakeFunction'
 import Navbar from './Components/Navbar'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Header } from 'semantic-ui-react'
 import "./i18n";
 import './Components/CSS/App.css'
 import PaymentForm from './Components/PaymentForm'
@@ -18,8 +16,6 @@ class App extends Component {
     return (
       <>
         <Suspense fallback={(<div>Loading</div>)}>
-          <Header as='h1'>Fake News</Header>
-          <FakeFunction />
           <Navbar />
           <Route exact path='/' component={ListArticles}></Route>
           {this.props.currentUser.attributes.role === 'journalist' ? (

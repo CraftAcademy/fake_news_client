@@ -1,5 +1,10 @@
 {
-  "fakeNews": {
-    "header": "English"
+  "navbar": {
+    "header": "Fake News",
+    "login": "Login",
+    "home": "Home",
+    "signup": "Signup",
+    "create": "Create Article",
+    "subscribe": "Subscribe"
   }
 }
