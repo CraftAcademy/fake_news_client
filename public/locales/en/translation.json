@@ -29,5 +29,8 @@
   },
   "top": {
     "header": "News"
+  },
+  "flash": {
+    "alert": "You need to be logged in to view this article."
   }
 }

@@ -9,7 +9,7 @@ const Navbar = (props) => {
 
   return (
     <>
-      <Header as='h1'>{t("navbar.header")}</Header>
+      <Header id="hero-header" as='h1'>{t("navbar.header")}</Header>
       <Menu stackable id="navbar">
         <Menu.Item>
           <NavLink id='nav-home' to='/'>{t("navbar.home")}</NavLink>
