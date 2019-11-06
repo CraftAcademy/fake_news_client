@@ -61,7 +61,7 @@ describe('User can buy a subscription for the articles', () => {
       response: 'fixture:successful_payment.json',
       status: 402
     })
-    cy.signup_user(
+    cy.signupUser(
       "user@mail.com",
       "password",
       "password"
@@ -105,7 +105,7 @@ describe('User can buy a subscription for the articles', () => {
       response: 'fixture:unsuccessful_payment.json',
       status: 402
     })
-    cy.signup_user(
+    cy.signupUser(
       "user@mail.com",
       "password",
       "password"

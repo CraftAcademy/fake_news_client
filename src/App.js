@@ -9,11 +9,6 @@ import { connect } from 'react-redux'
 import { Header } from 'semantic-ui-react'
 import './Components/CSS/App.css'
 import PaymentForm from './Components/PaymentForm'
-import { generateRequireSignInWrapper } from 'redux-token-auth';
-
-const requireSignIn = generateRequireSignInWrapper({
-  redirectPathIfNotSignedIn: '/login',
-})
 
 class App extends Component {
 
@@ -23,14 +18,14 @@ class App extends Component {
         <Header as='h1'>Fake News</Header>
         <Navbar />
         <Route exact path='/' component={ListArticles}></Route>
-        <Route exact path='/create' component={requireSignIn(CreateArticle)}></Route>
+        <Route exact path='/create' component={CreateArticle}></Route>
         <Route exact path='/login' component={Login}>
           {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
         </Route>
         <Route exact path='/signup' component={SignUp}>
           {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <SignUp />}
         </Route>
-        <Route exact path='/payment' component={requireSignIn(PaymentForm)}>
+        <Route exact path='/payment' component={PaymentForm}>
           {this.props.currentUser.isSignedIn ? <PaymentForm /> : <Redirect to="/" />}
         </Route>
       </>
