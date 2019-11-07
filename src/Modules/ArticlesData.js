@@ -15,7 +15,6 @@ const getArticles = async () => {
 }
 
 const submitArticle = async (title, content, image) => {
-  debugger
   try {
     let response = await axios.post(apiUrl + 'articles',
     {
@@ -29,13 +28,11 @@ const submitArticle = async (title, content, image) => {
     return response
 
   } catch(error) {
-    debugger
     return error.response.data.errors || error.response.data.error_message
   }
 }
 
 const getSpecificArticle = async (articleId) => {
-  debugger
   try {
     let response = await axios.get(apiUrl + `articles/${articleId}`,
     {
@@ -47,10 +44,9 @@ const getSpecificArticle = async (articleId) => {
   }
 }
 
-const editArticle = async (title, content, image, articleId) => {
-  debugger
+const editArticle = async (title, content, image) => {
   try {
-    let response = await axios.put(apiUrl + `articles/${articleId}`,
+    let response = await axios.put(apiUrl + 'articles',
     {
       title: title,
       content: content,
@@ -62,7 +58,6 @@ const editArticle = async (title, content, image, articleId) => {
     return response
     
   } catch(error) {
-    debugger
     return error.response.data.error_message
   }
 }

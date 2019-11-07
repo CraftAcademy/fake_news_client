@@ -24,8 +24,8 @@ class App extends Component {
         <Header as='h1'>Fake News</Header>
         <Navbar />
         <Route exact path='/' component={ListArticles} />
-        <Route exact path='/article/:id' component={SingleArticle} />
-        <Route exact path='/create' component={CreateArticle} />
+        <Route exact path='/article/:id' component={requireSignIn(SingleArticle)} />
+        <Route exact path='/create' component={requireSignIn(CreateArticle)} />
         <Route exact path='/login' component={Login}>
           {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
         </Route>
