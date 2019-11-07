@@ -8,6 +8,7 @@ const stubLocation = options => ({
     };
     cy.stub(win.navigator.geolocation, "getCurrentPosition").callsFake(
       callback => {
+        console.log("Hello from cypess")
         return callback(stubLocation);
       }
     );
@@ -15,3 +16,19 @@ const stubLocation = options => ({
 });
 
 export default stubLocation;
+
+
+// const stubLocation = (latitude, longitude) => {
+//   return {
+//     onBeforeLoad(win) {
+//       cy.stub(win.navigator.geolocation, "getCurrentPosition", (cb, err) => {
+//         if (latitude && longitude) {
+//           return cb({ coords: { latitude, longitude } });
+//         }
+//         throw err({ code: 1 }); // 1: rejected, 2: unable, 3: timeout
+//       });
+//     }
+//   };
+// }
+
+

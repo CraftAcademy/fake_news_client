@@ -2,7 +2,7 @@ import stubLocation from "../support/stubLocation"
 
 describe('User can view the website in their language', () => {
 
-  it('successfully shows swedish UI', () => {
+  beforeEach(() => {
     cy.server()
     cy.route({
       method: 'GET',
@@ -16,9 +16,11 @@ describe('User can view the website in their language', () => {
     }),
     cy.visit(
       "http://localhost:3001",
-      stubLocation({ latitude: 40.73061, longitude: 73.935242 })
+      stubLocation({ latitude: 57.7089, longitude: 11.9746 })
     )
+  })
 
+  it('successfully shows swedish UI', () => {
     cy.get('#hero-header')
       .should('contain', 'Falska Nyheter')
   })
