@@ -15,6 +15,7 @@ const getArticles = async () => {
 }
 
 const submitArticle = async (title, content, image) => {
+  debugger
   try {
     let response = await axios.post(apiUrl + 'articles',
     {
@@ -28,7 +29,8 @@ const submitArticle = async (title, content, image) => {
     return response
 
   } catch(error) {
-    return error.response.data.error_message
+    debugger
+    return error.response.data.errors || error.response.data.error_message
   }
 }
 
@@ -41,21 +43,26 @@ const getSpecificArticle = async (articleId) => {
     })
     return response
   } catch(error) {
-    return error.response.data.errors
+    return error.response.data.error_message || error.response.data.errors
   }
 }
 
-const editArticle = async (title, content, image) => {
+const editArticle = async (title, content, image, articleId) => {
+  debugger
   try {
-    let response = await axios.put(apiUrl + 'articles',
+    let response = await axios.put(apiUrl + `articles/${articleId}`,
     {
       title: title,
       content: content,
       image: image
+    },
+    {
+      headers: getCurrentCredentials()
     })
     return response
     
   } catch(error) {
+    debugger
     return error.response.data.error_message
   }
 }

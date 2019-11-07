@@ -25,20 +25,14 @@ class App extends Component {
         <Navbar />
         <Route exact path='/' component={ListArticles} />
         <Route exact path='/article/:id' component={SingleArticle} />
-        {this.props.currentUser.attributes.role === 'journalist' ? (
-          <Route exact path='/create' component={requireSignIn(CreateArticle)} />
-        ) : (
-          <Redirect to='/' />
-        )}
+        <Route exact path='/create' component={CreateArticle} />
         <Route exact path='/login' component={Login}>
           {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
         </Route>
         <Route exact path='/signup' component={SignUp}>
           {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <SignUp />}
         </Route>
-        <Route exact path='/payment' component={requireSignIn(PaymentForm)}>
-          {this.props.currentUser.isSignedIn ? <PaymentForm /> : <Redirect to="/" />}
-        </Route>
+        <Route exact path='/payment' component={requireSignIn(PaymentForm)} />
       </>
     )
   }
