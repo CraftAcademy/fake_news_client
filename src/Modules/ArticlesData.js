@@ -51,9 +51,6 @@ const editArticle = async (title, content, image) => {
       title: title,
       content: content,
       image: image
-    },
-    {
-      headers: getCurrentCredentials()
     })
     return response
     

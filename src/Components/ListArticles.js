@@ -52,8 +52,8 @@ class ListArticles extends Component {
   }
 
   render() {
-    const {articles, showArticle} = this.state
-    let fullArticleList, topArticleList, errorMessage, specificArticle, welcomeMessage
+    const {articles} = this.state
+    let fullArticleList, topArticleList, errorMessage, welcomeMessage
 
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = <Message> <h3 id="welcome-message">Hello {this.props.currentUser.attributes.email}</h3></Message>
