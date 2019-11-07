@@ -1,0 +1,38 @@
+{
+  "navbar": {
+    "header": "Falska Nyheter",
+    "login": "Logga in",
+    "home": "Hem",
+    "signup": "Registrera dig",
+    "create": "Skapa artikel",
+    "subscribe": "Prenumerera"
+  },
+  "login": {
+    "email": "E-post",
+    "password": "Lösenord",
+    "submit": "Skicka",
+    "message": "Du behöver vara inloggad för att få åtkomst till alla våra artiklar"
+  },
+  "signup": {
+    "email": "E-post",
+    "password": "Lösenord",
+    "password_c": "Bekräfta lösenord",
+    "submit": "Skicka",
+    "message": "Vänligen fyll i följande uppgifter för att registrera dig på vår hemsida"
+  },
+  "payment": {
+    "option": "Var god och välj prenumeration",
+    "option_c": "Tillgängliga alternativ",
+    "credit": "Kreditkortsnummer",
+    "expiry" : "Utgångsdatum",
+    "cvc" : "CVC",
+    "submit": "Bekräfta köp",
+    "text": "Årsprenumeration, 1000 SEK"
+  },
+  "top": {
+    "header": "Nyheter"
+  },
+  "flash": {
+    "alert": "Du behöver vara inloggad för att kunna se denna artikel."
+  }
+}

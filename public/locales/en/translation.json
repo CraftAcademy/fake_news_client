@@ -1,0 +1,38 @@
+{
+  "navbar": {
+    "header": "Fake News",
+    "login": "Login",
+    "home": "Home",
+    "signup": "Signup",
+    "create": "Create Article",
+    "subscribe": "Subscribe"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "submit": "Submit",
+    "message": "Please login to gain full access of all of our articles"
+  },
+  "signup": {
+    "email": "Email",
+    "password": "Password",
+    "password_c": "Password confirmation",
+    "submit": "Submit",
+    "message": "Please sign up to gain full access of all of our articles"
+  },
+  "payment": {
+    "option": "Please select a subscription plan",
+      "option_c": "Currently available options",
+      "credit": "Credit card number",
+      "expiry" : "Expiration date",
+      "cvc" : "CVC",
+      "submit": "Submit Payment",
+      "text": "One Year, 1000 SEK"
+  },
+  "top": {
+    "header": "News"
+  },
+  "flash": {
+    "alert": "You need to be logged in to view this article."
+  }
+}
