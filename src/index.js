@@ -9,8 +9,10 @@ import configureStore from './state/store/configureStore'
 import "./i18n"
 import { Elements, StripeProvider } from "react-stripe-elements"
 import { BrowserRouter } from 'react-router-dom'
+import { verifyCredentials } from './state/actions/reduxTokenAuthConfig'
 
 const store = configureStore()
+verifyCredentials(store)
 
 ReactDOM.render(
   <Provider store={store}>

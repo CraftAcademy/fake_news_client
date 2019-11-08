@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { getArticles } from '../Modules/ArticlesData'
 import { Header, Grid, Message } from 'semantic-ui-react'
 import './CSS/ListArticles.css'
-import SingleArticle from './SingleArticle'
 import { connect } from 'react-redux'
-import AlertModal from './AlertModal'
+import { NavLink } from 'react-router-dom'
 
 class ListArticles extends Component {
   state = {
@@ -35,13 +34,6 @@ class ListArticles extends Component {
     }
   }
 
-  showSingleArticleHandler = (articleId) => {
-    this.setState({
-      showArticle: true,
-      showArticleId: articleId
-    })
-  }
-
   articleIngress = (content, wordCount) => {
     let ingress = content.split(' ').slice(0, wordCount).join(' ')
     return ingress + '...'
@@ -49,20 +41,19 @@ class ListArticles extends Component {
 
   renderArticles(article) {
     return (
-      <Grid.Column 
-        onClick={() => { this.showSingleArticleHandler(article.id) }} 
-        id={`article_${article.id}`} 
-        key={article.id}>
-          <img src={article.image} alt="" />
-          <h3>{article.title}</h3>
-          <p>{this.articleIngress(article.content, 20)}</p>
-      </Grid.Column>
+      <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`} >
+        <Grid.Column>
+            <img src={article.image} alt="" />
+            <h3>{article.title}</h3>
+            <p>{this.articleIngress(article.content, 20)}</p>
+        </Grid.Column>
+      </NavLink> 
     )
   }
 
   render() {
-    const {articles, showArticle} = this.state
-    let fullArticleList, topArticleList, errorMessage, specificArticle, welcomeMessage
+    const {articles} = this.state
+    let fullArticleList, topArticleList, errorMessage, welcomeMessage
     const { t } = this.props;
 
     if (this.props.currentUser.isSignedIn) {
@@ -73,33 +64,20 @@ class ListArticles extends Component {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
     }
 
-    if (showArticle === false) {
-      fullArticleList = (
-        <Grid.Row>
-          {articles.map(article => {
-            return this.renderArticles(article)
-          })}
-        </Grid.Row>
-      )
-      topArticleList = (
-        <Grid.Row>
-          {articles.slice(0, 3).map(article => {
-            return this.renderArticles(article)
-          })}
-        </Grid.Row>
-      )
-    }
-
-    if (showArticle === true && this.props.currentUser.isSignedIn) {
-      specificArticle = <SingleArticle
-        articleId={this.state.showArticleId}
-        renderErrorMessage={this.setErrorMessage}
-      />
-    } 
-    
-    if (showArticle === true && this.props.currentUser.isSignedIn === false) {
-      specificArticle = <AlertModal />
-    }
+    fullArticleList = (
+      <Grid.Row>
+        {articles.map(article => {
+          return this.renderArticles(article)
+        })}
+      </Grid.Row>
+    )
+    topArticleList = (
+      <Grid.Row>
+        {articles.slice(0, 3).map(article => {
+          return this.renderArticles(article)
+        })}
+      </Grid.Row>
+    )
 
     return (
       <>
@@ -117,11 +95,6 @@ class ListArticles extends Component {
         <div className="list-all-news">
           <Grid centered container columns={2} className="latest-articles">
             {fullArticleList}
-          </Grid>
-        </div>
-        <div className="specific-news">
-          <Grid centered container columns={3} className="latest-articles">
-          {specificArticle}
           </Grid>
         </div>
       </>
