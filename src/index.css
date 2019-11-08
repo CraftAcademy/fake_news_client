@@ -46,7 +46,18 @@ p {
   font-size: 17px !important;
   color: black !important;
   margin-top: 0 !important;
-  margin-bottom: 2rem !important;
+  z-index: 999 !important;
+  background: #fff !important;
+}
+
+.ui.menu.item {
+  z-index: 999 !important;
+  background: #fff !important;
+}
+
+.item {
+  z-index: 999 !important;
+  background: #fff !important;
 }
 
 .input {
