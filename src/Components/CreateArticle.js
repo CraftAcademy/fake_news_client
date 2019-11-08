@@ -19,7 +19,6 @@ class CreateArticle extends Component {
   }
 
   submitArticleHandler = async () => {
-    debugger
     const { title, content, image, category } = this.state
     let response = await submitArticle(title, content, image, category)
 
