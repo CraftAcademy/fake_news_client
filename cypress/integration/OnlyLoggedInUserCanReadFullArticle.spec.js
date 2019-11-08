@@ -19,7 +19,7 @@ describe('User can view single article if logged in', () => {
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/auth/sign_in',
-      response: 'fixture:successful_user_login.json',
+      response: 'fixture:successful_subscriber_login.json',
       status: 200
     })
 
@@ -28,11 +28,11 @@ describe('User can view single article if logged in', () => {
         cy.get('#nav-login').click()
       })
     cy.get('#login-form').within(() => {
-      cy.get('#email-input').type('user@mail.com')
+      cy.get('#email-input').type('subscriber@mail.com')
       cy.get('#password-input').type('password')
     })
     cy.get('#submit-login-form').click()
-    cy.get('#welcome-message').should('contain', 'Hello user@mail.com')
+    cy.get('#welcome-message').should('contain', 'Hello subscriber@mail.com')
 
     cy.get('#article_1')
       .click()
@@ -48,12 +48,6 @@ describe('User can view single article if logged in', () => {
   it('receives a message prompting login unless user is logged in', () => {
     cy.get('#article_1')
       .click()
-    cy.get("#flash-message")
-      .should('be.visible')
-    cy.get("div#flash-message.ui.message")
-      .should('contain', 'You need to be logged in to view this article.')
-      .wait(5000)
-    cy.get("#flash-message")
-      .should('not.be.visible')
+    cy.get('Please login to gain full access of all of our articles')
   })
 });
