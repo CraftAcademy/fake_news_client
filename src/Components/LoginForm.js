@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 const LoginForm = (props) => {
   const { t } = useTranslation()
 
-   return (
+  return (
     <>
       <Container id="login-form">
         <h2>{t("login.message")}</h2>
