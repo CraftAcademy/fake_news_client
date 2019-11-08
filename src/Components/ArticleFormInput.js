@@ -4,6 +4,16 @@ import ImageUploader from 'react-images-upload'
 const ArticleFormInput = (props) => {
   return (
     <div id="article-form">
+      <div>
+        <select id="categories" onChange={props.inputHandler}>
+          <option name="politics" value="Politics">Politics</option>
+          <option name="economy" value="Economy">Economy</option>
+          <option name="tech" value="Tech">Tech</option>
+          <option name="lifestyle" value="Lifestyle">Lifestyle</option>
+          <option name="sports" value="Sports">Sports</option>
+          <option name="leisure" value="Leisure">Leisure</option>
+        </select>
+      </div>
       <input name="title" id="title-input" onChange={props.inputHandler} />
       <input name="content" id="content-input" onChange={props.inputHandler} />
 

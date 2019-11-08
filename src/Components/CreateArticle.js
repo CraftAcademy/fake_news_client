@@ -8,7 +8,8 @@ class CreateArticle extends Component {
     title: '',
     content: '',
     image: '',
-    responseMessage: ''
+    responseMessage: '',
+    category: 'Politics'
   }
 
   inputHandler = (e) => {
