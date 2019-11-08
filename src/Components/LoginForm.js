@@ -10,14 +10,10 @@ const LoginForm = (props) => {
       <Container id="login-form">
         <h2>{t("login.message")}</h2>
         <div className="input">
-          <Input placeholder={t("login.email")} id="email-input" name="email" onChange={props.inputChangeHandlerProps}>
-            <input />
-          </Input>
+          <Input placeholder={t("login.email")} id="email-input" name="email" onChange={props.inputChangeHandlerProps} />
         </div>
         <div className="input">
-          <Input id="password-input" type="password" placeholder={t("login.password")} name="password" onChange={props.inputChangeHandlerProps}>
-            <input />
-          </Input>
+          <Input id="password-input" type="password" placeholder={t("login.password")} name="password" onChange={props.inputChangeHandlerProps} />
         </div>
         <div className="button">
           <Button color='blue' type="submit" onClick={props.handleLoginProps} id="submit-login-form">{t("login.submit")}</Button>

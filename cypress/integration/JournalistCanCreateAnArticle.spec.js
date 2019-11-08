@@ -39,6 +39,7 @@ describe('Journalist can create an article', () => {
     })
 
     cy.get('#article-form').within(() => {
+      cy.get('select[id="categories"]').select('Sports')
       cy.get('#title-input').type('How much wood would a wood chuck chuck?')
       cy.get('#content-input').type('OMG do you even know how much wood it could chuck?')
       cy.get('#submit-article').click()
@@ -55,6 +56,7 @@ describe('Journalist can create an article', () => {
     })
 
     cy.get('#article-form').within(() => {
+      cy.get('select[id="categories"]').select('Sports')
       cy.get('#title-input').type('Ho')
       cy.get('#content-input').type('OMG do you even know how much wood it could chuck?')
       cy.get('#submit-article').click()

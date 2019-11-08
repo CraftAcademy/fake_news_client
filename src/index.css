@@ -60,3 +60,18 @@ p {
 #login-form {
   text-align: center;
 }
+
+#article-wrapper {
+  padding: 10rem !important;
+  padding-top: 2rem !important;
+}
+
+ui.form {
+  position: relative;
+  max-width: 0 !important;
+  padding: 2rem !important;
+}
+
+#title-input {
+  width: 100%;
+}
