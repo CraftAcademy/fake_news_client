@@ -54,6 +54,7 @@ class ListArticles extends Component {
   render() {
     const {articles} = this.state
     let fullArticleList, topArticleList, errorMessage, welcomeMessage
+    const { t } = this.props;
 
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = <Message> <h3 id="welcome-message">Hello {this.props.currentUser.attributes.email}</h3></Message>
@@ -86,7 +87,7 @@ class ListArticles extends Component {
           {errorMessage}
         </div>
         <div className="top-news">
-          <Header as='h2'>Top News</Header>
+          <Header as='h2'>{t("top.header")}</Header>
           <Grid centered container columns={3} className="latest-articles">
             {topArticleList}
           </Grid>
@@ -109,4 +110,4 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps
-)(ListArticles) 
+)(ListArticles)

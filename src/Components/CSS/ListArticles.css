@@ -1,10 +1,10 @@
 h2 {
   margin: 1rem 1.5rem !important;
+  text-align: center;
 }
 
 .top-news {
   margin: 0.5rem 0.2rem;
-  border: 1px solid rgb(231, 230, 230);
 }
 
 .ui.grid {

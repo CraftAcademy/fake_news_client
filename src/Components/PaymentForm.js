@@ -49,25 +49,26 @@ class PaymentForm extends Component {
   render() {
     let renderSubscribeForm
     let error
+    const { t } = this.props;
     const subscriptionOptions = [
-      { key: 'one', value: 'one', text: 'One Year, 1000 SEK' }
+      { key: 'one', value: 'one', text:`${t("payment.text")}` }
     ]
 
     if (this.props.currentUser.isSignedIn) {
       renderSubscribeForm = (
         <div id="payment-form">
-          <Label pointing='below'>Please select a subscription plan</Label>
-          <Select id="select-option" placeholder='Currently available options' options={subscriptionOptions} />
+          <Label pointing='below'>{t("payment.option")}</Label>
+          <Select id="select-option" placeholder={t("payment.option_c")} options={subscriptionOptions} />
           <div>
-          <Label className="payment__label" pointing='below'>Credit card number</Label>
+          <Label className="payment__label" pointing='below'>{t("payment.credit")}</Label>
           <div id="card-number-element"><CardNumberElement /></div>
-          <Label className="payment__label" pointing='below'>Expiration date</Label>
+          <Label className="payment__label" pointing='below'>{t("payment.expiry")}</Label>
           <CardExpiryElement />
-          <Label className="payment__label" pointing='below'>CVC</Label>
+          <Label className="payment__label" pointing='below'>{t("payment.cvc")}</Label>
           <CardCVCElement />
           </div>
           <Button onClick={this.payWithStripe} id="submit-payment" className="submit-payment">
-            Submit Payment
+          {t("payment.submit")}
           </Button>
         </div>
       )

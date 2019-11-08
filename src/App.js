@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Suspense } from 'react'
 import ListArticles from './Components/ListArticles'
 import Login from './Components/Login'
 import SignUp from './Components/SignUp'
@@ -7,10 +7,11 @@ import Navbar from './Components/Navbar'
 import SingleArticle from './Components/SingleArticle'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Header } from 'semantic-ui-react'
+import "./i18n";
 import './Components/CSS/App.css'
 import PaymentForm from './Components/PaymentForm'
-import { generateRequireSignInWrapper } from 'redux-token-auth';
+import { withTranslation } from 'react-i18next'
+import { generateRequireSignInWrapper } from 'redux-token-auth'
 
 const requireSignIn = generateRequireSignInWrapper({
   redirectPathIfNotSignedIn: '/login',
@@ -19,20 +20,26 @@ const requireSignIn = generateRequireSignInWrapper({
 class App extends Component {
 
   render() {
+    const TranslatedPaymentForm = withTranslation()(PaymentForm)
+    const TranslatedListArticles = withTranslation()(ListArticles)
+
     return (
       <>
-        <Header as='h1'>Fake News</Header>
-        <Navbar />
-        <Route exact path='/' component={ListArticles} />
-        <Route exact path='/article/:id' component={requireSignIn(SingleArticle)} />
-        <Route exact path='/create' component={requireSignIn(CreateArticle)} />
-        <Route exact path='/login' component={Login}>
-          {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
-        </Route>
-        <Route exact path='/signup' component={SignUp}>
-          {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <SignUp />}
-        </Route>
-        <Route exact path='/payment' component={requireSignIn(PaymentForm)} />
+        <Suspense fallback={(<div>Loading</div>)}>
+          <Navbar />
+          <Route exact path='/' component={ListArticles}><TranslatedListArticles /></Route>
+          <Route exact path='/article/:id' component={requireSignIn(SingleArticle)} />
+          <Route exact path='/create' component={requireSignIn(CreateArticle)} />
+          <Route exact path='/login' component={Login}>
+            {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
+          </Route>
+          <Route exact path='/signup' component={SignUp}>
+            {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <SignUp />}
+          </Route>
+          <Route exact path='/payment' component={requireSignIn(PaymentForm)}>
+            {this.props.currentUser.isSignedIn ? <TranslatedPaymentForm /> : <Redirect to="/" />}
+          </Route>
+        </Suspense>
       </>
     )
   }

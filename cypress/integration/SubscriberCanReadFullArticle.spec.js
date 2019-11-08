@@ -48,6 +48,7 @@ describe('User can view single article if logged in', () => {
   it('receives a message prompting login unless user is logged in', () => {
     cy.get('#article_1')
       .click()
-    cy.get('Please login to gain full access of all of our articles')
+    cy.get('#login-form')
+      .should('contain', 'Please login to gain full access of all of our articles')
   })
 });

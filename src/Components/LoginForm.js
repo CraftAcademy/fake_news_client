@@ -1,22 +1,26 @@
 import React from 'react'
 import { Container, Input, Button } from 'semantic-ui-react'
+import { useTranslation } from 'react-i18next'
 
 const LoginForm = (props) => {
+  const { t } = useTranslation()
+
    return (
     <>
       <Container id="login-form">
+        <h2>{t("login.message")}</h2>
         <div className="input">
-          <Input placeholder="Email" id="email-input" name="email" onChange={props.inputChangeHandlerProps}>
+          <Input placeholder={t("login.email")} id="email-input" name="email" onChange={props.inputChangeHandlerProps}>
             <input />
           </Input>
         </div>
         <div className="input">
-          <Input id="password-input" type="password" placeholder="Password" name="password" onChange={props.inputChangeHandlerProps}>
+          <Input id="password-input" type="password" placeholder={t("login.password")} name="password" onChange={props.inputChangeHandlerProps}>
             <input />
           </Input>
         </div>
         <div className="button">
-          <Button color='blue' type="password" onClick={props.handleLoginProps} id="submit-login-form">Submit</Button>
+          <Button color='blue' type="submit" onClick={props.handleLoginProps} id="submit-login-form">{t("login.submit")}</Button>
         </div>
       </Container>
     </>
