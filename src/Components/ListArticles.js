@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getArticles } from '../Modules/ArticlesData'
-import { Header, Grid, Message } from 'semantic-ui-react'
+import { Header, Grid, Message, Card, Image } from 'semantic-ui-react'
 import './CSS/ListArticles.css'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
@@ -43,9 +43,13 @@ class ListArticles extends Component {
     return (
       <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`} >
         <Grid.Column>
-            <img src={article.image} alt="" />
+          <Card>
+            <Image src={article.image} alt="" wrapped ui={false} />
+            <Card.Content>
             <h3>{article.title}</h3>
             <p>{this.articleIngress(article.content, 20)}</p>
+            </Card.Content>
+            </Card>
         </Grid.Column>
       </NavLink> 
     )
@@ -66,7 +70,7 @@ class ListArticles extends Component {
 
     fullArticleList = (
       <Grid.Row>
-        {articles.map(article => {
+        {articles.slice(3, -1).map(article => {
           return this.renderArticles(article)
         })}
       </Grid.Row>
