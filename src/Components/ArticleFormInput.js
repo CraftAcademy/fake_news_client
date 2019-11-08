@@ -5,7 +5,7 @@ const ArticleFormInput = (props) => {
   return (
     <div id="article-form">
       <div>
-        <select id="categories" onChange={props.inputHandler}>
+        <select id="categories" name="category" onChange={props.inputHandler}>
           <option name="politics" value="Politics">Politics</option>
           <option name="economy" value="Economy">Economy</option>
           <option name="tech" value="Tech">Tech</option>
