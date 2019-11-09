@@ -2,6 +2,7 @@ import React, { Component, Suspense } from 'react'
 import ListArticles from './Components/ListArticles'
 import Login from './Components/Login'
 import SignUp from './Components/SignUp'
+import Logout from './Components/Logout'
 import CreateArticle from './Components/CreateArticle'
 import Navbar from './Components/Navbar'
 import SingleArticle from './Components/SingleArticle'
@@ -36,8 +37,10 @@ class App extends Component {
           <Route exact path='/signup' component={SignUp}>
             {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <SignUp />}
           </Route>
+          <Route exact path='/logout' component={Logout}>
+          </Route>
           <Route exact path='/payment' component={requireSignIn(PaymentForm)}>
-            {this.props.currentUser.isSignedIn ? <TranslatedPaymentForm /> : <Redirect to="/" />}
+            {this.props.currentUser.isSignedIn && this.props.currentUser.attributes.role === 'user' ? <TranslatedPaymentForm /> : <Redirect to="/" />}
           </Route>
         </Suspense>
       </>
