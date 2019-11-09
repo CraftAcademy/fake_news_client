@@ -14,13 +14,14 @@ const getArticles = async () => {
   }
 }
 
-const submitArticle = async (title, content, image) => {
+const submitArticle = async (title, content, image, category) => {
   try {
     let response = await axios.post(apiUrl + 'articles',
     {
       title: title,
       content: content,
-      image: image
+      image: image,
+      category: category
     },
     {
       headers: getCurrentCredentials()

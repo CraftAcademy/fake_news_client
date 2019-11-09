@@ -8,7 +8,8 @@ class CreateArticle extends Component {
     title: '',
     content: '',
     image: '',
-    responseMessage: ''
+    responseMessage: '',
+    category: 'Politics'
   }
 
   inputHandler = (e) => {
@@ -18,8 +19,8 @@ class CreateArticle extends Component {
   }
 
   submitArticleHandler = async () => {
-    const { title, content, image } = this.state
-    let response = await submitArticle(title, content, image)
+    const { title, content, image, category } = this.state
+    let response = await submitArticle(title, content, image, category)
 
     if (response.status === 200) {
       this.setState({

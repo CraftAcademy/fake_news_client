@@ -31,5 +31,20 @@
   },
   "top": {
     "header": "Nyheter"
+  },
+  "create": {
+    "header": "Skapa din artikel",
+    "selector": {
+      "politics": "Politik",
+      "economy": "Ekonomi",
+      "tech": "Teknik",
+      "lifestyle": "Livsstil",
+      "sports": "Sport",
+      "leisure": "Fritid"
+    },
+    "title": "Titel",
+    "content": "Innehåll",
+    "image": "Ladda upp artikel bild (jpg/png)",
+    "submit": "Skicka in Artikel"
   }
 }

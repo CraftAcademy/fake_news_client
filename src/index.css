@@ -46,7 +46,18 @@ p {
   font-size: 17px !important;
   color: black !important;
   margin-top: 0 !important;
-  margin-bottom: 2rem !important;
+  z-index: 999 !important;
+  background: #fff !important;
+}
+
+.ui.menu.item {
+  z-index: 999 !important;
+  background: #fff !important;
+}
+
+.item {
+  z-index: 999 !important;
+  background: #fff !important;
 }
 
 .input {
@@ -59,4 +70,19 @@ p {
 
 #login-form {
   text-align: center;
+}
+
+#article-wrapper {
+  padding: 10rem !important;
+  padding-top: 2rem !important;
+}
+
+ui.form {
+  position: relative;
+  max-width: 0 !important;
+  padding: 2rem !important;
+}
+
+#title-input {
+  width: 100%;
 }
