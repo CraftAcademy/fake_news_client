@@ -49,7 +49,7 @@ class ListArticles extends Component {
             <h3>{article.title}</h3>
             <p>{this.articleIngress(article.content, 20)}</p>
             </Card.Content>
-            </Card>
+          </Card>
         </Grid.Column>
       </NavLink> 
     )

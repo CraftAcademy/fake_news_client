@@ -40,7 +40,7 @@ class App extends Component {
           <Route exact path='/' component={Logout}>
           </Route>
           <Route exact path='/payment' component={requireSignIn(PaymentForm)}>
-            {this.props.currentUser.isSignedIn ? <TranslatedPaymentForm /> : <Redirect to="/" />}
+            {this.props.currentUser.isSignedIn && this.props.currentUser.attributes.role === 'user' ? <TranslatedPaymentForm /> : <Redirect to="/" />}
           </Route>
         </Suspense>
       </>

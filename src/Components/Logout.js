@@ -12,7 +12,6 @@ class Logout extends Component {
   handleSignout = (e) => {
     e.preventDefault()
     const { signOutUser } = this.props
-    debugger
       signOutUser()
         .then(
           console.log('You are successfully logged out')

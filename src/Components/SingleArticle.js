@@ -1,7 +1,8 @@
 import React, { Component } from "react"
 import { getSpecificArticle, editArticle } from '../Modules/ArticlesData'
 import EditFormInput from './EditFormInput'
-import { Message } from 'semantic-ui-react'
+import { Message, Container, Divider, Grid } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 class SingleArticle extends Component {
 
@@ -80,7 +81,7 @@ class SingleArticle extends Component {
         <Message id="flash-message">{this.state.errorMessage}</Message>
     }
 
-    if (article !== null && this.state.renderEditForm === false) {
+    if (article !== null && this.state.renderEditForm === false && this.props.currentUser.attributes.role === 'journalist') {
       singleArticle = (
         <>
           <div id="single-article">
@@ -89,6 +90,25 @@ class SingleArticle extends Component {
             <p id="article-content">{article.content}</p>
           </div>
           <button onClick={this.renderForm} id="edit-article">Edit</button>
+        </>
+      )
+    } else if (article !== null && this.state.renderEditForm === false) {
+      singleArticle = (
+        <>
+        <Container textAlign='justified' id="single-article">
+          <Grid columns={2}>
+            <Grid.Row>
+              <Grid.Column width={5}>
+                <img src={article.image} alt='Article image'/>
+              </Grid.Column>
+              <Grid.Column >
+                <h3 id="article-title">{article.title}</h3>
+                <Divider />
+                <p id="article-content">{article.content}</p>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
         </>
       )
     }
@@ -120,4 +140,12 @@ class SingleArticle extends Component {
   }
 }
 
-export default SingleArticle
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(SingleArticle)

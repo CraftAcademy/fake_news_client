@@ -21,7 +21,7 @@ const Navbar = (props) => {
           </Menu.Item>
         )}
         <Menu.Menu position='right'>
-          {props.currentUser.isSignedIn && (
+          {props.currentUser.isSignedIn && props.currentUser.attributes.role === 'user' && (
             <Menu.Item>
               <NavLink id='nav-payment' to='/payment'>{t("navbar.subscribe")}</NavLink>
             </Menu.Item>
