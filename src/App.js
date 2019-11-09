@@ -4,7 +4,6 @@ import Login from './Components/Login'
 import SignUp from './Components/SignUp'
 import CreateArticle from './Components/CreateArticle'
 import Navbar from './Components/Navbar'
-import CategoryBar from './Components/CategoryBar'
 import SingleArticle from './Components/SingleArticle'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -14,6 +13,10 @@ import PaymentForm from './Components/PaymentForm'
 import { withTranslation } from 'react-i18next'
 import { generateRequireSignInWrapper } from 'redux-token-auth'
 import Politics from './Components/Categories/Politics'
+import Economics from './Components/Categories/Economics'
+import Sports from './Components/Categories/Sports'
+import Tech from './Components/Categories/Sports'
+
 
 const requireSignIn = generateRequireSignInWrapper({
   redirectPathIfNotSignedIn: '/login',
@@ -29,11 +32,13 @@ class App extends Component {
       <>
         <Suspense fallback={(<div>Loading</div>)}>
           <Navbar />
-          <CategoryBar />
           <Route exact path='/' component={ListArticles}><TranslatedListArticles /></Route>
           <Route exact path='/article/:id' component={requireSignIn(SingleArticle)} />
           <Route exact path='/create' component={requireSignIn(CreateArticle)} />
           <Route exact path='/politics' component={Politics} />
+          <Route exact path='/economics' component={Economics} />
+          <Route exact path='/sports' component={Sports} />
+          <Route exact path='/tech' component={Tech} />
           <Route exact path='/login' component={Login}>
             {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
           </Route>

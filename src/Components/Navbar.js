@@ -19,6 +19,24 @@ const Navbar = (props) => {
             <NavLink id='nav-create' to='/create'>{t("navbar.create")}</NavLink>
           </Menu.Item>
         )}
+        <Menu.Item>
+          <NavLink id='cat-politics' to='/politics'>Politics</NavLink>
+        </Menu.Item>
+        <Menu.Item>
+          <NavLink id='cat-economics' to='/economics'>Economics</NavLink>
+        </Menu.Item>
+        <Menu.Item>
+          <NavLink id='cat-sports' to='/sports'>Sports</NavLink>
+        </Menu.Item>
+        <Menu.Item>
+          <NavLink id='cat-tech' to='/tech'>Tech</NavLink>
+        </Menu.Item>
+        <Menu.Item>
+          <NavLink id='cat-leisure' to='/leisure'>Leisure</NavLink>
+        </Menu.Item>
+        <Menu.Item>
+          <NavLink id='cat-lifestyle' to='/lifestyle'>Lifestyle</NavLink>
+        </Menu.Item>
         <Menu.Menu position='right'>
         {props.currentUser.isSignedIn && (
             <Menu.Item>
