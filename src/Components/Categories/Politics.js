@@ -24,22 +24,6 @@ class Politics extends Component {
     this.getArticlesData()
   }
 
-
-  // async componentDidMount() {
-  //   window.scrollTo(0, 0);
-  //   let categories = await getCategoryNames()
-  //   let categoryName = this.props.location.pathname.substring(1)
-  //   this.setState({
-  //     categoryName: categoryName,
-  //     categories: categories
-  //   })
-  //   axios.get('/api/v1/articles').then(response => {
-  //     this.setState({ articles: response.data });
-  //   })
-  // }
-
-
-
   async getArticlesData() {
     debugger
     let fetch = await getArticles();
@@ -56,26 +40,14 @@ class Politics extends Component {
   renderArticles(article) {
     return (
       <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`} >
-            <Image src={article.image} alt="" wrapped ui={false} />
-            <h3>{article.title}</h3>
-      </NavLink> 
+        <Image src={article.image} alt="" wrapped ui={false} />
+        <h3>{article.title}</h3>
+      </NavLink>
     )
   }
 
-  // this.state.articles.forEach(article => {
-  //   if (article.published === true) {
-  //     if (this.state.categoryName === 'news') {
-  //       return filteredArticlesByCategory.push(article)
-  //     } else if (article.category.name === category) {
-  //       return filteredArticlesByCategory.push(article)
-  //     } else {
-  //       return filteredArticlesByCategory
-  //     }
-  //   }
-  // })
-
   render() {
-    let {articles, categoryName, categories} = this.state
+    let { articles, categoryName } = this.state
     let filteredArticleList = []
     let errorMessage
     let politicalArticles
@@ -86,28 +58,20 @@ class Politics extends Component {
         return filteredArticleList.push(article)
       } else {
         errorMessage = <p>There are no Articles in this category</p>
-      }})
+      }
+    })
 
-      politicalArticles = (
-        filteredArticleList.map(article => {
-          debugger
-          return (
-            <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`} >
-                  <Image src={article.image} alt="" wrapped ui={false} />
-                  <h3>{article.title}</h3>
-            </NavLink> 
-          )
-        }
-      ))
-  
-
-    // fullArticleList = (
-    //   <>
-    //     {articles.map(article => {
-    //       return this.renderArticles(article)
-    //     })}
-    //   </>
-    // )
+    politicalArticles = (
+      filteredArticleList.map(article => {
+        debugger
+        return (
+          <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`} >
+            <Image src={article.image} alt="" wrapped ui={false} />
+            <h3>{article.title}</h3>
+          </NavLink>
+        )
+      }
+    ))
 
     return (
       <>

@@ -84,7 +84,7 @@ class SingleArticle extends Component {
       singleArticle = (
         <>
           <div id="single-article">
-            <img src={article.image} alt='Article image'/>
+            <img src={article.image} alt=""/>
             <p id="article-title">{article.title}</p>
             <p id="article-content">{article.content}</p>
           </div>
@@ -102,7 +102,7 @@ class SingleArticle extends Component {
             onAvatarDropHandler={this.onAvatarDropHandler}
           />
           <div id="single-article">
-            <img src={article.image} alt='Article image' />
+            <img src={article.image} alt="" />
             <p id="article-title">{article.title}</p>
             <p id="article-content">{article.content}</p>
           </div>
