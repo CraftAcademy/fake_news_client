@@ -6,13 +6,41 @@ import { NavLink } from 'react-router-dom'
 class Politics extends Component {
   state = {
     articles: [],
-    categories: []
+    categories: [],
+    categoryName: ''
   }
 
-  componentDidMount() {
-    this.getCategoryData()
+  setErrorMessage = (error) => {
+    this.setState({
+      errorMessage: error
+    })
+  }
+
+  async componentDidMount() {
+    let categories = await getCategories()
+    let categoryName = 'Politics'
+    this.setState({
+      categoryName: categoryName,
+      categories: categories
+    })
     this.getArticlesData()
   }
+
+
+  // async componentDidMount() {
+  //   window.scrollTo(0, 0);
+  //   let categories = await getCategoryNames()
+  //   let categoryName = this.props.location.pathname.substring(1)
+  //   this.setState({
+  //     categoryName: categoryName,
+  //     categories: categories
+  //   })
+  //   axios.get('/api/v1/articles').then(response => {
+  //     this.setState({ articles: response.data });
+  //   })
+  // }
+
+
 
   async getArticlesData() {
     let fetch = await getArticles();
@@ -25,15 +53,16 @@ class Politics extends Component {
     }
   }
 
-  async getCategoryData() {
-    let fetch = await getCategories();
-    if (fetch.error) {
-      this.setErrorMessage(fetch.error)
-    } else {
-      this.setState({
-        categories: fetch
-      })
-    }
+  extractCategoryId() {
+    const categoryList = this.state.categories
+    categoryList.map(c => {
+      if (c.name === 'Politics') {
+        console.log(c)
+        return (
+          {}
+        )
+      }
+    })
   }
 
   renderArticles(article) {
@@ -43,11 +72,6 @@ class Politics extends Component {
             <h3>{article.title}</h3>
       </NavLink> 
     )
-  }
-
-  const extractCategoryId = () => {
-    const categoryId = this.state.categories
-    
   }
 
   render() {
