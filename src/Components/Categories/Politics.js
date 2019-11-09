@@ -7,7 +7,7 @@ class Politics extends Component {
   state = {
     articles: [],
     categories: [],
-    categoryName: ''
+    categoryName: 'Politics'
   }
 
   setErrorMessage = (error) => {
@@ -18,9 +18,7 @@ class Politics extends Component {
 
   async componentDidMount() {
     let categories = await getCategories()
-    let categoryName = 'Politics'
     this.setState({
-      categoryName: categoryName,
       categories: categories
     })
     this.getArticlesData()
@@ -43,26 +41,16 @@ class Politics extends Component {
 
 
   async getArticlesData() {
+    debugger
     let fetch = await getArticles();
     if (fetch.error) {
       this.setErrorMessage(fetch.error)
     } else {
+      debugger
       this.setState({
         articles: fetch
       })
     }
-  }
-
-  extractCategoryId() {
-    const categoryList = this.state.categories
-    categoryList.map(c => {
-      if (c.name === 'Politics') {
-        console.log(c)
-        return (
-          {}
-        )
-      }
-    })
   }
 
   renderArticles(article) {
@@ -74,22 +62,58 @@ class Politics extends Component {
     )
   }
 
-  render() {
-    const {articles} = this.state
-    let fullArticleList
+  // this.state.articles.forEach(article => {
+  //   if (article.published === true) {
+  //     if (this.state.categoryName === 'news') {
+  //       return filteredArticlesByCategory.push(article)
+  //     } else if (article.category.name === category) {
+  //       return filteredArticlesByCategory.push(article)
+  //     } else {
+  //       return filteredArticlesByCategory
+  //     }
+  //   }
+  // })
 
-    fullArticleList = (
-      <>
-        {articles.map(article => {
-          return this.renderArticles(article)
-        })}
-      </>
-    )
+  render() {
+    let {articles, categoryName, categories} = this.state
+    let filteredArticleList = []
+    let errorMessage
+    let politicalArticles
+
+    articles.forEach(article => {
+      debugger
+      if (article.category.name === categoryName) {
+        return filteredArticleList.push(article)
+      } else {
+        errorMessage = <p>There are no Articles in this category</p>
+      }})
+
+      politicalArticles = (
+        filteredArticleList.map(article => {
+          debugger
+          return (
+            <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`} >
+                  <Image src={article.image} alt="" wrapped ui={false} />
+                  <h3>{article.title}</h3>
+            </NavLink> 
+          )
+        }
+      ))
+  
+
+    // fullArticleList = (
+    //   <>
+    //     {articles.map(article => {
+    //       return this.renderArticles(article)
+    //     })}
+    //   </>
+    // )
 
     return (
       <>
         <h1>Politics</h1>
-        {fullArticleList}
+        {politicalArticles}
+        {errorMessage}
       </>
     )
   }

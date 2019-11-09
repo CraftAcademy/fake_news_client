@@ -15,6 +15,7 @@ const getArticles = async () => {
 }
 
 const getCategories = async () => {
+  debugger
   try {
     let response = await axios.get(apiUrl + 'categories')
     return response.data
