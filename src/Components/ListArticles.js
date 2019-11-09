@@ -41,7 +41,7 @@ class ListArticles extends Component {
 
   renderArticles(article) {
     return (
-      <Grid.Column >
+      <Grid.Column id="single">
         <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`} >
           <Card>
             <Image src={article.image} alt="" wrapped ui={false} />
