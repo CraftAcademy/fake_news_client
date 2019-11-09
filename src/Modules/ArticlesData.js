@@ -14,6 +14,17 @@ const getArticles = async () => {
   }
 }
 
+const getCategories = async () => {
+  try {
+    let response = await axios.get(apiUrl + 'categories')
+    return response.data
+  } catch(error) {
+    return {
+      error: error.response.data.error_message,
+    }
+  }
+}
+
 const submitArticle = async (title, content, image, category) => {
   try {
     let response = await axios.post(apiUrl + 'articles',
@@ -60,4 +71,4 @@ const editArticle = async (title, content, image) => {
   }
 }
 
-export { getArticles, submitArticle, getSpecificArticle, editArticle }
+export { getArticles, submitArticle, getSpecificArticle, editArticle, getCategories }
