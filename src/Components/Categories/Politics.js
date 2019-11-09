@@ -30,6 +30,11 @@ class Politics extends Component {
     }
   }
 
+  articleIngress = (content, wordCount) => {
+    let ingress = content.split(' ').slice(0, wordCount).join(' ')
+    return ingress + '...'
+  }
+
   render() {
     let { articles, categoryName } = this.state
     let filteredArticleList = []
@@ -49,7 +54,7 @@ class Politics extends Component {
           <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`} >
             <Image src={article.image} alt="" wrapped ui={false} />
             <h3>{article.title}</h3>
-            <h3>{article.content}</h3>
+            <p>{this.articleIngress(article.content, 20)}</p>
           </NavLink>
         )
       }

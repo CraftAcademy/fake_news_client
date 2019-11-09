@@ -3,10 +3,10 @@ import { getArticles } from '../../Modules/ArticlesData'
 import { Image } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
-class Sports extends Component {
+class Leisure extends Component {
   state = {
     articles: [],
-    categoryName: 'Sports'
+    categoryName: 'Leisure'
   }
 
   setErrorMessage = (error) => {
@@ -39,7 +39,7 @@ class Sports extends Component {
     let { articles, categoryName } = this.state
     let filteredArticleList = []
     let errorMessage
-    let sportsArticles
+    let leisureArticles
 
     articles.forEach(article => {
       if (article.category.name === categoryName) {
@@ -47,7 +47,7 @@ class Sports extends Component {
       }
     })
 
-    sportsArticles = (
+    leisureArticles = (
       filteredArticleList.map(article => {
         debugger
         return (
@@ -62,12 +62,12 @@ class Sports extends Component {
 
     return (
       <>
-        <h1>Sports</h1>
-        {sportsArticles}
+        <h1>Leisure</h1>
+        {leisureArticles}
         {errorMessage}
       </>
     )
   }
 }
 
-export default Sports
+export default Leisure

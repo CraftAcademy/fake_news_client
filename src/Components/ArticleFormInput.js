@@ -14,7 +14,7 @@ const ArticleFormInput = (props) => {
         <div>
           <select id="categories" name="category" onChange={props.inputHandler}>
             <option name="politics" value="Politics">{t("create.selector.politics")}</option>
-            <option name="economy" value="Economy">{t("create.selector.economy")}</option>
+            <option name="economics" value="Economics">{t("create.selector.economics")}</option>
             <option name="tech" value="Tech">{t("create.selector.tech")}</option>
             <option name="lifestyle" value="Lifestyle">{t("create.selector.lifestyle")}</option>
             <option name="sports" value="Sports">{t("create.selector.sports")}</option>
