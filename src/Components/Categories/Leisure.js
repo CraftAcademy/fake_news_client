@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getArticles } from '../../Modules/ArticlesData'
-import { Image } from 'semantic-ui-react'
+import { Image, Card, Grid, Divider, Header } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 class Leisure extends Component {
@@ -49,21 +49,31 @@ class Leisure extends Component {
 
     leisureArticles = (
       filteredArticleList.map(article => {
-        debugger
         return (
-          <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`} >
-            <Image src={article.image} alt="" wrapped ui={false} />
-            <h3>{article.title}</h3>
-            <p>{this.articleIngress(article.content, 20)}</p>
-          </NavLink>
+          <Grid.Column>
+            <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`} >
+              <Card>
+                <Image src={article.image} alt="" wrapped ui={false} />
+                <Card.Content>
+                  <h3>{article.title}</h3>
+                  <Divider />
+                  <p>{this.articleIngress(article.content, 20)}</p>
+                </Card.Content>
+              </Card>
+            </NavLink>
+          </Grid.Column>
         )
       }
     ))
 
     return (
       <>
-        <h1>Leisure</h1>
-        {leisureArticles}
+        <Header as='h2'>Leisure</Header>
+        <Grid centered container columns={3}>
+          <Grid.Row>
+            {leisureArticles}
+          </Grid.Row>
+        </Grid>
         {errorMessage}
       </>
     )
