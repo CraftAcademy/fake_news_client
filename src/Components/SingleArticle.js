@@ -84,24 +84,24 @@ class SingleArticle extends Component {
     if (article !== null && this.state.renderEditForm === false && this.props.currentUser.attributes.role === 'journalist') {
       singleArticle = (
         <>
-          <Container textAlign='justified' id="single-article">
-            <Grid columns={2}>
-              <Grid.Row>
-                <Grid.Column width={5}>
-                  <Image src={article.image} alt='Article image'/>
-                </Grid.Column>
-                <Grid.Column >
-                  <h3 id="article-title">{article.title}</h3>
-                  <Divider />
-                  <p id="article-content">{article.content}</p>
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Button onClick={this.renderForm} id="edit-article">Edit</Button>
-              </Grid.Row>
-            </Grid>
-          </Container>
-        </>
+        <Container textAlign='justified' id="single-article">
+          <Grid columns={2}>
+            <Grid.Row>
+              <Grid.Column width={5}>
+                <Image src={article.image} alt='Article image'/>
+              </Grid.Column>
+              <Grid.Column >
+                <h3 id="article-title">{article.title}</h3>
+                <Divider />
+                <p id="article-content">{article.content}</p>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Button onClick={this.renderForm} id="edit-article">Edit</Button>
+            </Grid.Row>
+          </Grid>
+        </Container>
+      </>
       )
     } else if (article !== null && this.state.renderEditForm === false) {
       singleArticle = (
