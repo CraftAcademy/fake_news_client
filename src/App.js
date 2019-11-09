@@ -13,6 +13,13 @@ import './Components/CSS/App.css'
 import PaymentForm from './Components/PaymentForm'
 import { withTranslation } from 'react-i18next'
 import { generateRequireSignInWrapper } from 'redux-token-auth'
+import Politics from './Components/Categories/Politics'
+import Economics from './Components/Categories/Economics'
+import Sports from './Components/Categories/Sports'
+import Tech from './Components/Categories/Tech'
+import Leisure from './Components/Categories/Leisure'
+import Lifestyle from './Components/Categories/Lifestyle'
+
 
 const requireSignIn = generateRequireSignInWrapper({
   redirectPathIfNotSignedIn: '/login',
@@ -31,6 +38,12 @@ class App extends Component {
           <Route exact path='/' component={ListArticles}><TranslatedListArticles /></Route>
           <Route exact path='/article/:id' component={requireSignIn(SingleArticle)} />
           <Route exact path='/create' component={requireSignIn(CreateArticle)} />
+          <Route exact path='/politics' component={requireSignIn(Politics)} />
+          <Route exact path='/economics' component={requireSignIn(Economics)} />
+          <Route exact path='/sports' component={requireSignIn(Sports)} />
+          <Route exact path='/tech' component={requireSignIn(Tech)} />
+          <Route exact path='/leisure' component={requireSignIn(Leisure)} />
+          <Route exact path='/lifestyle' component={requireSignIn(Lifestyle)} />
           <Route exact path='/login' component={Login}>
             {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
           </Route>

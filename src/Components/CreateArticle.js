@@ -58,8 +58,8 @@ class CreateArticle extends Component {
 
     return (
       <div>
-        {responseMessage}
         {articleForm}
+        {responseMessage}
       </div>
     )
   }
