@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Menu, Header } from 'semantic-ui-react'
 import { useTranslation } from 'react-i18next'
+import Logout from './Logout'
 
 const Navbar = (props) => {
   const { t } = useTranslation()
@@ -38,12 +39,13 @@ const Navbar = (props) => {
           <NavLink id='cat-lifestyle' to='/lifestyle'>Lifestyle</NavLink>
         </Menu.Item>
         <Menu.Menu position='right'>
-        {props.currentUser.isSignedIn && (
+          {props.currentUser.isSignedIn && props.currentUser.attributes.role === 'user' && (
             <Menu.Item>
               <NavLink id='nav-payment' to='/payment'>{t("navbar.subscribe")}</NavLink>
             </Menu.Item>
           )}
-          {!props.currentUser.isSignedIn && (
+          {props.currentUser.isSignedIn ? (
+            <Logout /> ) : (
             <Menu.Item>
               <NavLink id='nav-login' to='/login'>{t("navbar.login")}</NavLink>
             </Menu.Item>

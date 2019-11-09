@@ -35,7 +35,7 @@ describe('User can view single article if logged in', () => {
     cy.get('#welcome-message').should('contain', 'Hello subscriber@mail.com')
 
     cy.get('#article_1')
-      .click()
+      .click({force:true})
     cy.get('#single-article')
       .within(() => {
         cy.get('#article-title')
@@ -47,7 +47,7 @@ describe('User can view single article if logged in', () => {
 
   it('receives a message prompting login unless user is logged in', () => {
     cy.get('#article_1')
-      .click()
+      .click({force:true})
     cy.get('#login-form')
       .should('contain', 'Please login to gain full access of all of our articles')
   })
