@@ -62,7 +62,7 @@ class ListArticles extends Component {
     const { t } = this.props;
 
     if (this.props.currentUser.isSignedIn) {
-      welcomeMessage = <Message> <h3 id="welcome-message">Hello {this.props.currentUser.attributes.email}</h3></Message>
+      welcomeMessage = <h3 id="welcome-message">Hello {this.props.currentUser.attributes.email}</h3>
     }
 
     if (this.state.errorMessage) {

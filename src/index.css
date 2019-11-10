@@ -44,19 +44,20 @@ p {
   text-align: center;
 }
 
-#login-form {
+#login-form,
+#signup-form {
   text-align: center;
+  padding-bottom: 1rem;
+}
+
+#login-header,
+#signup-header {
+  font-size: 1.2rem !important;
 }
 
 #article-wrapper {
   padding: 10rem !important;
   padding-top: 2rem !important;
-}
-
-.ui.form {
-  position: relative;
-  max-width: 0 !important;
-  padding: 2rem !important;
 }
 
 #title-input {

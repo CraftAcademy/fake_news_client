@@ -22,3 +22,7 @@ a {
 .ui.card {
   margin: 1rem !important;
 }
+
+#welcome-message {
+  text-align: center;
+}
