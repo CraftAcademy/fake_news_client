@@ -17,3 +17,8 @@
   z-index: 999 !important;
   background: #fff !important;
 }
+
+#hero-mini-header {
+ font-style: italic;
+ font-weight: 200 !important;
+}
