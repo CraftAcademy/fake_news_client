@@ -5,7 +5,14 @@
     "home": "Hem",
     "signup": "Registrera dig",
     "create": "Skapa artikel",
-    "subscribe": "Prenumerera"
+    "subscribe": "Prenumerera",
+    "p": "Politik",
+    "e": "Ekonomi",
+    "s": "Sport",
+    "t": "Teknik",
+    "le": "Fritid",
+    "li": "Livsstil",
+    "miniheader": "På Falska Nyheter jobbar vi hårt"
   },
   "login": {
     "email": "E-post",

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Menu, Header } from 'semantic-ui-react'
 import { useTranslation } from 'react-i18next'
 import Logout from './Logout'
+import './CSS/Navbar.css'
 
 const Navbar = (props) => {
   const { t } = useTranslation()
@@ -11,6 +12,7 @@ const Navbar = (props) => {
   return (
     <>
       <Header id="hero-header" as='h1'>{t("navbar.header")}</Header>
+      <Header id="hero-mini-header" as='h2'>{t("navbar.miniheader")}</Header>
       <Menu stackable id="navbar">
         <Menu.Item>
           <NavLink id='nav-home' to='/'>{t("navbar.home")}</NavLink>
@@ -20,24 +22,26 @@ const Navbar = (props) => {
             <NavLink id='nav-create' to='/create'>{t("navbar.create")}</NavLink>
           </Menu.Item>
         )}
+        <Menu.Menu position="right">
         <Menu.Item>
-          <NavLink id='cat-politics' to='/politics'>Politics</NavLink>
+        <NavLink id='cat-politics' to='/politics'>{t("navbar.p")}</NavLink>
         </Menu.Item>
         <Menu.Item>
-          <NavLink id='cat-economics' to='/economics'>Economics</NavLink>
+          <NavLink id='cat-economics' to='/economics'>{t("navbar.e")}</NavLink>
         </Menu.Item>
         <Menu.Item>
-          <NavLink id='cat-sports' to='/sports'>Sports</NavLink>
+          <NavLink id='cat-sports' to='/sports'>{t("navbar.s")}</NavLink>
         </Menu.Item>
         <Menu.Item>
-          <NavLink id='cat-tech' to='/tech'>Tech</NavLink>
+          <NavLink id='cat-tech' to='/tech'>{t("navbar.t")}</NavLink>
         </Menu.Item>
         <Menu.Item>
-          <NavLink id='cat-leisure' to='/leisure'>Leisure</NavLink>
+          <NavLink id='cat-leisure' to='/leisure'>{t("navbar.le")}</NavLink>
         </Menu.Item>
         <Menu.Item>
-          <NavLink id='cat-lifestyle' to='/lifestyle'>Lifestyle</NavLink>
+          <NavLink id='cat-lifestyle' to='/lifestyle'>{t("navbar.li")}</NavLink>
         </Menu.Item>
+        </Menu.Menu>
         <Menu.Menu position='right'>
           {props.currentUser.isSignedIn && props.currentUser.attributes.role === 'user' && (
             <Menu.Item>

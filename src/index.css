@@ -16,12 +16,6 @@ h1 {
   font-weight: 400 !important;
   font-size: 3rem !important;
   margin: 0 !important;
-  background-color: rgb(235, 236, 236);
-}
-
-.ui.header {
-  padding-top: 2rem !important;
-  padding-bottom: 2rem !important;
 }
 
 h2 {
@@ -37,29 +31,9 @@ p {
 }
 
 #root {
-  background-color: rgb(248, 242, 242);
-  /* font-family: 'Open Sans', sans-serif !important; */
+  background-color: #fff;
   font-weight: 400 !important;
-}
-
-.ui.menu {
-  border-radius: 0 !important;
-  height: 50px;
-  font-size: 17px !important;
-  color: black !important;
-  margin-top: 0 !important;
-  z-index: 999 !important;
-  background: #fff !important;
-}
-
-.ui.menu.item {
-  z-index: 999 !important;
-  background: #fff !important;
-}
-
-.item {
-  z-index: 999 !important;
-  background: #fff !important;
+  margin: 0rem 2rem 0 2rem;
 }
 
 .input {
@@ -70,19 +44,20 @@ p {
   text-align: center;
 }
 
-#login-form {
+#login-form,
+#signup-form {
   text-align: center;
+  padding-bottom: 1rem;
+}
+
+#login-header,
+#signup-header {
+  font-size: 1.2rem !important;
 }
 
 #article-wrapper {
   padding: 10rem !important;
   padding-top: 2rem !important;
-}
-
-ui.form {
-  position: relative;
-  max-width: 0 !important;
-  padding: 2rem !important;
 }
 
 #title-input {

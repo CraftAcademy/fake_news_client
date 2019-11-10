@@ -8,7 +8,7 @@ const LoginForm = (props) => {
   return (
     <>
       <Container id="login-form">
-        <h2>{t("login.message")}</h2>
+        <h2 id="login-header">{t("login.message")}</h2>
         <div className="input">
           <Input placeholder={t("login.email")} id="email-input" name="email" onChange={props.inputChangeHandlerProps} />
         </div>

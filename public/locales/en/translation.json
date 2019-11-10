@@ -5,7 +5,14 @@
     "home": "Home",
     "signup": "Signup",
     "create": "Create Article",
-    "subscribe": "Subscribe"
+    "subscribe": "Subscribe",
+    "p": "Politics",
+    "e": "Economics",
+    "s": "Sports",
+    "t": "Tech",
+    "le": "Leisure",
+    "li": "Lifestyle",
+    "miniheader": "The Fake News Media is working hard"
   },
   "login": {
     "email": "Email",
