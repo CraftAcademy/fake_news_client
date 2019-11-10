@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Menu, Header } from 'semantic-ui-react'
 import { useTranslation } from 'react-i18next'
 import Logout from './Logout'
+import './CSS/Navbar.css'
 
 const Navbar = (props) => {
   const { t } = useTranslation()
@@ -20,6 +21,7 @@ const Navbar = (props) => {
             <NavLink id='nav-create' to='/create'>{t("navbar.create")}</NavLink>
           </Menu.Item>
         )}
+        <Menu.Menu position="right">
         <Menu.Item>
         <NavLink id='cat-politics' to='/politics'>{t("navbar.p")}</NavLink>
         </Menu.Item>
@@ -38,6 +40,7 @@ const Navbar = (props) => {
         <Menu.Item>
           <NavLink id='cat-lifestyle' to='/lifestyle'>{t("navbar.li")}</NavLink>
         </Menu.Item>
+        </Menu.Menu>
         <Menu.Menu position='right'>
           {props.currentUser.isSignedIn && props.currentUser.attributes.role === 'user' && (
             <Menu.Item>
