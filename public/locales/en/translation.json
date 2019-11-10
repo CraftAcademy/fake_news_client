@@ -5,7 +5,13 @@
     "home": "Home",
     "signup": "Signup",
     "create": "Create Article",
-    "subscribe": "Subscribe"
+    "subscribe": "Subscribe",
+    "p": "Politics",
+    "e": "Economics",
+    "s": "Sports",
+    "t": "Tech",
+    "le": "Leisure",
+    "li": "Lifestyle"
   },
   "login": {
     "email": "Email",

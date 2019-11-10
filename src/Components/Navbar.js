@@ -21,22 +21,22 @@ const Navbar = (props) => {
           </Menu.Item>
         )}
         <Menu.Item>
-          <NavLink id='cat-politics' to='/politics'>Politics</NavLink>
+        <NavLink id='cat-politics' to='/politics'>{t("navbar.p")}</NavLink>
         </Menu.Item>
         <Menu.Item>
-          <NavLink id='cat-economics' to='/economics'>Economics</NavLink>
+          <NavLink id='cat-economics' to='/economics'>{t("navbar.e")}</NavLink>
         </Menu.Item>
         <Menu.Item>
-          <NavLink id='cat-sports' to='/sports'>Sports</NavLink>
+          <NavLink id='cat-sports' to='/sports'>{t("navbar.s")}</NavLink>
         </Menu.Item>
         <Menu.Item>
-          <NavLink id='cat-tech' to='/tech'>Tech</NavLink>
+          <NavLink id='cat-tech' to='/tech'>{t("navbar.t")}</NavLink>
         </Menu.Item>
         <Menu.Item>
-          <NavLink id='cat-leisure' to='/leisure'>Leisure</NavLink>
+          <NavLink id='cat-leisure' to='/leisure'>{t("navbar.le")}</NavLink>
         </Menu.Item>
         <Menu.Item>
-          <NavLink id='cat-lifestyle' to='/lifestyle'>Lifestyle</NavLink>
+          <NavLink id='cat-lifestyle' to='/lifestyle'>{t("navbar.li")}</NavLink>
         </Menu.Item>
         <Menu.Menu position='right'>
           {props.currentUser.isSignedIn && props.currentUser.attributes.role === 'user' && (
