@@ -58,7 +58,7 @@ class ListArticles extends Component {
 
   render() {
     const {articles} = this.state
-    let fullArticleList, topArticleList, errorMessage, welcomeMessage
+    let articleList, errorMessage, welcomeMessage
     const { t } = this.props;
 
     if (this.props.currentUser.isSignedIn) {
@@ -69,16 +69,9 @@ class ListArticles extends Component {
       errorMessage = <p id="error">{this.state.errorMessage}</p>
     }
 
-    fullArticleList = (
+    articleList = (
       <Grid.Row>
-        {articles.slice(3, -1).map(article => {
-          return this.renderArticles(article)
-        })}
-      </Grid.Row>
-    )
-    topArticleList = (
-      <Grid.Row>
-        {articles.slice(0, 3).map(article => {
+        {articles.sort().reverse().map(article => {
           return this.renderArticles(article)
         })}
       </Grid.Row>
@@ -91,15 +84,10 @@ class ListArticles extends Component {
         <div className="error-messages">
           {errorMessage}
         </div>
-        <div className="top-news">
-          <Header as='h2'>{t("top.header")}</Header>
+        <div className="list-all-news" className="top-news">
+        <Header as='h2'>{t("top.header")}</Header>
           <Grid centered container columns={3} className="latest-articles">
-            {topArticleList}
-          </Grid>
-        </div>
-        <div className="list-all-news">
-          <Grid centered container columns={4} className="latest-articles">
-            {fullArticleList}
+            {articleList}
           </Grid>
         </div>
       </>
